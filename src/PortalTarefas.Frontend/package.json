@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "generate:client": "openapi-typescript ../../docs/openapi.json -o src/api/schema.d.ts",
+    "verify:client": "node scripts/verify-client.ts",
+    "smoke:client": "node scripts/verify-client.ts",
     "typecheck": "tsc -b --pretty false",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",

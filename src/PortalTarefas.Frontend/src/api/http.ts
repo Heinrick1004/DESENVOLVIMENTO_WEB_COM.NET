@@ -1,10 +1,11 @@
-export interface ProblemDetails {
-  title?: string;
-  detail?: string;
-  status?: number;
+import type { components } from './schema';
+
+// Campos e erros de validação seguem o OpenAPI; a correlação é uma extensão
+// opcional utilizada na apresentação de falhas.
+export type ProblemDetails = components['schemas']['ApiProblemDetails'] & {
   traceId?: string;
-  errors?: Record<string, string[]>;
-}
+  correlationId?: string;
+};
 
 export class ApiError extends Error {
   readonly kind: 'http' | 'network';
@@ -72,7 +73,7 @@ async function getCsrf(): Promise<string> {
   if (csrf) return csrf;
   csrfPending ??= checkedFetch(`${baseUrl}/api/auth/csrf`)
     .then(async response => {
-      const body = await response.json() as { token: string };
+      const body = await response.json() as components['schemas']['CsrfDto'];
       if (!body.token) throw new ApiError('http', 500, { detail: 'O servidor não retornou o token de segurança.' });
       csrf = body.token;
       return csrf;

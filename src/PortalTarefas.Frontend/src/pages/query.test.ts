@@ -15,4 +15,9 @@ describe('estado da lista na URL', () => {
     expect(listaRetorno(new URLSearchParams({ voltar: 'https://externo.test' }))).toBe('/tarefas');
     expect(listaRetorno(new URLSearchParams({ voltar: '/tarefas?pagina=2' }))).toBe('/tarefas?pagina=2');
   });
+  it('normaliza links existentes para a ordenação criadaem aceita pelo servidor', () => {
+    const query = lerConsulta(new URLSearchParams('ordenarPor=criadaEm&direcao=desc'));
+    expect(query.ordenarPor).toBe('criadaem');
+    expect(gravarConsulta(query).get('ordenarPor')).toBe('criadaem');
+  });
 });

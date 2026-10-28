@@ -13,7 +13,10 @@ permissions:
 jobs:
   validar:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
+    env:
+      SQL_IMAGE: mcr.microsoft.com/mssql/server:2025-CU10-ubuntu-24.04
+      API_URL: http://127.0.0.1:5240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -28,11 +31,68 @@ jobs:
         run: dotnet restore PortalTarefas.sln
       - name: Compilar .NET
         run: dotnet build PortalTarefas.sln -c Release --no-restore
-      - name: Testar .NET
-        run: dotnet test tests/PortalTarefas.Tests/PortalTarefas.Tests.csproj -c Release --no-build --logger trx --results-directory artifacts/tests
+      - name: Preparar credencial efêmera e banco exclusivo
+        shell: bash
+        run: |
+          password="aA1!$(openssl rand -hex 24)"
+          echo "::add-mask::$password"
+          connection="Server=127.0.0.1,14333;Database=PortalTarefas_Tests_${GITHUB_RUN_ID}_${GITHUB_RUN_ATTEMPT};User ID=sa;Password=$password;Encrypt=True;TrustServerCertificate=True"
+          echo "::add-mask::$connection"
+          printf 'MSSQL_SA_PASSWORD=%s\nPORTAL_TEST_CONNECTION=%s\nConnectionStrings__PortalTarefas=%s\n' "$password" "$connection" "$connection" >> "$GITHUB_ENV"
+      - name: Iniciar SQL Server isolado para esta execução
+        shell: bash
+        run: |
+          docker run --detach --name portal-ci-sql --memory 3g \
+            --publish 127.0.0.1:14333:1433 \
+            --env ACCEPT_EULA=Y --env MSSQL_PID=Developer \
+            --env MSSQL_MEMORY_LIMIT_MB=2048 --env MSSQL_SA_PASSWORD \
+            "$SQL_IMAGE"
+      - name: Aguardar SQL Server antes das migrations
+        shell: bash
+        run: |
+          for attempt in $(seq 1 45); do
+            if SQLCMDPASSWORD="$MSSQL_SA_PASSWORD" docker exec --env SQLCMDPASSWORD portal-ci-sql \
+              /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -l 2 -Q 'SELECT 1' -o /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'SQL Server não ficou disponível no prazo.' >&2
+          exit 1
+      - name: Aplicar migrations e executar testes sem ignorados
+        shell: pwsh
+        run: ./scripts/Test-Integration.ps1 -Configuration Release -NoBuild -Initialize
       - name: Restaurar frontend
         working-directory: src/PortalTarefas.Frontend
         run: npm ci
+      - name: Iniciar API real para conferir o contrato
+        shell: bash
+        env:
+          ASPNETCORE_ENVIRONMENT: Development
+          ASPNETCORE_URLS: http://127.0.0.1:5240
+          Portal__Storage: SqlServer
+          Seed__Enabled: 'false'
+          Telemetry__Console: 'false'
+        run: |
+          mkdir -p artifacts
+          dotnet run --project src/PortalTarefas.Web/PortalTarefas.Web.csproj -c Release --no-build --no-launch-profile > artifacts/api-ci.log 2>&1 &
+          echo "$!" > artifacts/api-ci.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent "$API_URL/health/ready" > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo 'A API não ficou pronta para a validação do contrato.' >&2
+          exit 1
+      - name: Gerar cliente a partir do OpenAPI servido pela API
+        shell: pwsh
+        run: ./scripts/Generate-Client.ps1 -ApiUrl $env:API_URL
+      - name: Impedir divergência do contrato versionado
+        run: git diff --exit-code -- docs/openapi.json src/PortalTarefas.Frontend/src/api/schema.d.ts
+      - name: Executar chamada real com o cliente TypeScript
+        working-directory: src/PortalTarefas.Frontend
+        run: npm run verify:client
       - name: Testar frontend
         working-directory: src/PortalTarefas.Frontend
         run: npm test
@@ -68,3 +128,24 @@ jobs:
           path: artifacts/
           retention-days: 7
           if-no-files-found: error
+      - name: Preservar diagnóstico de testes que falharam
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-${{ github.sha }}
+          path: |
+            artifacts/tests/
+            artifacts/api-ci.log
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Encerrar somente os recursos efêmeros deste job
+        if: always()
+        shell: bash
+        run: |
+          if [ -f artifacts/api-ci.pid ]; then
+            kill "$(cat artifacts/api-ci.pid)" 2>/dev/null || true
+          fi
+          if docker container inspect portal-ci-sql > /dev/null 2>&1; then
+            docker stop portal-ci-sql > /dev/null
+            docker rm portal-ci-sql > /dev/null
+          fi

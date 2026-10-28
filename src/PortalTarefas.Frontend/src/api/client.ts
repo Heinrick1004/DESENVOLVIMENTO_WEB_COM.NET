@@ -1,7 +1,7 @@
 import createClient from 'openapi-fetch';
 import type { paths } from './schema';
 import { apiFetch, baseUrl, refreshCsrf } from './http';
-import type { Consulta, DetalheTarefa, PaginaTarefas, Sessao, TarefaInput } from './types';
+import type { Consulta, DetalheTarefa, PaginaTarefas, Sessao, TarefaAtualizacao, TarefaInput } from './types';
 
 // schema.d.ts é gerado do documento OpenAPI real. Caminhos, parâmetros e corpos
 // abaixo são conferidos pelo TypeScript em cada geração e build.
@@ -25,7 +25,7 @@ export const api = {
     const { data } = await client.POST('/api/tarefas', { body, signal });
     return required(data);
   },
-  async editar(id: number, body: TarefaInput & { rowVersion: string }, signal?: AbortSignal): Promise<DetalheTarefa> {
+  async editar(id: number, body: TarefaAtualizacao, signal?: AbortSignal): Promise<DetalheTarefa> {
     const { data } = await client.PUT('/api/tarefas/{id}', { params: { path: { id } }, body, signal });
     return required(data);
   },

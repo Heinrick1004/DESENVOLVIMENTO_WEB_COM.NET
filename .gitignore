@@ -6,6 +6,7 @@
 .local/
 .nuget/
 TestResults/
+artifacts/
 playwright-report/
 *.user
 *.suo

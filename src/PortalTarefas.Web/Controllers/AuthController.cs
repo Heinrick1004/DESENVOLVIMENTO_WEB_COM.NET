@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PortalTarefas.Web.Data;
+using PortalTarefas.Web.DTOs;
 using PortalTarefas.Web.Models;
 
 namespace PortalTarefas.Web.Controllers;
@@ -27,7 +28,7 @@ public sealed class AuthController(SignInManager<Usuario> signIn, UserManager<Us
 
     /// <summary>Inicia sessão por cookie protegido. Requer X-CSRF-TOKEN.</summary>
     [HttpPost("login"), AllowAnonymous]
-    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ProblemDetails>(400), ProducesResponseType<ProblemDetails>(401)]
+    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ApiProblemDetails>(400), ProducesResponseType<ProblemDetails>(401)]
     public async Task<ActionResult<SessaoDto>> Login(LoginDto input)
     {
         var user = await users.FindByEmailAsync(input.Email);

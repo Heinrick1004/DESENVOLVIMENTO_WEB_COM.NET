@@ -4,7 +4,9 @@ WORKDIR /frontend
 COPY src/PortalTarefas.Frontend/package.json src/PortalTarefas.Frontend/package-lock.json ./
 RUN npm ci
 COPY src/PortalTarefas.Frontend/ ./
-RUN npm run build
+# O contrato foi exportado da API real e também é conferido no CI.
+COPY docs/openapi.json /docs/openapi.json
+RUN npm run generate:client && npm run build
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0.403 AS backend
 WORKDIR /source

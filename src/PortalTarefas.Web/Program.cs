@@ -1,5 +1,6 @@
 using System.Net;
 using System.Threading.RateLimiting;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using PortalTarefas.Web.Controllers;
 using PortalTarefas.Web.Data;
+using PortalTarefas.Web.DTOs;
 using PortalTarefas.Web.Filters;
 using PortalTarefas.Web.Infrastructure;
 using PortalTarefas.Web.Middleware;
@@ -25,21 +27,18 @@ builder.Services.AddOptions<PortalOptions>().BindConfiguration("Portal").Validat
     .Validate(o => Uri.TryCreate(o.FrontendOrigin, UriKind.Absolute, out var uri) &&
         (uri.Scheme == "https" || uri.Scheme == "http") && uri.AbsolutePath == "/", "Portal:FrontendOrigin deve conter uma origem HTTP válida.")
     .ValidateOnStart();
-var memory = builder.Configuration["Portal:Storage"] == "Memory";
-var connection = builder.Configuration.GetConnectionString("PortalTarefas");
-if (!memory && string.IsNullOrWhiteSpace(connection))
-    throw new InvalidOperationException("Configure ConnectionStrings:PortalTarefas por User Secrets ou variável de ambiente.");
-if (memory && !builder.Environment.IsDevelopment() && !builder.Environment.IsEnvironment("Testing"))
-    throw new InvalidOperationException("O armazenamento Memory é permitido somente para demonstração em Development ou Testing.");
-
 // O contexto guarda apenas opções; nenhum estado de usuário/equipe persiste no pool.
-builder.Services.AddDbContextPool<PortalTarefasDbContext>(o => o.UseSqlServer(connection ?? "Server=localhost;Database=PortalTarefasDemo;Integrated Security=true;Encrypt=true;TrustServerCertificate=true"));
-if (memory)
+// Resolve a configuração final do host, incluindo fontes adicionadas pelo ambiente de testes.
+builder.Services.AddDbContextPool<PortalTarefasDbContext>((services, options) =>
 {
-    builder.Services.AddSingleton<InMemoryTarefaService>();
-    builder.Services.AddSingleton<ITarefaService>(sp => sp.GetRequiredService<InMemoryTarefaService>());
-}
-else builder.Services.AddScoped<ITarefaService, EfTarefaService>();
+    var config = services.GetRequiredService<IConfiguration>();
+    options.UseSqlServer(config.GetConnectionString("PortalTarefas") ??
+        "Server=localhost;Database=PortalTarefasDemo;Integrated Security=true;Encrypt=true;TrustServerCertificate=true");
+});
+builder.Services.AddSingleton<InMemoryTarefaService>();
+builder.Services.AddScoped<EfTarefaService>();
+builder.Services.AddScoped<ITarefaService>(services => services.GetRequiredService<IConfiguration>()["Portal:Storage"] == "Memory"
+    ? services.GetRequiredService<InMemoryTarefaService>() : services.GetRequiredService<EfTarefaService>());
 
 builder.Services.AddIdentity<Usuario, IdentityRole>(o =>
 {
@@ -79,16 +78,24 @@ builder.Services.AddAntiforgery(o =>
     o.HeaderName = "X-CSRF-TOKEN"; o.Cookie.Name = "__Host-PortalTarefas-CSRF";
     o.Cookie.SecurePolicy = CookieSecurePolicy.Always; o.Cookie.SameSite = SameSiteMode.Lax;
 });
-builder.Services.AddControllersWithViews(o => { o.Filters.Add<LogAcaoFilter>(); o.Filters.Add<ApiCsrfFilter>(); });
+builder.Services.AddControllersWithViews(o => { o.Filters.Add<LogAcaoFilter>(); o.Filters.Add<ApiCsrfFilter>(); })
+    .AddJsonOptions(o => o.JsonSerializerOptions.NumberHandling = JsonNumberHandling.Strict);
+builder.Services.ConfigureHttpJsonOptions(o => o.SerializerOptions.NumberHandling = JsonNumberHandling.Strict);
 builder.Services.Configure<ApiBehaviorOptions>(o => o.InvalidModelStateResponseFactory = context =>
 {
-    var details = new ValidationProblemDetails(context.ModelState) { Status = 400, Title = "Confira os campos informados." };
+    var validation = new ValidationProblemDetails(context.ModelState);
+    var details = new ApiProblemDetails { Status = 400, Title = "Confira os campos informados.", Errors = validation.Errors };
     details.Extensions["correlationId"] = context.HttpContext.TraceIdentifier;
     return new BadRequestObjectResult(details) { ContentTypes = { "application/problem+json" } };
 });
 builder.Services.AddProblemDetails(o => o.CustomizeProblemDetails = c => c.ProblemDetails.Extensions["correlationId"] = c.HttpContext.TraceIdentifier);
 builder.Services.AddExceptionHandler<ErroHandler>();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options => options.AddDocumentTransformer((document, _, _) =>
+{
+    // Contrato reproduzível em desenvolvimento e CI, independente da porta de exportação.
+    document.Servers = [new() { Url = "/" }];
+    return Task.CompletedTask;
+}));
 builder.Services.AddCors(o => o.AddPolicy("FrontendLocal", p => p.WithOrigins(builder.Configuration["Portal:FrontendOrigin"] ?? "http://localhost:5173")
     .AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithExposedHeaders("X-Correlation-ID", "Location")));
 builder.Services.AddRateLimiter(o =>
@@ -133,6 +140,11 @@ telemetry.WithMetrics(m =>
 });
 
 var app = builder.Build();
+var memory = app.Configuration["Portal:Storage"] == "Memory";
+if (!memory && string.IsNullOrWhiteSpace(app.Configuration.GetConnectionString("PortalTarefas")))
+    throw new InvalidOperationException("Configure ConnectionStrings:PortalTarefas por User Secrets ou variável de ambiente.");
+if (memory && !app.Environment.IsDevelopment() && !app.Environment.IsEnvironment("Testing"))
+    throw new InvalidOperationException("O armazenamento Memory é permitido somente para demonstração em Development ou Testing.");
 if (args.Contains("--initialize"))
 {
     if (memory) throw new InvalidOperationException("A inicialização de banco exige SqlServer.");
@@ -163,9 +175,9 @@ if (app.Environment.IsDevelopment())
 }
 app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false });
 app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") });
-app.MapGet("/version", () => new { version = typeof(Program).Assembly
+app.MapGet("/version", () => new VersionDto(typeof(Program).Assembly
     .GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
-    .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion ?? "local" });
+    .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion ?? "local"));
 app.MapGet("/api/minimal/diagnostico/{id:int}", (int id, string? filtro,
     [FromHeader(Name = "X-Cliente")] string? cliente, HttpRequest request) => new DiagnosticoDto(id, filtro, cliente, request.Method))
     .WithName("DiagnosticoMinimal").WithSummary("Binding de rota, query e cabeçalho em Minimal API.").RequireRateLimiting("diagnostico");

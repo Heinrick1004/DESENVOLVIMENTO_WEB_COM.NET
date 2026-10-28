@@ -15,6 +15,12 @@ public sealed partial class RequisicaoMiddleware(RequestDelegate next, ILogger<R
         var id = CorrelacaoValida().IsMatch(recebida) ? recebida : Guid.NewGuid().ToString("N");
         context.TraceIdentifier = id;
         context.Response.Headers["X-Correlation-ID"] = id;
+        context.Response.OnStarting(() =>
+        {
+            // O tratamento de exceção pode limpar os cabeçalhos antes de gerar Problem Details.
+            context.Response.Headers["X-Correlation-ID"] = id;
+            return Task.CompletedTask;
+        });
         using var scope = logger.BeginScope(new Dictionary<string, object> { ["CorrelationId"] = id });
         var inicio = Stopwatch.GetTimestamp();
         logger.LogDebug("Pipeline entrada {Metodo} {Caminho}", context.Request.Method, context.Request.Path);

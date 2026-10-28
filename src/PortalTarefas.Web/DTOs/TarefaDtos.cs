@@ -66,6 +66,7 @@ public sealed record TarefaDetalheDto(int Id, string Titulo, string? Descricao, 
 
 public sealed record PaginaDto<T>(IReadOnlyList<T> Itens, int Pagina, int Tamanho, int Total, int TotalPaginas);
 public sealed record PainelDto(int Total, int Pendentes, int Concluidas, int Vencidas);
+public sealed record VersionDto(string Version);
 
 public static class VersaoTarefa
 {

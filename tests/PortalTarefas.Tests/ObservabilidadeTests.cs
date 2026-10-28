@@ -1,7 +1,13 @@
 using System.Net;
+using System.Net.Http.Json;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PortalTarefas.Web.Infrastructure;
+using Xunit.Abstractions;
 
 namespace PortalTarefas.Tests;
 
@@ -13,7 +19,7 @@ public sealed class RespostaControladaHandler(Func<int, HttpStatusCode> status) 
 }
 
 [Collection("SqlIntegration")]
-public sealed class ObservabilidadeTests(PortalFactory factory) : IClassFixture<PortalFactory>
+public sealed class ObservabilidadeTests(PortalFactory factory, ITestOutputHelper output) : IClassFixture<PortalFactory>
 {
     [SqlFact]
     public async Task Rate_limiting_em_carga_controlada_retorna_429_e_retry_after()
@@ -30,6 +36,9 @@ public sealed class ObservabilidadeTests(PortalFactory factory) : IClassFixture<
     [SqlFact]
     public async Task Liveness_independe_de_readiness_que_verifica_dependencia()
     {
+        using var healthy = factory.NovoCliente();
+        Assert.Equal(HttpStatusCode.OK, (await healthy.GetAsync("/health/live")).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await healthy.GetAsync("/health/ready")).StatusCode);
         var handler = new RespostaControladaHandler(_ => HttpStatusCode.ServiceUnavailable);
         using var isolated = factory.WithWebHostBuilder(builder =>
         {
@@ -43,6 +52,46 @@ public sealed class ObservabilidadeTests(PortalFactory factory) : IClassFixture<
         Assert.Equal(HttpStatusCode.ServiceUnavailable, ready.StatusCode);
         Assert.Equal("Unhealthy", await ready.Content.ReadAsStringAsync());
         Assert.InRange(handler.Chamadas, 1, 3);
+        output.WriteLine("SQL disponível: live=200, ready=200. Dependência HTTP controlada indisponível: live=200, ready=503 Unhealthy.");
+    }
+
+    [SqlFact]
+    public async Task Criacao_real_emite_span_e_metricas_com_dimensoes_limitadas()
+    {
+        var spans = new ConcurrentQueue<string>();
+        using var activities = new ActivityListener
+        {
+            ShouldListenTo = source => source.Name == Telemetria.Nome,
+            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded,
+            ActivityStopped = activity => spans.Enqueue($"{activity.OperationName} trace={activity.TraceId}")
+        };
+        ActivitySource.AddActivityListener(activities);
+        var negocios = new ConcurrentQueue<(long Valor, string[] Chaves)>();
+        var duracoes = new ConcurrentQueue<(double Valor, string[] Chaves)>();
+        using var metrics = new MeterListener
+        {
+            InstrumentPublished = (instrument, listener) =>
+            {
+                if (instrument.Meter.Name == Telemetria.Nome) listener.EnableMeasurementEvents(instrument);
+            }
+        };
+        metrics.SetMeasurementEventCallback<long>((_, value, tags, _) =>
+            negocios.Enqueue((value, tags.ToArray().Select(tag => tag.Key).ToArray())));
+        metrics.SetMeasurementEventCallback<double>((_, value, tags, _) =>
+            duracoes.Enqueue((value, tags.ToArray().Select(tag => tag.Key).ToArray())));
+        metrics.Start();
+        using var client = await factory.Autenticado(factory.EmailUsuario);
+        var created = await client.PostAsJsonAsync("/api/tarefas", new
+        {
+            titulo = "Telemetria SQL " + Guid.NewGuid().ToString("N"), prioridade = 1,
+            equipe = factory.Equipe, publica = true
+        });
+        Assert.Equal(HttpStatusCode.Created, created.StatusCode);
+        Assert.Contains(spans, span => span.StartsWith("tarefa.criar trace=", StringComparison.Ordinal));
+        Assert.Contains(negocios, medida => medida.Valor == 1 && medida.Chaves.SequenceEqual(new[] { "origem" }));
+        Assert.Contains(duracoes, medida => medida.Valor >= 0 && medida.Chaves.SequenceEqual(new[] { "metodo", "status" }));
+        output.WriteLine("portal.tarefas.criadas: incremento 1, dimensão origem. portal.http.duracao: {0} medições, dimensões metodo/status.", duracoes.Count);
+        foreach (var span in spans) output.WriteLine(span);
     }
 
     [SqlFact]

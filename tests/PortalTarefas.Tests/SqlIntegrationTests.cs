@@ -215,7 +215,7 @@ public sealed class SqlIntegrationTests
         Assert.True(await roles.RoleExistsAsync("Usuario"));
         Assert.True(await users.IsInRoleAsync(admin!, "Administrador"));
         Assert.True(await users.IsInRoleAsync(user!, "Usuario"));
-        Assert.Single((await users.GetClaimsAsync(admin!)).Where(c => c.Type == "tarefas:editar-outra-equipe" && c.Value == "true"));
+        Assert.Single(await users.GetClaimsAsync(admin!), c => c.Type == "tarefas:editar-outra-equipe" && c.Value == "true");
         Assert.True(await users.CheckPasswordAsync(admin!, senhaOriginal));
         Assert.False(await users.CheckPasswordAsync(admin!, outraSenha));
     }
@@ -223,8 +223,7 @@ public sealed class SqlIntegrationTests
     private static PortalTarefasDbContext Contexto() => new(new DbContextOptionsBuilder<PortalTarefasDbContext>()
         .UseSqlServer(Conexao(), sql => sql.EnableRetryOnFailure(2)).Options);
 
-    private static string Conexao() => Environment.GetEnvironmentVariable("PORTAL_TEST_CONNECTION")
-        ?? throw new InvalidOperationException("PORTAL_TEST_CONNECTION não foi configurada.");
+    private static string Conexao() => SqlTestDatabase.ConnectionString;
 
     private static UsuarioContexto Usuario()
     {

@@ -52,7 +52,7 @@ describe('lista de tarefas e seus estados', () => {
     mount('/tarefas?pagina=3&tamanho=20&busca=entrega&ordenarPor=titulo&direcao=desc');
     await screen.findByRole('table');
     expect(api.listar).toHaveBeenCalledWith(expect.objectContaining({ pagina: 3, tamanho: 20, busca: 'entrega', ordenarPor: 'titulo', direcao: 'desc' }), expect.any(AbortSignal));
-    await userEvent.click(screen.getByRole('button', { name: 'Em andamento', exact: true }));
+    await userEvent.click(screen.getByRole('button', { name: 'Em andamento' }));
     await waitFor(() => expect(screen.getByTestId('query').textContent).toContain('situacao=EmAndamento'));
     expect(screen.getByTestId('query').textContent).toContain('pagina=1');
     expect(screen.getByRole('searchbox')).toHaveValue('entrega');
@@ -63,7 +63,7 @@ describe('lista de tarefas e seus estados', () => {
     let resolveOld!: (value: PaginaTarefas) => void;
     vi.mocked(api.listar).mockImplementationOnce((_query, signal) => { oldSignal = signal; return new Promise(resolve => { resolveOld = resolve; }); }).mockResolvedValue(success);
     mount();
-    await userEvent.click(screen.getByRole('button', { name: 'Em andamento', exact: true }));
+    await userEvent.click(screen.getByRole('button', { name: 'Em andamento' }));
     await screen.findByRole('table');
     expect(oldSignal?.aborted).toBe(true);
     await act(async () => resolveOld(empty));

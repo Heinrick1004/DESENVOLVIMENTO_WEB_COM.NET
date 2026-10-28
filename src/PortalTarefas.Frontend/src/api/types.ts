@@ -1,34 +1,16 @@
-// Contrato provisório durante a construção da API; será vinculado ao schema real gerado.
-export type Situacao = 'Pendente' | 'EmAndamento' | 'Concluida';
-export interface Tarefa {
-  id: number;
-  titulo: string;
-  descricao: string | null;
-  situacao: Situacao;
-  prioridade: number;
-  prazo: string | null;
-  equipe: string;
-  publica: boolean;
-  proprietarioId: string;
-}
-export interface DetalheTarefa extends Tarefa { rowVersion: string; criadaEm: string }
-export interface TarefaInput {
-  titulo: string;
-  descricao: string | null;
-  situacao: Situacao;
-  prioridade: number;
-  prazo: string | null;
-  equipe: string;
-  publica: boolean;
-}
-export interface Sessao { id: string; email: string; equipe: string; roles: string[]; podeEditarOutrasEquipes: boolean }
-export interface PaginaTarefas { itens: Tarefa[]; pagina: number; tamanho: number; total: number; totalPaginas: number }
-export interface Consulta {
-  pagina: number;
-  tamanho: number;
-  ordenarPor: 'prazo' | 'titulo' | 'prioridade' | 'criadaEm' | 'id';
-  direcao: 'asc' | 'desc';
-  busca?: string;
-  situacao?: Situacao;
-  prioridade?: number;
-}
+import type { components, paths } from './schema';
+
+// Estes nomes são aliases de uso da interface. Campos, nulabilidade, corpos e
+// respostas permanecem definidos apenas no schema gerado do servidor.
+export type Tarefa = components['schemas']['TarefaResumoDto'];
+export type DetalheTarefa = components['schemas']['TarefaDetalheDto'];
+export type TarefaInput = components['schemas']['CriarTarefaDto'];
+export type TarefaAtualizacao = components['schemas']['AtualizarTarefaDto'];
+export type Sessao = components['schemas']['SessaoDto'];
+export type PaginaTarefas = paths['/api/tarefas']['get']['responses'][200]['content']['application/json'];
+export type Situacao = NonNullable<TarefaInput['situacao']>;
+
+type ConsultaApi = NonNullable<paths['/api/tarefas']['get']['parameters']['query']>;
+type CamposComPadrao = 'pagina' | 'tamanho' | 'ordenarPor' | 'direcao';
+// A URL da lista sempre materializa os padrões de paginação e ordenação.
+export type Consulta = Required<Pick<ConsultaApi, CamposComPadrao>> & Omit<ConsultaApi, CamposComPadrao>;

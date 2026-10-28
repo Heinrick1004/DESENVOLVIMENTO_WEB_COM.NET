@@ -2,7 +2,9 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,9 +28,14 @@ public sealed class PortalFactory : WebApplicationFactory<Program>, IAsyncLifeti
         builder.UseEnvironment("Development");
         builder.ConfigureAppConfiguration((_, config) => config.AddInMemoryCollection(new Dictionary<string, string?>
         {
-            ["ConnectionStrings:PortalTarefas"] = Environment.GetEnvironmentVariable("PORTAL_TEST_CONNECTION"),
+            ["ConnectionStrings:PortalTarefas"] = SqlTestDatabase.ConnectionString,
             ["Portal:Storage"] = "SqlServer", ["Telemetry:Console"] = "false", ["Seed:Enabled"] = "false"
         }));
+        builder.ConfigureServices(services =>
+        {
+            services.AddDataProtection().UseEphemeralDataProtectionProvider();
+            services.AddHttpsRedirection(o => o.HttpsPort = 7240);
+        });
     }
 
     public async Task InitializeAsync()
@@ -36,7 +43,8 @@ public sealed class PortalFactory : WebApplicationFactory<Program>, IAsyncLifeti
         if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PORTAL_TEST_CONNECTION"))) return;
         using var scope = Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<PortalTarefasDbContext>();
-        await db.Database.MigrateAsync();
+        // O runner aplica migrations explicitamente, após validar o destino exclusivo.
+        Assert.Empty(await db.Database.GetPendingMigrationsAsync());
         var roles = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         foreach (var role in new[] { "Usuario", "Administrador" })
             if (!await roles.RoleExistsAsync(role)) Assert.True((await roles.CreateAsync(new(role))).Succeeded);

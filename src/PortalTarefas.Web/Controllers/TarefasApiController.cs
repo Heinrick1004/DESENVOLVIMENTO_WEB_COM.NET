@@ -11,7 +11,7 @@ using PortalTarefas.Web.Services;
 namespace PortalTarefas.Web.Controllers;
 
 [ApiController, Route("api/tarefas"), EnableRateLimiting("api")]
-[ProducesResponseType<ProblemDetails>(400), ProducesResponseType<ProblemDetails>(429)]
+[ProducesResponseType<ApiProblemDetails>(400), ProducesResponseType<ProblemDetails>(429)]
 public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheStore cache) : ControllerBase
 {
     /// <summary>Lista tarefas visíveis, com filtros, ordenação permitida e páginas de até 50 itens.</summary>
