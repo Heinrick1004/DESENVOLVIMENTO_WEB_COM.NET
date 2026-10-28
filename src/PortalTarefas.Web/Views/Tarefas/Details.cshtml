@@ -1,0 +1,33 @@
+@model TarefaDetalheDto
+@{
+    ViewData["Title"] = Model.Titulo;
+    var usuario = User.ToContexto();
+}
+<a class="back-link" asp-action="Index">← Voltar às tarefas</a>
+<section class="page-heading">
+    <div><p class="eyebrow">Tarefa #@Model.Id</p><h1>@Model.Titulo</h1><p class="muted">Criada em @Model.CriadaEm.ToString("dd/MM/yyyy") · Equipe @Model.Equipe</p></div>
+    <div class="actions">
+        @if (TarefaApresentacao.PodeEditar(Model, usuario))
+        {
+            <a class="button button-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar tarefa</a>
+        }
+        @if (usuario.Administrador)
+        {
+            <a class="button button-danger-outline" asp-action="Delete" asp-route-id="@Model.Id">Excluir</a>
+        }
+    </div>
+</section>
+<article class="panel detail-panel">
+    <div class="task-card-top">
+        <span class="badge badge-status">@TarefaApresentacao.Situacao(Model.Situacao)</span>
+        <span class="priority priority-@Model.Prioridade">Prioridade @TarefaApresentacao.Prioridade(Model.Prioridade).ToLowerInvariant()</span>
+    </div>
+    <h2>Sobre esta tarefa</h2>
+    <p class="description-full">@(string.IsNullOrWhiteSpace(Model.Descricao) ? "Nenhuma descrição adicionada." : Model.Descricao)</p>
+    <dl class="detail-grid">
+        <div><dt>Prazo</dt><dd>@(Model.Prazo?.ToString("dd/MM/yyyy") ?? "Não definido")</dd></div>
+        <div><dt>Equipe</dt><dd>@Model.Equipe</dd></div>
+        <div><dt>Visibilidade</dt><dd>@(Model.Publica ? "Pública" : "Privada")</dd></div>
+        <div><dt>Situação</dt><dd>@TarefaApresentacao.Situacao(Model.Situacao)</dd></div>
+    </dl>
+</article>

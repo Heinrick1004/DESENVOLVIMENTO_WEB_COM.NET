@@ -1,0 +1,70 @@
+name: Validar e empacotar Portal de Tarefas
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.403'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+          cache: npm
+          cache-dependency-path: src/PortalTarefas.Frontend/package-lock.json
+      - name: Restaurar .NET
+        run: dotnet restore PortalTarefas.sln
+      - name: Compilar .NET
+        run: dotnet build PortalTarefas.sln -c Release --no-restore
+      - name: Testar .NET
+        run: dotnet test tests/PortalTarefas.Tests/PortalTarefas.Tests.csproj -c Release --no-build --logger trx --results-directory artifacts/tests
+      - name: Restaurar frontend
+        working-directory: src/PortalTarefas.Frontend
+        run: npm ci
+      - name: Testar frontend
+        working-directory: src/PortalTarefas.Frontend
+        run: npm test
+      - name: Compilar frontend
+        working-directory: src/PortalTarefas.Frontend
+        run: npm run build
+      - name: Inventariar dependências e versão
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+          dotnet list src/PortalTarefas.Web/PortalTarefas.Web.csproj package --include-transitive --format json > artifacts/dependencias-dotnet.json
+          if ($LASTEXITCODE -ne 0) { throw 'Inventário .NET falhou.' }
+          Push-Location src/PortalTarefas.Frontend
+          try {
+            npm ls --all --json > ../../artifacts/dependencias-npm.json
+            if ($LASTEXITCODE -ne 0) { throw 'Inventário npm falhou.' }
+          } finally { Pop-Location }
+          '${{ github.sha }}' | Set-Content artifacts/commit.txt
+      - name: Publicar aplicação em pasta
+        run: |
+          dotnet publish src/PortalTarefas.Web/PortalTarefas.Web.csproj -c Release --no-restore -o artifacts/publish /p:InformationalVersion=${{ github.sha }} /p:IncludeSourceRevisionInInformationalVersion=false
+          mkdir -p artifacts/publish/wwwroot/app
+          cp -a src/PortalTarefas.Frontend/dist/. artifacts/publish/wwwroot/app/
+      - name: Criar imagem identificada pelo commit
+        run: |
+          docker build --build-arg BUILD_VERSION=${{ github.sha }} -t portaltarefas:${{ github.sha }} .
+          docker image inspect portaltarefas:${{ github.sha }} > artifacts/imagem.json
+          docker save -o artifacts/portaltarefas-${{ github.sha }}.tar portaltarefas:${{ github.sha }}
+      - name: Preservar artefatos após aprovação dos testes
+        uses: actions/upload-artifact@v4
+        with:
+          name: portaltarefas-${{ github.sha }}
+          path: artifacts/
+          retention-days: 7
+          if-no-files-found: error

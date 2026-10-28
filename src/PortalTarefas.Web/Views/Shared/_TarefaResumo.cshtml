@@ -1,0 +1,17 @@
+@model TarefaResumoDto
+<article class="task-card">
+    <div class="task-card-top">
+        <span class="badge badge-status">@TarefaApresentacao.Situacao(Model.Situacao)</span>
+        <span class="priority priority-@Model.Prioridade">Prioridade @TarefaApresentacao.Prioridade(Model.Prioridade).ToLowerInvariant()</span>
+    </div>
+    <h2><a asp-controller="Tarefas" asp-action="Details" asp-route-id="@Model.Id">@Model.Titulo</a></h2>
+    <p class="task-description">@(string.IsNullOrWhiteSpace(Model.Descricao) ? "Nenhuma descrição adicionada." : Model.Descricao)</p>
+    <div class="task-meta">
+        <span>@Model.Equipe</span>
+        <span>@(Model.Publica ? "Pública" : "Privada")</span>
+    </div>
+    <div class="task-card-footer">
+        <span>Prazo: @(Model.Prazo?.ToString("dd/MM/yyyy") ?? "Não definido")</span>
+        <a asp-controller="Tarefas" asp-action="Details" asp-route-id="@Model.Id" aria-label="Ver detalhes de @Model.Titulo">Ver tarefa <span aria-hidden="true">→</span></a>
+    </div>
+</article>

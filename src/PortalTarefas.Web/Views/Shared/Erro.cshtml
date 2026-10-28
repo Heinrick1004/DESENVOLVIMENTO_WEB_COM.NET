@@ -1,0 +1,10 @@
+@model ErroViewModel
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+<section class="empty-state panel" aria-labelledby="erro-titulo">
+    <p class="eyebrow">Erro @Model.Codigo</p>
+    <h1 id="erro-titulo">@Model.Titulo</h1>
+    <p>@Model.Mensagem</p>
+    <a class="button button-primary" asp-controller="Tarefas" asp-action="Index">Voltar às tarefas</a>
+</section>

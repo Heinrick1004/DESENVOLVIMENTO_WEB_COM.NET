@@ -1,0 +1,18 @@
+@model PaginaDto<TarefaResumoDto>
+<aside class="overdue-panel" aria-labelledby="vencidas-titulo">
+    <div>
+        <p class="eyebrow">Atenção ao prazo</p>
+        <h2 id="vencidas-titulo">@(Model.Total == 0 ? "Tudo em dia por aqui." : $"{Model.Total} tarefa(s) vencida(s)")</h2>
+        <p>@(Model.Total == 0 ? "Nenhuma tarefa visível com prazo vencido e ainda em aberto." : "Uma revisão rápida ajuda sua equipe a retomar o ritmo.")</p>
+    </div>
+    @if (Model.Total > 0)
+    {
+        <ul class="overdue-list">
+            @foreach (var tarefa in Model.Itens)
+            {
+                <li><a asp-controller="Tarefas" asp-action="Details" asp-route-id="@tarefa.Id">@tarefa.Titulo</a><span>@tarefa.Prazo?.ToString("dd/MM/yyyy")</span></li>
+            }
+        </ul>
+        <a class="button button-secondary" asp-controller="Tarefas" asp-action="Index" asp-route-vencidas="true">Ver todas as vencidas</a>
+    }
+</aside>

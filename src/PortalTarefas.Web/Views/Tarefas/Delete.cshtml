@@ -1,0 +1,17 @@
+@model TarefaDetalheDto
+@{
+    ViewData["Title"] = "Excluir tarefa";
+}
+<a class="back-link" asp-action="Details" asp-route-id="@Model.Id">← Voltar à tarefa</a>
+<section class="panel delete-panel">
+    <p class="eyebrow">Confirmação de exclusão</p>
+    <h1>Excluir esta tarefa?</h1>
+    <p>A tarefa <strong>@Model.Titulo</strong> será excluída. Esta ação não pode ser desfeita pela interface.</p>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <input type="hidden" name="rowVersion" value="@Model.RowVersion" />
+        <div class="form-actions">
+            <a class="button button-secondary" asp-action="Details" asp-route-id="@Model.Id">Cancelar</a>
+            <button type="submit" class="button button-danger">Confirmar exclusão</button>
+        </div>
+    </form>
+</section>

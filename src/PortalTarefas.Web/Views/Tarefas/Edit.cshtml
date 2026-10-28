@@ -1,0 +1,16 @@
+@model TarefaFormModel
+@{
+    ViewData["Title"] = "Editar tarefa";
+}
+<a class="back-link" asp-action="Details" asp-route-id="@Model.Id">← Voltar à tarefa</a>
+<section class="page-heading">
+    <div><p class="eyebrow">Tarefa #@Model.Id</p><h1>Editar tarefa</h1><p class="muted">Atualize as informações e mantenha todos na mesma página.</p></div>
+</section>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="panel task-form">
+    <partial name="_Formulario" model="Model" />
+    <div class="form-actions">
+        <a class="button button-secondary" asp-action="Details" asp-route-id="@Model.Id">Cancelar</a>
+        <a class="button button-quiet" asp-action="Edit" asp-route-id="@Model.Id">Recarregar dados</a>
+        <button type="submit" class="button button-primary">Salvar alterações</button>
+    </div>
+</form>

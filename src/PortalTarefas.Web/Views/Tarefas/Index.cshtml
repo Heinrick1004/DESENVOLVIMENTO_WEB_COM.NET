@@ -1,0 +1,121 @@
+@model TarefasListaViewModel
+@{
+    ViewData["Title"] = "Tarefas";
+}
+<section class="page-heading">
+    <div>
+        <p class="eyebrow">Visão geral</p>
+        <h1>Um lugar para cada tarefa.</h1>
+        <p class="muted">Acompanhe os próximos passos e mantenha sua equipe em dia.</p>
+    </div>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a class="button button-primary" asp-action="Create"><span aria-hidden="true">＋</span> Nova tarefa</a>
+    }
+    else
+    {
+        <a class="button button-primary" asp-controller="Conta" asp-action="Login" asp-route-returnUrl="/Tarefas/Create">Entrar para criar</a>
+    }
+</section>
+
+@await Component.InvokeAsync("TarefasVencidas")
+
+<section class="panel filters" aria-label="Filtros das tarefas">
+    <form asp-controller="Tarefas" asp-action="Index" method="get">
+        <div asp-validation-summary="All" class="validation-summary" role="alert"></div>
+        <div class="filter-grid">
+            <div class="field field-search">
+                <label for="busca">Buscar tarefa</label>
+                <input type="search" id="busca" name="busca" value="@Model.Consulta.Busca" placeholder="Título ou descrição" maxlength="120" />
+            </div>
+            <div class="field">
+                <label for="situacao">Situação</label>
+                <select id="situacao" name="situacao">
+                    <option value="">Todas</option>
+                    <option value="Pendente" selected="@(Model.Consulta.Situacao == "Pendente")">Pendente</option>
+                    <option value="EmAndamento" selected="@(Model.Consulta.Situacao == "EmAndamento")">Em andamento</option>
+                    <option value="Concluida" selected="@(Model.Consulta.Situacao == "Concluida")">Concluída</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="prioridade">Prioridade</label>
+                <select id="prioridade" name="prioridade">
+                    <option value="">Todas</option>
+                    <option value="1" selected="@(Model.Consulta.Prioridade == 1)">Baixa</option>
+                    <option value="2" selected="@(Model.Consulta.Prioridade == 2)">Média</option>
+                    <option value="3" selected="@(Model.Consulta.Prioridade == 3)">Alta</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="ordenarPor">Ordenar por</label>
+                <select id="ordenarPor" name="ordenarPor">
+                    <option value="prazo" selected="@(Model.Consulta.OrdenarPor == "prazo")">Prazo</option>
+                    <option value="titulo" selected="@(Model.Consulta.OrdenarPor == "titulo")">Título</option>
+                    <option value="prioridade" selected="@(Model.Consulta.OrdenarPor == "prioridade")">Prioridade</option>
+                    <option value="situacao" selected="@(Model.Consulta.OrdenarPor == "situacao")">Situação</option>
+                    <option value="criadaem" selected="@(Model.Consulta.OrdenarPor == "criadaem")">Data de criação</option>
+                    <option value="id" selected="@(Model.Consulta.OrdenarPor == "id")">Identificador</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="direcao">Direção</label>
+                <select id="direcao" name="direcao">
+                    <option value="asc" selected="@(Model.Consulta.Direcao == "asc")">Crescente</option>
+                    <option value="desc" selected="@(Model.Consulta.Direcao == "desc")">Decrescente</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="tamanho">Por página</label>
+                <select id="tamanho" name="tamanho">
+                    <option value="10" selected="@(Model.Consulta.Tamanho == 10)">10 tarefas</option>
+                    <option value="20" selected="@(Model.Consulta.Tamanho == 20)">20 tarefas</option>
+                    <option value="50" selected="@(Model.Consulta.Tamanho == 50)">50 tarefas</option>
+                </select>
+            </div>
+        </div>
+        <div class="filter-actions">
+            <label class="checkbox-label"><input type="checkbox" name="vencidas" value="true" checked="@Model.Consulta.Vencidas" /> Somente vencidas</label>
+            <div class="actions">
+                <a asp-action="Index" class="button button-quiet">Limpar</a>
+                <button type="submit" class="button button-primary">Aplicar filtros</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<div class="results-heading">
+    <h2>Tarefas disponíveis <span class="count">@Model.Resultado.Total</span></h2>
+    <span class="muted">@(User.Identity?.IsAuthenticated == true ? "Inclui tarefas que sua conta pode consultar." : "Você está consultando as tarefas públicas.")</span>
+</div>
+@if (Model.Resultado.Itens.Count == 0)
+{
+    <section class="panel empty-state">
+        <span class="empty-icon" aria-hidden="true">✓</span>
+        <h2>Nenhuma tarefa por aqui.</h2>
+        <p class="muted">Experimente outros filtros ou crie uma tarefa para começar.</p>
+        <a class="button button-secondary" asp-action="Index">Limpar filtros</a>
+    </section>
+}
+else
+{
+    <section class="task-grid" aria-label="Lista de tarefas">
+        @foreach (var tarefa in Model.Resultado.Itens)
+        {
+            <partial name="_TarefaResumo" model="tarefa" />
+        }
+    </section>
+}
+@if (Model.Resultado.TotalPaginas > 1)
+{
+    <nav class="pagination" aria-label="Paginação das tarefas">
+        @if (Model.Resultado.Pagina > 1)
+        {
+            <a class="button button-secondary" asp-action="Index" asp-route-pagina="@(Model.Resultado.Pagina - 1)" asp-route-tamanho="@Model.Consulta.Tamanho" asp-route-busca="@Model.Consulta.Busca" asp-route-situacao="@Model.Consulta.Situacao" asp-route-prioridade="@Model.Consulta.Prioridade" asp-route-ordenarPor="@Model.Consulta.OrdenarPor" asp-route-direcao="@Model.Consulta.Direcao" asp-route-vencidas="@Model.Consulta.Vencidas">← Anterior</a>
+        }
+        <span aria-live="polite">Página @Model.Resultado.Pagina de @Model.Resultado.TotalPaginas</span>
+        @if (Model.Resultado.Pagina < Model.Resultado.TotalPaginas)
+        {
+            <a class="button button-secondary" asp-action="Index" asp-route-pagina="@(Model.Resultado.Pagina + 1)" asp-route-tamanho="@Model.Consulta.Tamanho" asp-route-busca="@Model.Consulta.Busca" asp-route-situacao="@Model.Consulta.Situacao" asp-route-prioridade="@Model.Consulta.Prioridade" asp-route-ordenarPor="@Model.Consulta.OrdenarPor" asp-route-direcao="@Model.Consulta.Direcao" asp-route-vencidas="@Model.Consulta.Vencidas">Próxima →</a>
+        }
+    </nav>
+}

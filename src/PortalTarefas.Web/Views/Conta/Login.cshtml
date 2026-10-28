@@ -1,0 +1,26 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Entrar";
+}
+<section class="auth-panel panel">
+    <p class="eyebrow">Bom ter você de volta</p>
+    <h1>Entre no seu portal.</h1>
+    <p class="muted">Acesse as tarefas da sua equipe e acompanhe o que vem a seguir.</p>
+    <form asp-action="Login" method="post">
+        <input asp-for="ReturnUrl" type="hidden" />
+        <div asp-validation-summary="All" class="validation-summary" role="alert"></div>
+        <div class="field">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" autocomplete="username" inputmode="email" />
+            <span asp-validation-for="Email" class="field-validation"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Senha"></label>
+            <input asp-for="Senha" autocomplete="current-password" />
+            <span asp-validation-for="Senha" class="field-validation"></span>
+        </div>
+        <label class="checkbox-label"><input asp-for="LembrarMe" /> @Html.DisplayNameFor(model => model.LembrarMe)</label>
+        <button class="button button-primary button-full" type="submit">Entrar</button>
+    </form>
+    <a class="auth-back" asp-controller="Tarefas" asp-action="Index">Continuar consultando tarefas públicas →</a>
+</section>

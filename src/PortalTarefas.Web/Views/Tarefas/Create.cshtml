@@ -1,0 +1,15 @@
+@model TarefaFormModel
+@{
+    ViewData["Title"] = "Nova tarefa";
+}
+<a class="back-link" asp-action="Index">← Voltar às tarefas</a>
+<section class="page-heading">
+    <div><p class="eyebrow">Comece pelo próximo passo</p><h1>Nova tarefa</h1><p class="muted">Transforme uma ideia em algo que sua equipe pode acompanhar.</p></div>
+</section>
+<form asp-action="Create" method="post" class="panel task-form">
+    <partial name="_Formulario" model="Model" />
+    <div class="form-actions">
+        <a class="button button-secondary" asp-action="Index">Cancelar</a>
+        <button type="submit" class="button button-primary">Criar tarefa</button>
+    </div>
+</form>

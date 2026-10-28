@@ -1,0 +1,51 @@
+@model TarefaFormModel
+<div asp-validation-summary="All" class="validation-summary" role="alert"></div>
+<input asp-for="Id" type="hidden" />
+<input asp-for="RowVersion" type="hidden" />
+<div class="field">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" autocomplete="off" aria-describedby="titulo-ajuda" />
+    <small id="titulo-ajuda">Escolha um título claro, entre 3 e 120 caracteres.</small>
+    <span asp-validation-for="Titulo" class="field-validation"></span>
+</div>
+<div class="field">
+    <label asp-for="Descricao"></label>
+    <textarea asp-for="Descricao" rows="5" aria-describedby="descricao-ajuda"></textarea>
+    <small id="descricao-ajuda">Inclua o contexto e os próximos passos. Limite de 2.000 caracteres.</small>
+    <span asp-validation-for="Descricao" class="field-validation"></span>
+</div>
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="Prioridade"></label>
+        <select asp-for="Prioridade">
+            <option value="1">Baixa</option>
+            <option value="2">Média</option>
+            <option value="3">Alta</option>
+        </select>
+        <span asp-validation-for="Prioridade" class="field-validation"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Prazo"></label>
+        <input asp-for="Prazo" type="date" asp-format="{0:yyyy-MM-dd}" />
+        <span asp-validation-for="Prazo" class="field-validation"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Situacao"></label>
+        <select asp-for="Situacao">
+            <option value="Pendente">Pendente</option>
+            <option value="EmAndamento">Em andamento</option>
+            <option value="Concluida">Concluída</option>
+        </select>
+        <span asp-validation-for="Situacao" class="field-validation"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Equipe"></label>
+        <input asp-for="Equipe" autocomplete="off" />
+        <span asp-validation-for="Equipe" class="field-validation"></span>
+    </div>
+</div>
+<p class="form-hint">Tarefas de prioridade alta precisam de prazo e descrição com pelo menos 10 caracteres.</p>
+<div class="field checkbox-field">
+    <label class="checkbox-label"><input asp-for="Publica" /> @Html.DisplayNameFor(model => model.Publica)</label>
+    <small>Se marcada, qualquer visitante poderá consultar esta tarefa.</small>
+</div>

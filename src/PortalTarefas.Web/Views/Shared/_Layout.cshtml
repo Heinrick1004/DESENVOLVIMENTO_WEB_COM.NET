@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>@ViewData["Title"] · Portal de Tarefas</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" asp-controller="Tarefas" asp-action="Index" aria-label="Portal de Tarefas — início">
+                <span class="brand-mark" aria-hidden="true">✓</span>
+                <span>Portal de Tarefas<small>Seu trabalho, bem organizado.</small></span>
+            </a>
+            <nav aria-label="Navegação principal" class="main-nav">
+                <a asp-controller="Tarefas" asp-action="Index">Tarefas</a>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Tarefas" asp-action="Create">Nova tarefa</a>
+                    <form asp-controller="Conta" asp-action="Logout" method="post">
+                        <button class="button button-quiet" type="submit">Sair</button>
+                    </form>
+                }
+                else
+                {
+                    <a class="button button-primary" asp-controller="Conta" asp-action="Login">Entrar</a>
+                }
+            </nav>
+        </div>
+    </header>
+    <main id="conteudo" class="main-container" tabindex="-1">
+        @if (TempData["Sucesso"] is string mensagem)
+        {
+            <div class="notice notice-success" role="status">@mensagem</div>
+        }
+        @RenderBody()
+    </main>
+    <footer class="site-footer">
+        <span>Portal de Tarefas</span>
+        <span>UNIP · Desenvolvimento Web com .NET</span>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
