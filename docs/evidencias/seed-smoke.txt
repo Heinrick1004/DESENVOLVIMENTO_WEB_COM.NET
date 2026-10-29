@@ -1,0 +1,1 @@
+Seed de usuário sintético executado no banco exclusivo; senha aleatória armazenada somente em .local ignorado.

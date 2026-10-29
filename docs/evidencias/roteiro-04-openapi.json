@@ -1,0 +1,12 @@
+{
+  "instanteUtc": "2026-10-28T18:57:24.909Z",
+  "url": "https://localhost:7240/swagger/index.html",
+  "ambiente": "Development",
+  "status": 200,
+  "operacoes": 15,
+  "navegador": "156.0.8078.49",
+  "playwright": "1.64.1",
+  "metodo": "Captura real da Swagger UI carregada do aplicativo publicado, sem interceptação HTTP e sem alteração de DOM.",
+  "limite": "Certificado HTTPS local ignorado somente neste contexto de captura; nenhuma operação mutante foi executada.",
+  "arquivo": "roteiro-04-openapi.png"
+}

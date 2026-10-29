@@ -1,0 +1,128 @@
+{
+  "instanteUtc": "2026-10-28T18:54:29.531Z",
+  "url": "https://localhost:7240/app/",
+  "ambienteInformado": "Development",
+  "navegador": "156.0.8078.49",
+  "playwright": "1.64.1",
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "natureza": "Capturas reais do React publicado com HTTP interceptado no navegador para simulação didática.",
+  "limites": "Não comprova SQL Server, autenticação ou autorização reais. O certificado local é ignorado apenas neste contexto de captura.",
+  "capturas": [
+    {
+      "estado": "idle",
+      "resultado": "capturado",
+      "arquivo": "01-idle.png",
+      "estadoObservado": "idle",
+      "metodo": "Quadro real do DOM pausado via CDP/MutationObserver antes do useEffect; nenhum DOM ou estado React foi alterado.",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/tarefas"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "estado": "loading",
+      "resultado": "capturado",
+      "arquivo": "02-loading.png",
+      "estadoObservado": "loading",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/tarefas"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "estado": "empty",
+      "resultado": "capturado",
+      "arquivo": "03-empty.png",
+      "estadoObservado": "empty",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/tarefas"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "estado": "success",
+      "resultado": "capturado",
+      "arquivo": "04-success.png",
+      "estadoObservado": "success",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/tarefas"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "estado": "error-network",
+      "resultado": "capturado",
+      "arquivo": "05-error-network.png",
+      "estadoObservado": "error",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/tarefas"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "estado": "problem-details",
+      "resultado": "capturado",
+      "arquivo": "06-problem-details.png",
+      "interceptacoes": [
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/me"
+        },
+        {
+          "metodo": "GET",
+          "caminho": "/api/auth/csrf"
+        },
+        {
+          "metodo": "POST",
+          "caminho": "/api/tarefas"
+        }
+      ],
+      "respostaSimulada": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "Confira os campos informados.",
+        "status": 400,
+        "detail": "Simulação didática de validação devolvida pela API.",
+        "errors": {
+          "Prazo": [
+            "Informe o prazo para uma tarefa de prioridade alta."
+          ]
+        },
+        "correlationId": "simulacao-ui-problem-details"
+      },
+      "sessao": "Simulada somente no navegador; nenhuma autenticação real foi utilizada."
+    }
+  ]
+}

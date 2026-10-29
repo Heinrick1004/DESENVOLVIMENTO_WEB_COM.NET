@@ -1,0 +1,52 @@
+{
+  "linksInvalidos": [],
+  "requisitos": 248,
+  "idsUnicos": 248,
+  "estadosPorRoteiro": {
+    "G": {
+      "Concluído e verificado": 2,
+      "Limitação histórica": 2
+    },
+    "R1": {
+      "Concluído e verificado": 30
+    },
+    "R2": {
+      "Concluído e verificado": 27,
+      "Não aplicável": 2
+    },
+    "R3": {
+      "Concluído e verificado": 30,
+      "Não aplicável": 1
+    },
+    "R4": {
+      "Concluído e verificado": 29,
+      "Não aplicável": 2
+    },
+    "R5": {
+      "Concluído e verificado": 29,
+      "Não aplicável": 2
+    },
+    "R6": {
+      "Concluído e verificado": 29,
+      "Não aplicável": 2
+    },
+    "R7": {
+      "Concluído e verificado": 28,
+      "Não aplicável": 2
+    },
+    "R8": {
+      "Concluído e verificado": 16,
+      "Bloqueado": 6,
+      "Implementado sem execução": 3,
+      "Pendente": 4,
+      "Não aplicável": 2
+    }
+  },
+  "anexoFonteCompletoAtualizado": {
+    "src/PortalTarefas.Web/Program.cs": true,
+    "src/PortalTarefas.Web/Middleware/RequisicaoMiddleware.cs": true,
+    "src/PortalTarefas.Web/Controllers/DiagnosticoController.cs": true
+  },
+  "pdfs": 8,
+  "cabecalhosPdfValidos": true
+}

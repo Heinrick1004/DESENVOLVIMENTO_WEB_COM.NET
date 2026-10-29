@@ -1,0 +1,70 @@
+{
+  "instanteUtc": "2026-10-29T17:32:46.699Z",
+  "origem": "https://localhost:7240",
+  "ambienteInformado": "Development",
+  "navegador": "156.0.8078.49",
+  "natureza": "Capturas MVC reais, com SQL Server e conta sintética controlada, sem interceptação HTTP e sem alteração de DOM.",
+  "limites": "Banco exclusivo de auditoria. Certificado HTTPS local ignorado somente no contexto de captura. Credenciais externas não são copiadas para a evidência.",
+  "requisicoes": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=50",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/Tarefas/Create",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=50",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/logout",
+      "status": 204
+    }
+  ],
+  "capturas": [
+    {
+      "arquivo": "01-lista.png",
+      "caminho": "/Tarefas/Index",
+      "status": 200
+    },
+    {
+      "arquivo": "02-detalhes.png",
+      "caminho": "/Tarefas/Details/3",
+      "status": 200
+    },
+    {
+      "arquivo": "03-formulario-invalido.png",
+      "caminho": "/Tarefas/Create",
+      "status": 200,
+      "tituloPreservado": true,
+      "descricaoPreservada": true,
+      "mensagens": [
+        "O título deve ter entre 3 e 120 caracteres."
+      ],
+      "totalAntes": 15,
+      "totalDepois": 15
+    }
+  ],
+  "banco": "PortalTarefas_Tests_20261028_dfc3ccbe"
+}

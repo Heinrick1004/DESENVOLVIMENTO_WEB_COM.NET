@@ -1,0 +1,13 @@
+{
+  "ambiente": "Production",
+  "verificacoes": [
+    {
+      "rota": "/openapi/v1.json",
+      "status": 404
+    },
+    {
+      "rota": "/swagger/index.html",
+      "status": 404
+    }
+  ]
+}

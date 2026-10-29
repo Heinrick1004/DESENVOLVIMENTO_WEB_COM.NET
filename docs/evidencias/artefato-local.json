@@ -1,0 +1,23 @@
+{
+  "commitFonte": "47c5f2fe37768d16c1a009b9b15688941e04bb02",
+  "versaoInformativa": "47c5f2fe37768d16c1a009b9b15688941e04bb02",
+  "publicacao": ".local/publicacao",
+  "instanteRegistroUtc": "2026-10-29T17:34:10.705140+00:00",
+  "arquivos": [
+    {
+      "caminho": "PortalTarefas.Web.dll",
+      "bytes": 399360,
+      "sha256": "fd436a96b799a814cd9c4bbc0030e93ca009e6795ded19d2f1061ec660b730d1"
+    },
+    {
+      "caminho": "wwwroot/app/assets/index-7R9cv3fX.css",
+      "bytes": 22153,
+      "sha256": "a92a423b6647271f0ed2fc22220ea783b9bd4a74797eeab8c11bfd521239df8a"
+    },
+    {
+      "caminho": "wwwroot/app/assets/index-CXy7GOyT.js",
+      "bytes": 298764,
+      "sha256": "2716f4b5a13ced32481a5e05b9ac23780e41d593ef0ea4106c096d82290c4bf5"
+    }
+  ]
+}

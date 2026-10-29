@@ -1,5 +1,11 @@
 # Atividade 3 — persistência, consultas e concorrência
 
+**Disciplina:** Desenvolvimento Web com .NET — UNIP. **Fonte:** Roteiros.pdf, páginas 9–11. **Consolidação:** 29/10/2026.
+
+## Objetivo e ferramentas
+
+Persistir tarefas, recriar esquema por migrations, executar seed idempotente, manter auditoria atômica e detectar concorrência. São utilizados EF Core 10, provider SQL Server, ADO.NET e testes xUnit em banco exclusivo. `UserSecretsId` permite manter a conexão de desenvolvimento fora do repositório; o README apresenta o comando de configuração.
+
 O domínio cumulativo utiliza `Tarefa`, `Usuario : IdentityUser` e `Auditoria`. `PortalTarefasDbContext` deriva de `IdentityDbContext<Usuario>` e recebe somente as opções no construtor, permitindo pooling sem guardar dados do usuário no contexto. O SQL Server mantém os usuários, tarefas e eventos de auditoria em tabelas próprias.
 
 ## Decisões implementadas
@@ -23,6 +29,24 @@ O domínio cumulativo utiliza `Tarefa`, `Usuario : IdentityUser` e `Auditoria`. 
 
 ## Verificação e limites
 
-Foram preparados testes em `DomainTests.cs` e `InMemoryTests.cs` para validação cruzada, formato da versão, publicação/equipes, paginação, filtros, lista permitida de ordenação, autorização, colisão entre duas edições, exclusão com versão e preservação da auditoria. Este relatório, na sua redação inicial, não registra execução ou aprovação desses testes; os resultados devem ser acrescentados após a execução real pelo responsável pela integração.
+Foram preparados testes em `DomainTests.cs` e `InMemoryTests.cs` para validação cruzada, formato da versão, publicação/equipes, paginação, filtros, lista permitida de ordenação, autorização, colisão entre duas edições, exclusão com versão e preservação da auditoria. A correção executou a suíte completa com SQL Server no banco exclusivo `PortalTarefas_Tests_20261028_dfc3ccbe`, criado para a auditoria e reutilizado nos testes: 55 testes aprovados, zero falhas e zero ignorados. O resultado real está em `docs/evidencias/integracao/20261029T172845759Z-55df9f49/integration.trx` e no `summary.json` do mesmo diretório. Esse número corresponde à suíte cumulativa, não somente a este roteiro.
 
 A aprovação dos testes do modo Memory não comprova conectividade SQL Server, aplicação de migrações, tipo `rowversion` no servidor, rollback relacional ou equivalência real entre os painéis EF/ADO.NET. Essas verificações exigem uma instância SQL Server configurada e disponível. Não se deve registrar esses itens como verificados com base apenas nos testes unitários.
+
+## Comparação EF Core e ADO.NET
+
+| Aspecto | EF Core no painel | ADO.NET no painel |
+|---|---|---|
+| Código | Projeção LINQ para `PainelDto` e filtros compostos | SQL explícito, parâmetros, conexão e leitura do resultado |
+| Rastreamento | `AsNoTracking`, adequado à consulta | Não há change tracker |
+| Clareza | Próximo ao modelo C# e componível | SQL exato visível, com maior responsabilidade manual |
+| Controle de SQL | Traduzido pelo provider | Comando e tipos dos parâmetros explicitados |
+| Cenário escolhido | CRUD e consultas usuais da aplicação | Comparação didática e leituras que exijam controle específico |
+
+A suíte SQL compara os mesmos escopos de visibilidade nas duas consultas. Não foi inferida superioridade de desempenho a partir da quantidade de código ou de uma medição local.
+
+## Aprimoramento e conclusão
+
+Em um banco separado de seed (`PortalTarefas_Tests_20261028_dfc3ccbe_seed`), duas inicializações reais conservaram 3 tarefas, 3 auditorias, 2 roles e as mesmas 3 migrations. Os comandos/estados coletados estão em `sql-seed-primeira-execucao.txt`, `sql-seed-segunda-execucao.txt` e `sql-migrations-estado.txt`, em `docs/evidencias`. Essa prova complementa os cenários de seed e concorrência da suíte SQL.
+
+Uma migration adicional cria o índice do painel público. Integrações usam banco reservado, conexão externa e guardas que recusam bancos fora do prefixo de teste. Migrations, versão real, conflitos e equivalência EF/ADO possuem execução própria; os comandos, resultados e limites estão identificados na matriz.

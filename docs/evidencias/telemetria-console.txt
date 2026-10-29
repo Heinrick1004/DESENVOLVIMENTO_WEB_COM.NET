@@ -1,0 +1,89 @@
+Recortes reais do exportador Console OpenTelemetry, host Development publicado via HTTPS, banco exclusivo.
+Captura em 28/10/2026; dimensoes limitadas a origem, metodo e status. Nenhum segredo foi incluido.
+
+span customizado
+    telemetry.sdk.version: 1.20.1
+    Schema URL: https://opentelemetry.io/schemas/1.44.0
+
+Activity.TraceId:            3fb521b108263fe38f1f3a5d93e25296
+Activity.SpanId:             45d9262456cff140
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       d8ae3f74838467c7
+Activity.DisplayName:        tarefa.criar
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-28T18:58:20.5752810Z
+Activity.Duration:           00:00:00.0637868
+Instrumentation scope (ActivitySource):
+    Name: PortalTarefas
+Resource associated with Activity:
+    service.name: PortalTarefas
+    service.instance.id: 97c29e8f-96fa-45c2-b883-3d621bf17efd
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.20.1
+    Schema URL: https://opentelemetry.io/schemas/1.44.0
+
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Filters.LogAcaoFilter","Message":"A\u00E7\u00E3o PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web) conclu\u00EDda em 64.55 ms; resultado CreatedAtRouteResult","State":{"Acao":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)","DuracaoMs":64.5536,"Resultado":"CreatedAtRouteResult","{OriginalFormat}":"A\u00E7\u00E3o {Acao} conclu\u00EDda em {DuracaoMs:F2} ms; resultado {Resultado}"},"Scopes":[{"Message":"SpanId:d8ae3f74838467c7, TraceId:3fb521b108263fe38f1f3a5d93e25296, ParentId:0000000000000000","SpanId":"d8ae3f74838467c7","TraceId":"3fb521b108263fe38f1f3a5d93e25296","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/tarefas RequestId:0HNPL4J33TBDU:00000002","RequestId":"0HNPL4J33TBDU:00000002","RequestPath":"/api/tarefas"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"646a782d8409435391b120e55e407514"},{"Message":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)","ActionId":"28a79bad-c6b5-4fe5-9556-27bc909c004f","ActionName":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline sa\u00EDda POST /api/tarefas 201 80.4967ms","State":{"Metodo":"POST","Caminho":"/api/tarefas","Status":201,"DuracaoMs":80.4967,"{OriginalFormat}":"Pipeline sa\u00EDda {Metodo} {Caminho} {Status} {DuracaoMs}ms"},"Scopes":[{"Message":"SpanId:d8ae3f74838467c7, TraceId:3fb521b108263fe38f1f3a5d93e25296, ParentId:0000000000000000","SpanId":"d8ae3f74838467c7","TraceId":"3fb521b108263fe38f1f3a5d93e25296","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/tarefas RequestId:0HNPL4J33TBDU:00000002","RequestId":"0HNPL4J33TBDU:00000002","RequestPath":"/api/tarefas"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"646a782d8409435391b120e55e407514"}]}
+Activity.TraceId:            3fb521b108263fe38f1f3a5d93e25296
+Activity.SpanId:             d8ae3f74838467c7
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST api/tarefas
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-28T18:58:20.5600128Z
+Activity.Duration:           00:00:00.0806901
+Activity.Tags:
+    http.request.method: POST
+    server.address: localhost
+    server.port: 7240
+    user_agent.original: node
+
+contador de negocio
+Metric Name: portal.tarefas.criadas, Description: Tarefas criadas com sucesso, Metric Type: LongSum
+Instrumentation scope (Meter):
+	Name: PortalTarefas
+(2026-10-28T18:53:59.6335288Z, 2026-10-28T18:59:21.0012828Z] origem: api 
+Value: 1
+
+Metric Name: portal.http.duracao, Unit: ms, Metric Type: Histogram
+Instrumentation scope (Meter):
+	Name: PortalTarefas
+(2026-10-28T18:53:59.6423475Z, 2026-10-28T18:59:21.0012845Z] metodo: GET status: 307 
+Value: Sum: 2.2691 Count: 2 Min: 0.1829 Max: 2.0862 
+
+histograma tecnico
+Metric Name: portal.http.duracao, Unit: ms, Metric Type: Histogram
+Instrumentation scope (Meter):
+	Name: PortalTarefas
+(2026-10-28T18:53:59.6423475Z, 2026-10-28T18:59:21.0012845Z] metodo: GET status: 307 
+Value: Sum: 2.2691 Count: 2 Min: 0.1829 Max: 2.0862 
+(-Infinity,0]:0
+(0,5]:2
+(5,10]:0
+(10,25]:0
+(25,50]:0
+(50,75]:0
+(75,100]:0
+(100,250]:0
+(250,500]:0
+(500,750]:0
+(750,1000]:0
+(1000,2500]:0
+(2500,5000]:0
+(5000,7500]:0
+(7500,10000]:0
+(10000,+Infinity]:0
+
+(2026-10-28T18:53:59.6423475Z, 2026-10-28T18:59:21.0012845Z] metodo: GET status: 200 
+Value: Sum: 2562.6007000000004 Count: 50 Min: 0.2591 Max: 1295.0936 
+(-Infinity,0]:0
+
+Logs correlacionados reais (ultimos eventos)
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Filters.LogAcaoFilter","Message":"A\u00E7\u00E3o PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web) conclu\u00EDda em 64.55 ms; resultado CreatedAtRouteResult","State":{"Acao":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)","DuracaoMs":64.5536,"Resultado":"CreatedAtRouteResult","{OriginalFormat}":"A\u00E7\u00E3o {Acao} conclu\u00EDda em {DuracaoMs:F2} ms; resultado {Resultado}"},"Scopes":[{"Message":"SpanId:d8ae3f74838467c7, TraceId:3fb521b108263fe38f1f3a5d93e25296, ParentId:0000000000000000","SpanId":"d8ae3f74838467c7","TraceId":"3fb521b108263fe38f1f3a5d93e25296","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/tarefas RequestId:0HNPL4J33TBDU:00000002","RequestId":"0HNPL4J33TBDU:00000002","RequestPath":"/api/tarefas"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"646a782d8409435391b120e55e407514"},{"Message":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)","ActionId":"28a79bad-c6b5-4fe5-9556-27bc909c004f","ActionName":"PortalTarefas.Web.Controllers.TarefasApiController.Criar (PortalTarefas.Web)"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline sa\u00EDda POST /api/tarefas 201 80.4967ms","State":{"Metodo":"POST","Caminho":"/api/tarefas","Status":201,"DuracaoMs":80.4967,"{OriginalFormat}":"Pipeline sa\u00EDda {Metodo} {Caminho} {Status} {DuracaoMs}ms"},"Scopes":[{"Message":"SpanId:d8ae3f74838467c7, TraceId:3fb521b108263fe38f1f3a5d93e25296, ParentId:0000000000000000","SpanId":"d8ae3f74838467c7","TraceId":"3fb521b108263fe38f1f3a5d93e25296","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/tarefas RequestId:0HNPL4J33TBDU:00000002","RequestId":"0HNPL4J33TBDU:00000002","RequestPath":"/api/tarefas"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"646a782d8409435391b120e55e407514"}]}
+{"EventId":0,"LogLevel":"Debug","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline entrada GET /api/tarefas/24","State":{"Metodo":"GET","Caminho":"/api/tarefas/24","{OriginalFormat}":"Pipeline entrada {Metodo} {Caminho}"},"Scopes":[{"Message":"SpanId:7a55fab5dc452c0d, TraceId:a6eaca680c04fdd861f865580a279e7c, ParentId:0000000000000000","SpanId":"7a55fab5dc452c0d","TraceId":"a6eaca680c04fdd861f865580a279e7c","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDT","ConnectionId":"0HNPL4J33TBDT"},{"Message":"RequestPath:/api/tarefas/24 RequestId:0HNPL4J33TBDT:00000003","RequestId":"0HNPL4J33TBDT:00000003","RequestPath":"/api/tarefas/24"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"8fbd43b128024b76baf8f14dbe782a97"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Filters.LogAcaoFilter","Message":"A\u00E7\u00E3o PortalTarefas.Web.Controllers.TarefasApiController.Obter (PortalTarefas.Web) conclu\u00EDda em 6.82 ms; resultado OkObjectResult","State":{"Acao":"PortalTarefas.Web.Controllers.TarefasApiController.Obter (PortalTarefas.Web)","DuracaoMs":6.8237,"Resultado":"OkObjectResult","{OriginalFormat}":"A\u00E7\u00E3o {Acao} conclu\u00EDda em {DuracaoMs:F2} ms; resultado {Resultado}"},"Scopes":[{"Message":"SpanId:7a55fab5dc452c0d, TraceId:a6eaca680c04fdd861f865580a279e7c, ParentId:0000000000000000","SpanId":"7a55fab5dc452c0d","TraceId":"a6eaca680c04fdd861f865580a279e7c","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDT","ConnectionId":"0HNPL4J33TBDT"},{"Message":"RequestPath:/api/tarefas/24 RequestId:0HNPL4J33TBDT:00000003","RequestId":"0HNPL4J33TBDT:00000003","RequestPath":"/api/tarefas/24"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"8fbd43b128024b76baf8f14dbe782a97"},{"Message":"PortalTarefas.Web.Controllers.TarefasApiController.Obter (PortalTarefas.Web)","ActionId":"2c36df8d-7778-4278-8fdf-5f48b65cf567","ActionName":"PortalTarefas.Web.Controllers.TarefasApiController.Obter (PortalTarefas.Web)"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline sa\u00EDda GET /api/tarefas/24 200 16.4705ms","State":{"Metodo":"GET","Caminho":"/api/tarefas/24","Status":200,"DuracaoMs":16.4705,"{OriginalFormat}":"Pipeline sa\u00EDda {Metodo} {Caminho} {Status} {DuracaoMs}ms"},"Scopes":[{"Message":"SpanId:7a55fab5dc452c0d, TraceId:a6eaca680c04fdd861f865580a279e7c, ParentId:0000000000000000","SpanId":"7a55fab5dc452c0d","TraceId":"a6eaca680c04fdd861f865580a279e7c","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDT","ConnectionId":"0HNPL4J33TBDT"},{"Message":"RequestPath:/api/tarefas/24 RequestId:0HNPL4J33TBDT:00000003","RequestId":"0HNPL4J33TBDT:00000003","RequestPath":"/api/tarefas/24"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"8fbd43b128024b76baf8f14dbe782a97"}]}
+{"EventId":0,"LogLevel":"Debug","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline entrada POST /api/auth/logout","State":{"Metodo":"POST","Caminho":"/api/auth/logout","{OriginalFormat}":"Pipeline entrada {Metodo} {Caminho}"},"Scopes":[{"Message":"SpanId:5bc4b16466dc94fc, TraceId:4e34fd158ceff086369d86f4b594f5a5, ParentId:0000000000000000","SpanId":"5bc4b16466dc94fc","TraceId":"4e34fd158ceff086369d86f4b594f5a5","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/auth/logout RequestId:0HNPL4J33TBDU:00000003","RequestId":"0HNPL4J33TBDU:00000003","RequestPath":"/api/auth/logout"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"a5cfa2a08aa74e9bbe46bf87de5f64e6"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Filters.LogAcaoFilter","Message":"A\u00E7\u00E3o PortalTarefas.Web.Controllers.AuthController.Logout (PortalTarefas.Web) conclu\u00EDda em 1.90 ms; resultado NoContentResult","State":{"Acao":"PortalTarefas.Web.Controllers.AuthController.Logout (PortalTarefas.Web)","DuracaoMs":1.8951,"Resultado":"NoContentResult","{OriginalFormat}":"A\u00E7\u00E3o {Acao} conclu\u00EDda em {DuracaoMs:F2} ms; resultado {Resultado}"},"Scopes":[{"Message":"SpanId:5bc4b16466dc94fc, TraceId:4e34fd158ceff086369d86f4b594f5a5, ParentId:0000000000000000","SpanId":"5bc4b16466dc94fc","TraceId":"4e34fd158ceff086369d86f4b594f5a5","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/auth/logout RequestId:0HNPL4J33TBDU:00000003","RequestId":"0HNPL4J33TBDU:00000003","RequestPath":"/api/auth/logout"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"a5cfa2a08aa74e9bbe46bf87de5f64e6"},{"Message":"PortalTarefas.Web.Controllers.AuthController.Logout (PortalTarefas.Web)","ActionId":"8734f3f0-f249-4cbc-9604-9148734bc10f","ActionName":"PortalTarefas.Web.Controllers.AuthController.Logout (PortalTarefas.Web)"}]}
+{"EventId":0,"LogLevel":"Information","Category":"PortalTarefas.Web.Middleware.RequisicaoMiddleware","Message":"Pipeline sa\u00EDda POST /api/auth/logout 204 8.5384ms","State":{"Metodo":"POST","Caminho":"/api/auth/logout","Status":204,"DuracaoMs":8.5384,"{OriginalFormat}":"Pipeline sa\u00EDda {Metodo} {Caminho} {Status} {DuracaoMs}ms"},"Scopes":[{"Message":"SpanId:5bc4b16466dc94fc, TraceId:4e34fd158ceff086369d86f4b594f5a5, ParentId:0000000000000000","SpanId":"5bc4b16466dc94fc","TraceId":"4e34fd158ceff086369d86f4b594f5a5","ParentId":"0000000000000000"},{"Message":"ConnectionId:0HNPL4J33TBDU","ConnectionId":"0HNPL4J33TBDU"},{"Message":"RequestPath:/api/auth/logout RequestId:0HNPL4J33TBDU:00000003","RequestId":"0HNPL4J33TBDU:00000003","RequestPath":"/api/auth/logout"},{"Message":"System.Collections.Generic.Dictionary\u00602[System.String,System.Object]","CorrelationId":"a5cfa2a08aa74e9bbe46bf87de5f64e6"}]}

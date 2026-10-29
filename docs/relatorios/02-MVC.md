@@ -1,5 +1,11 @@
 # Roteiro 2 — Controllers, validação, filtros e Razor
 
+**Disciplina:** Desenvolvimento Web com .NET — UNIP. **Fonte:** Roteiros.pdf, páginas 6–8. **Consolidação:** 29/10/2026.
+
+## Objetivo e ferramentas
+
+Construir e validar interface MVC cumulativa com modelos tipados, validação, filtro de ação e componentes Razor reutilizáveis. São utilizados ASP.NET Core 10, Razor/Tag Helpers, Data Annotations e testes xUnit. O resultado de cada execução permanece separado da descrição da implementação.
+
 O Portal mantém a API e acrescenta uma interface MVC para listar, consultar, cadastrar, editar e excluir tarefas. O projeto continua cumulativo: `ITarefaService` desacopla os controllers do armazenamento; `InMemoryTarefaService` permite a demonstração explícita em Development/Testing, e `EfTarefaService` preserva os mesmos contratos com SQL Server.
 
 ## Implementação verificável
@@ -48,3 +54,19 @@ dotnet run --project src/PortalTarefas.Web --launch-profile https
 ```
 
 Com o banco configurado e usuários de teste criados pelo seed, verificar listagem, detalhes, cadastro, edição, formulário inválido, conflito entre duas abas e os logs estruturados do filtro. O modo Memory permite validar leitura pública sem banco; o login Identity continua dependendo de SQL Server. Os testes automatizados podem usar autenticação de teste, sem alterar o esquema de produção.
+
+A execução prioritária consolidada dos roteiros 1 e 2 aprovou 4 testes, registrados em `docs/evidencias/roteiros-1-2.trx`. Essa execução verifica pipeline, quatro fontes de binding, códigos HTTP, Create/Edit/Details, preservação de entrada, filtro e View Component com autenticação exclusiva do ambiente de teste. A integração SQL/Identity foi exercitada separadamente; seus resultados ficam no status central. TestServer não comprova uma conexão TLS real do navegador.
+
+Na revisão de 29/10, a suíte cumulativa também verifica o View Component de vencidas com visibilidade/ordem e o formulário MVC contra SQL Server. Uma captura real anterior encontrou validação implícita indevida do campo de versão no cadastro. A correção tornou esse campo anulável em Create e manteve a exigência explícita em Edit; a regressão envia o campo oculto vazio como o navegador. A captura inicial com esse erro não representa o resultado final corrigido.
+
+As [capturas finais de 29/10](../evidencias/roteiro-02-mvc/manifest.json) foram coletadas de MVC/SQL Server reais, sem interceptação HTTP nem alteração de DOM. Lista e detalhes responderam 200. O formulário inválido preservou `x` e a descrição, mostrou somente o erro de título em português e manteve o total de tarefas em 15 antes/depois. Login e logout reais responderam 200/204. A exceção de certificado local foi limitada ao contexto de captura. O [histórico do erro anterior](../evidencias/roteiro-02-mvc/historico-rowversion-20261028/README.md) permanece identificado como diagnóstico.
+
+![Lista MVC real](../evidencias/roteiro-02-mvc/01-lista.png)
+
+![Detalhes MVC reais](../evidencias/roteiro-02-mvc/02-detalhes.png)
+
+![Formulário inválido após a correção](../evidencias/roteiro-02-mvc/03-formulario-invalido.png)
+
+## Conclusão
+
+As responsabilidades da interface, validação e serviço permanecem separadas e cumulativas. A aprovação dos cenários automatizados é evidência concreta; transcrições de telas e demais requisitos ainda dependem dos artefatos identificados na matriz. Não se presume a conclusão de um requisito pela presença de sua view.

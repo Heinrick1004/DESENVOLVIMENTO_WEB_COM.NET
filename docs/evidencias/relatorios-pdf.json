@@ -1,0 +1,66 @@
+[
+  {
+    "fonte": "01-Pipeline.md",
+    "pdf": "01-Pipeline.pdf",
+    "bytes": 146115,
+    "paginas": 9,
+    "sha256": "d9b7cc83eafe5f81e9319eb6305049d811bfd99158cb545c86e45209de97ce36",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "02-MVC.md",
+    "pdf": "02-MVC.pdf",
+    "bytes": 311809,
+    "paginas": 6,
+    "sha256": "22b59f0e0c6f2dee9367983557cee9a95ee81351a9025fa5166c6903f4d4b9e6",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "03-Persistencia.md",
+    "pdf": "03-Persistencia.pdf",
+    "bytes": 107493,
+    "paginas": 3,
+    "sha256": "9dd6c88904941cf153061cf3801901aa33b8ceac3cd3bfa3feb8463a8b76d645",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "04-API.md",
+    "pdf": "04-API.pdf",
+    "bytes": 205281,
+    "paginas": 4,
+    "sha256": "dab6a6e139786e51b6f6209d357a219e69f2a698dc38aa65089544bd30e027b5",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "05-React.md",
+    "pdf": "05-React.pdf",
+    "bytes": 371388,
+    "paginas": 8,
+    "sha256": "0e4f99e2b788029d3bec05003d56a79e4d16e86d7a3128471208379761d5b937",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "06-Identity.md",
+    "pdf": "06-Identity.pdf",
+    "bytes": 95391,
+    "paginas": 2,
+    "sha256": "c39e9cf685cb08d52e52213c4ec19e4ee373dfe6c4977594735694217b1517b9",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "07-Observabilidade.md",
+    "pdf": "07-Observabilidade.pdf",
+    "bytes": 90702,
+    "paginas": 2,
+    "sha256": "a5852a74e1ff6893f070072446cecedc38fc2aa15f09cc150a9abbb88fb42d1f",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  },
+  {
+    "fonte": "08-Entrega.md",
+    "pdf": "08-Entrega.pdf",
+    "bytes": 94883,
+    "paginas": 3,
+    "sha256": "df1c120d0f1d1324252d1a3698df8145121a49aa5999c8c5df3f64fbd82fc2e8",
+    "renderer": "Chrome headless local, HTML sem dependências externas"
+  }
+]

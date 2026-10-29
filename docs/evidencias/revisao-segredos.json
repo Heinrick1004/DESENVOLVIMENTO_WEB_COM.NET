@@ -1,0 +1,7 @@
+{
+  "instanteUtc": "2026-10-29T17:44:41.248549+00:00",
+  "arquivosRevisados": 199,
+  "arquivosSensiveisVersionaveis": [],
+  "padroesCredenciaisEncontrados": [],
+  "limite": "Revisao de nomes e padroes conhecidos; nao e garantia absoluta de ausencia de segredos. Credenciais de execucao e certificados permanecem em .local ignorado."
+}

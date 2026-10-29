@@ -1,0 +1,39 @@
+# Procedimentos HTTP; resultados coletados são registrados em docs/evidencias.
+# Executar a API em Development por HTTPS. Não gravar senhas/tokens neste arquivo.
+@api = https://localhost:7240
+
+### R1: binding rota/query/header — Minimal API
+GET {{api}}/api/minimal/diagnostico/42?filtro=aberta
+X-Cliente: roteiro1
+X-Correlation-ID: roteiro1-minimal
+
+### R1: mesmo contrato em controller
+GET {{api}}/api/diagnostico/42?filtro=aberta
+X-Cliente: roteiro1
+X-Correlation-ID: roteiro1-mvc
+
+### R1/R4: coleção pública paginada
+GET {{api}}/api/tarefas?pagina=1&tamanho=10&ordenarPor=prazo&direcao=asc
+
+### Entrada de consulta inválida
+GET {{api}}/api/tarefas?tamanho=51&ordenarPor=campo-invalido
+
+### Recurso inexistente
+GET {{api}}/api/tarefas/2147483647
+
+### R2: página MVC
+GET {{api}}/Tarefas/Index
+
+### Contrato real de Development
+GET {{api}}/openapi/v1.json
+
+### Saúde de processo
+GET {{api}}/health/live
+
+### Saúde de dependências
+GET {{api}}/health/ready
+
+### Escritas autenticadas e binding JSON
+# Use os testes ApiTests para login, cookies e CSRF aleatórios. O POST de tarefa
+# recebe titulo, descricao, prioridade, prazo, situacao, equipe e publica.
+# A edição acrescenta rowVersion obtida no GET. Não versionar credenciais aqui.

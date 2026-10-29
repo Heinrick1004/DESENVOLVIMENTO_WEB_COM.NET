@@ -1,0 +1,76 @@
+{
+  "natureza": "Respostas reais da API publicada em Development via HTTPS e SQL Server exclusivo. Certificado publico local usado como CA; sem credenciais nas requisicoes.",
+  "respostas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=1",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "correlationId": "auditoria-http-final",
+      "corpo": {
+        "itens": [
+          {
+            "id": 20,
+            "titulo": "Telemetria SQL ef7c08ddf916490995fc5eac65836cd3",
+            "descricao": null,
+            "situacao": "Pendente",
+            "prioridade": 1,
+            "prazo": null,
+            "equipe": "Teste-cc2063b59b9448ee916eb03718d67255",
+            "publica": true,
+            "proprietarioId": "91b5a18b-7f31-45f2-95da-81c04f4fa880"
+          }
+        ],
+        "pagina": 1,
+        "tamanho": 1,
+        "total": 14,
+        "totalPaginas": 14
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?busca=auditoria-sem-resultado-20261029",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "correlationId": "auditoria-http-final",
+      "corpo": {
+        "itens": [],
+        "pagina": 1,
+        "tamanho": 10,
+        "total": 0,
+        "totalPaginas": 0
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=51",
+      "status": 400,
+      "contentType": "application/problem+json; charset=utf-8",
+      "correlationId": "auditoria-http-final",
+      "corpo": {
+        "title": "Confira os campos informados.",
+        "status": 400,
+        "errors": {
+          "tamanho": [
+            "O tamanho da página deve estar entre 1 e 50."
+          ]
+        },
+        "correlationId": "auditoria-http-final"
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas/2147483647",
+      "status": 404,
+      "contentType": "application/problem+json; charset=utf-8",
+      "correlationId": "auditoria-http-final",
+      "corpo": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Tarefa não encontrada.",
+        "status": 404,
+        "traceId": "00-46875070df32bae3b6323d0a7510a3c9-952758b3deed2885-01",
+        "correlationId": "auditoria-http-final"
+      }
+    }
+  ]
+}

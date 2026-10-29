@@ -1,0 +1,7 @@
+HTTP/1.1 307 Temporary Redirect
+Content-Length: 0
+Date: Thu, 29 Oct 2026 17:32:53 GMT
+Server: Kestrel
+Location: https://localhost:7240/health/live
+X-Correlation-ID: f42129533fcc44bc9e38c7006215a1c7
+
