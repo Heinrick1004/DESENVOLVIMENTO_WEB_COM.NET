@@ -65,6 +65,9 @@ jobs:
       - name: Restaurar frontend
         working-directory: src/PortalTarefas.Frontend
         run: npm ci
+      - name: Bloquear dependencias com vulnerabilidades altas ou criticas
+        working-directory: src/PortalTarefas.Frontend
+        run: npm audit --audit-level=high
       - name: Iniciar API real para conferir o contrato
         shell: bash
         env:
@@ -96,9 +99,17 @@ jobs:
       - name: Testar frontend
         working-directory: src/PortalTarefas.Frontend
         run: npm test
+      - name: Verificar tipos TypeScript
+        working-directory: src/PortalTarefas.Frontend
+        run: npm run typecheck
       - name: Compilar frontend
         working-directory: src/PortalTarefas.Frontend
         run: npm run build
+      - name: Validar sintaxe e ordem dos bloqueios do pipeline
+        run: |
+          mkdir -p artifacts
+          node scripts/Validate-CiStatic.mjs
+          cp docs/evidencias/ci-validacao-estatica.json artifacts/ci-validacao-estatica.json
       - name: Inventariar dependências e versão
         shell: pwsh
         run: |

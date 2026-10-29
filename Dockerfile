@@ -33,4 +33,6 @@ ENV ASPNETCORE_HTTP_PORTS=8080 \
     ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080 8443
 USER $APP_UID
+HEALTHCHECK --interval=15s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl --fail --silent --insecure https://localhost:8443/health/live || exit 1
 ENTRYPOINT ["dotnet", "PortalTarefas.Web.dll"]

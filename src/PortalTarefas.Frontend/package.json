@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "engines": { "node": ">=24 <25" },
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "generate:client": "openapi-typescript ../../docs/openapi.json -o src/api/schema.d.ts",
@@ -35,6 +37,6 @@
     "openapi-typescript": "7.13.0",
     "typescript": "5.9.3",
     "vite": "7.3.7",
-    "vitest": "3.2.7"
+    "vitest": "4.1.12"
   }
 }

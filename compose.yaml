@@ -1,4 +1,5 @@
-name: portal-tarefas
+# Outro projeto pode ser selecionado explicitamente para preservar volumes locais anteriores.
+name: ${PORTAL_COMPOSE_PROJECT:-portal-tarefas-tests}
 services:
   db:
     image: mcr.microsoft.com/mssql/server:2025-CU10-ubuntu-24.04
@@ -32,7 +33,8 @@ services:
       Portal__Storage: SqlServer
       Portal__FrontendOrigin: https://localhost:8443
       AllowedHosts: localhost;127.0.0.1
-      ConnectionStrings__PortalTarefas: ${PORTAL_SQL_CONNECTION:?Defina PORTAL_SQL_CONNECTION fora do repositorio}
+      ConnectionStrings__PortalTarefas: ${PORTAL_SQL_CONNECTION:?Defina a conexao externa de um banco PortalTarefas_Tests_ exclusivo}
+      Seed__Enabled: "false"
       Seed__AdminEmail: ${PORTAL_ADMIN_EMAIL:-}
       Seed__AdminPassword: ${PORTAL_ADMIN_PASSWORD:-}
       Seed__AdminEquipe: ${PORTAL_ADMIN_EQUIPE:-Geral}
