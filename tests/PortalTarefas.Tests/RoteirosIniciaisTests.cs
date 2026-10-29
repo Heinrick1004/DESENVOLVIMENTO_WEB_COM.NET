@@ -17,6 +17,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Xunit.Abstractions;
+using PortalTarefas.Web.DTOs;
+using PortalTarefas.Web.Services;
 
 namespace PortalTarefas.Tests;
 
@@ -160,7 +162,8 @@ public sealed class RoteirosIniciaisTests(ITestOutputHelper output)
         var form = await client.GetStringAsync("/Tarefas/Create");
         var entrada = new Dictionary<string, string>
         {
-            ["__RequestVerificationToken"] = Token(form), ["Titulo"] = "x", ["Descricao"] = "Texto preservado",
+            ["__RequestVerificationToken"] = Token(form), ["Id"] = "0", ["RowVersion"] = "",
+            ["Titulo"] = "x", ["Descricao"] = "Texto preservado",
             ["Prioridade"] = "3", ["Equipe"] = "Inicial", ["Situacao"] = "Pendente", ["Publica"] = "true"
         };
         var invalid = await client.PostAsync("/Tarefas/Create", new FormUrlEncodedContent(entrada));
@@ -168,6 +171,7 @@ public sealed class RoteirosIniciaisTests(ITestOutputHelper output)
         Assert.Equal(HttpStatusCode.OK, invalid.StatusCode);
         Assert.Contains("value=\"x\"", html);
         Assert.Contains("Texto preservado", html);
+        Assert.DoesNotContain("field is required", Regex.Replace(html, "<[^>]+>", " "));
         Assert.Contains("entre 3 e 120", WebUtility.HtmlDecode(html));
         entrada["Titulo"] = "Tarefa inicial válida";
         var semPrazo = await client.PostAsync("/Tarefas/Create", new FormUrlEncodedContent(entrada));
@@ -196,6 +200,45 @@ public sealed class RoteirosIniciaisTests(ITestOutputHelper output)
         Assert.Contains(logs, e => e.Contains("RedirectToActionResult"));
         output.WriteLine("Formulário inválido preservou título/descrição e exibiu erro de prazo; cadastro e edição redirecionaram aos detalhes.");
         foreach (var log in logs) output.WriteLine(log);
+    }
+
+    [Fact]
+    public async Task R2_componente_vencidas_respeita_prazo_situacao_e_visibilidade()
+    {
+        using var factory = new InicialFactory();
+        var service = factory.Services.GetRequiredService<InMemoryTarefaService>();
+        var usuario = new UsuarioContexto("roteiros-iniciais", "Inicial", true, false, false);
+        var outro = new UsuarioContexto("outra-conta", "Outra", true, false, false);
+        var passada = new DateOnly(2000, 1, 1);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Vencida publica", Equipe = "Inicial", Publica = true, Prazo = passada }, usuario);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Vencida da equipe", Equipe = "Inicial", Prazo = passada }, usuario);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Vencida de outra equipe", Equipe = "Outra", Prazo = passada }, outro);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Concluida antiga", Equipe = "Inicial", Publica = true, Prazo = passada, Situacao = "Concluida" }, usuario);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Prazo futuro", Equipe = "Inicial", Publica = true, Prazo = new DateOnly(2099, 1, 1) }, usuario);
+        await service.CriarAsync(new TarefaInputModel { Titulo = "Sem prazo", Equipe = "Inicial", Publica = true }, usuario);
+        using var anonimo = factory.Cliente();
+        using var autenticado = factory.Cliente(true);
+        var painelAnonimo = Painel(await anonimo.GetStringAsync("/Tarefas/Index"));
+        var painelEquipe = Painel(await autenticado.GetStringAsync("/Tarefas/Index"));
+        Assert.Contains("1 tarefa(s) vencida(s)", painelAnonimo);
+        Assert.Contains("Vencida publica", painelAnonimo);
+        Assert.DoesNotContain("Vencida da equipe", painelAnonimo);
+        Assert.Contains("2 tarefa(s) vencida(s)", painelEquipe);
+        Assert.Contains("Vencida da equipe", painelEquipe);
+        foreach (var excluida in new[] { "Vencida de outra equipe", "Concluida antiga", "Prazo futuro", "Sem prazo" })
+        {
+            Assert.DoesNotContain(excluida, painelAnonimo);
+            Assert.DoesNotContain(excluida, painelEquipe);
+        }
+        output.WriteLine("Componente anônimo observado: {0}", painelAnonimo);
+        output.WriteLine("Componente da equipe observado: {0}", painelEquipe);
+    }
+
+    private static string Painel(string html)
+    {
+        var trecho = Regex.Match(html, "<aside class=\"overdue-panel\".*?</aside>", RegexOptions.Singleline).Value;
+        Assert.NotEmpty(trecho);
+        return WebUtility.HtmlDecode(trecho);
     }
 
     private static string Token(string html) => Campo(html, "__RequestVerificationToken");

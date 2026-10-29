@@ -84,7 +84,7 @@ public sealed class TarefasController(ITarefaService tarefas, IOutputCacheStore 
 
         try
         {
-            await tarefas.AtualizarAsync(id, model, model.RowVersion, User.ToContexto(), cancellationToken);
+            await tarefas.AtualizarAsync(id, model, model.RowVersion!, User.ToContexto(), cancellationToken);
             await cache.EvictByTagAsync("painel-publico", cancellationToken);
             TempData["Sucesso"] = "Alterações salvas com sucesso.";
             return RedirectToAction(nameof(Details), new { id });

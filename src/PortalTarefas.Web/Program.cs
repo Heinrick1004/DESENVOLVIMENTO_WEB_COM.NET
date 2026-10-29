@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.Json.Nodes;
 using System.Threading.RateLimiting;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Http.Resilience;
+using Microsoft.OpenApi;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -94,6 +96,59 @@ builder.Services.AddOpenApi(options => options.AddDocumentTransformer((document,
 {
     // Contrato reproduzível em desenvolvimento e CI, independente da porta de exportação.
     document.Servers = [new() { Url = "/" }];
+
+    // O esquema permite informar o token no Authorize do Swagger sem duplicar
+    // nos DTOs a proteção que o transporte da SPA já acrescenta às requisições.
+    document.Components ??= new();
+    document.Components.SecuritySchemes ??= new Dictionary<string, IOpenApiSecurityScheme>();
+    document.Components.SecuritySchemes["CsrfToken"] = new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.ApiKey,
+        In = ParameterLocation.Header,
+        Name = "X-CSRF-TOKEN",
+        Description = "Obtenha token em GET /api/auth/csrf e informe seu valor em Authorize. " +
+            "Obtenha outro token após login ou logout. O navegador envia o cookie HttpOnly na mesma origem; " +
+            "o token CSRF não substitui a autenticação."
+    };
+    if (document.Paths is { } paths)
+    {
+        foreach (var (path, item) in paths)
+        {
+            if (!path.StartsWith("/api/", StringComparison.Ordinal) || item.Operations is not { } operations) continue;
+            foreach (var (method, operation) in operations)
+            {
+                if (method != HttpMethod.Post && method != HttpMethod.Put && method != HttpMethod.Delete) continue;
+                operation.Security = [new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference("CsrfToken", document)] = []
+                }];
+            }
+        }
+
+        if (paths.TryGetValue("/api/tarefas", out var tarefas) && tarefas.Operations is { } taskOperations &&
+            taskOperations.TryGetValue(HttpMethod.Post, out var create))
+        {
+            // Valores didáticos de contrato; não representam uma execução ou evidência real.
+            create.Description = "Exemplos ilustrativos. Informe a equipe da sessão autenticada e o token CSRF obtido após o login.";
+            if (create.RequestBody?.Content is { } requestContent && requestContent.TryGetValue("application/json", out var requestJson))
+                requestJson.Example = JsonNode.Parse("""
+                    {"titulo":"Revisar relatório do Portal de Tarefas","descricao":"Conferir testes e evidências antes da entrega.","situacao":"Pendente","prioridade":2,"prazo":"2026-11-30","equipe":"Geral","publica":true}
+                    """);
+            if (create.Responses is { } responses)
+            {
+                if (responses.TryGetValue("201", out var created) && created.Content is { } createdContent &&
+                    createdContent.TryGetValue("application/json", out var createdJson))
+                    createdJson.Example = JsonNode.Parse("""
+                        {"id":1,"titulo":"Revisar relatório do Portal de Tarefas","descricao":"Conferir testes e evidências antes da entrega.","situacao":"Pendente","prioridade":2,"prazo":"2026-11-30","equipe":"Geral","publica":true,"proprietarioId":"usuario-exemplo","rowVersion":"AAAAAAAAAAE=","criadaEm":"2026-10-29T12:00:00+00:00"}
+                        """);
+                if (responses.TryGetValue("400", out var invalid) && invalid.Content is { } invalidContent &&
+                    invalidContent.TryGetValue("application/problem+json", out var invalidJson))
+                    invalidJson.Example = JsonNode.Parse("""
+                        {"status":400,"title":"Confira os campos informados.","errors":{"Titulo":["Informe o título."]}}
+                        """);
+            }
+        }
+    }
     return Task.CompletedTask;
 }));
 builder.Services.AddCors(o => o.AddPolicy("FrontendLocal", p => p.WithOrigins(builder.Configuration["Portal:FrontendOrigin"] ?? "http://localhost:5173")

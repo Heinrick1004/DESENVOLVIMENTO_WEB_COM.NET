@@ -28,12 +28,18 @@ public sealed partial class RequisicaoMiddleware(RequestDelegate next, ILogger<R
         finally
         {
             var duracao = Stopwatch.GetElapsedTime(inicio).TotalMilliseconds;
-            Telemetria.DuracaoHttp.Record(duracao, new KeyValuePair<string, object?>("metodo", context.Request.Method),
+            Telemetria.DuracaoHttp.Record(duracao, new KeyValuePair<string, object?>("metodo", MetodoMetrica(context.Request.Method)),
                 new KeyValuePair<string, object?>("status", context.Response.StatusCode));
             logger.LogInformation("Pipeline saída {Metodo} {Caminho} {Status} {DuracaoMs}ms",
                 context.Request.Method, context.Request.Path, context.Response.StatusCode, duracao);
         }
     }
+
+    private static string MetodoMetrica(string metodo) => metodo switch
+    {
+        "GET" or "POST" or "PUT" or "DELETE" or "PATCH" or "HEAD" or "OPTIONS" or "TRACE" or "CONNECT" => metodo,
+        _ => "_OTHER"
+    };
 }
 
 public static class RequisicaoMiddlewareExtensions

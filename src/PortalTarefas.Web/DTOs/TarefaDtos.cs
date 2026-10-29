@@ -13,7 +13,7 @@ public class TarefaInputModel : IValidatableObject
     [Display(Name = "Descrição")]
     public string? Descricao { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Informe a situação.")]
     [RegularExpression("^(Pendente|EmAndamento|Concluida)$", ErrorMessage = "Selecione uma situação válida.")]
     [Display(Name = "Situação")]
     public string Situacao { get; set; } = "Pendente";
@@ -25,7 +25,7 @@ public class TarefaInputModel : IValidatableObject
     public DateOnly? Prazo { get; set; }
 
     [Required(ErrorMessage = "Informe a equipe.")]
-    [StringLength(80)]
+    [StringLength(80, ErrorMessage = "A equipe deve ter até 80 caracteres.")]
     public string Equipe { get; set; } = "Geral";
 
     [Display(Name = "Visível publicamente")]
@@ -46,7 +46,7 @@ public sealed class CriarTarefaDto : TarefaInputModel { }
 public sealed class AtualizarTarefaDto : TarefaInputModel
 {
     [Required(ErrorMessage = "Informe a versão da tarefa.")]
-    [StringLength(12, MinimumLength = 12)]
+    [StringLength(12, MinimumLength = 12, ErrorMessage = "A versão deve ter 12 caracteres Base64.")]
     public string RowVersion { get; set; } = string.Empty;
 
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

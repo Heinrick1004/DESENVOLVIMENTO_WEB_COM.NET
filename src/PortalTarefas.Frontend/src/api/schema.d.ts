@@ -152,9 +152,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ApiProblemDetails"];
-                        "application/json": components["schemas"]["ApiProblemDetails"];
-                        "text/json": components["schemas"]["ApiProblemDetails"];
+                        "application/problem+json": components["schemas"]["ApiProblemDetails"];
                     };
                 };
                 /** @description Unauthorized */
@@ -163,9 +161,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -210,9 +206,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -257,9 +251,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Unauthorized */
@@ -268,9 +260,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -368,9 +358,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ApiProblemDetails"];
-                        "application/json": components["schemas"]["ApiProblemDetails"];
-                        "text/json": components["schemas"]["ApiProblemDetails"];
+                        "application/problem+json": components["schemas"]["ApiProblemDetails"];
                     };
                 };
                 /** @description Too Many Requests */
@@ -379,15 +367,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
         };
         put?: never;
-        /** Cria tarefa para a equipe autorizada e retorna Location. */
+        /**
+         * Cria tarefa para a equipe autorizada e retorna Location.
+         * @description Exemplos ilustrativos. Informe a equipe da sessão autenticada e o token CSRF obtido após o login.
+         */
         post: {
             parameters: {
                 query?: never;
@@ -397,6 +386,17 @@ export interface paths {
             };
             requestBody: {
                 content: {
+                    /**
+                     * @example {
+                     *       "titulo": "Revisar relatório do Portal de Tarefas",
+                     *       "descricao": "Conferir testes e evidências antes da entrega.",
+                     *       "situacao": "Pendente",
+                     *       "prioridade": 2,
+                     *       "prazo": "2026-11-30",
+                     *       "equipe": "Geral",
+                     *       "publica": true
+                     *     }
+                     */
                     "application/json": components["schemas"]["CriarTarefaDto"];
                     "text/json": components["schemas"]["CriarTarefaDto"];
                     "application/*+json": components["schemas"]["CriarTarefaDto"];
@@ -410,6 +410,21 @@ export interface paths {
                     };
                     content: {
                         "text/plain": components["schemas"]["TarefaDetalheDto"];
+                        /**
+                         * @example {
+                         *       "id": 1,
+                         *       "titulo": "Revisar relatório do Portal de Tarefas",
+                         *       "descricao": "Conferir testes e evidências antes da entrega.",
+                         *       "situacao": "Pendente",
+                         *       "prioridade": 2,
+                         *       "prazo": "2026-11-30",
+                         *       "equipe": "Geral",
+                         *       "publica": true,
+                         *       "proprietarioId": "usuario-exemplo",
+                         *       "rowVersion": "AAAAAAAAAAE=",
+                         *       "criadaEm": "2026-10-29T12:00:00+00:00"
+                         *     }
+                         */
                         "application/json": components["schemas"]["TarefaDetalheDto"];
                         "text/json": components["schemas"]["TarefaDetalheDto"];
                     };
@@ -420,9 +435,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ApiProblemDetails"];
-                        "application/json": components["schemas"]["ApiProblemDetails"];
-                        "text/json": components["schemas"]["ApiProblemDetails"];
+                        /**
+                         * @example {
+                         *       "status": 400,
+                         *       "title": "Confira os campos informados.",
+                         *       "errors": {
+                         *         "Titulo": [
+                         *           "Informe o título."
+                         *         ]
+                         *       }
+                         *     }
+                         */
+                        "application/problem+json": components["schemas"]["ApiProblemDetails"];
                     };
                 };
                 /** @description Unauthorized */
@@ -431,9 +455,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Forbidden */
@@ -442,9 +464,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Too Many Requests */
@@ -453,9 +473,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -510,9 +528,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ApiProblemDetails"];
-                        "application/json": components["schemas"]["ApiProblemDetails"];
-                        "text/json": components["schemas"]["ApiProblemDetails"];
+                        "application/problem+json": components["schemas"]["ApiProblemDetails"];
                     };
                 };
                 /** @description Unauthorized */
@@ -521,9 +537,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Forbidden */
@@ -532,9 +546,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Not Found */
@@ -543,9 +555,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Conflict */
@@ -554,9 +564,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Too Many Requests */
@@ -565,9 +573,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -600,9 +606,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ApiProblemDetails"];
-                        "application/json": components["schemas"]["ApiProblemDetails"];
-                        "text/json": components["schemas"]["ApiProblemDetails"];
+                        "application/problem+json": components["schemas"]["ApiProblemDetails"];
                     };
                 };
                 /** @description Unauthorized */
@@ -611,9 +615,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Forbidden */
@@ -622,9 +624,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Not Found */
@@ -633,9 +633,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Conflict */
@@ -644,9 +642,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Too Many Requests */
@@ -655,9 +651,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -700,9 +694,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -748,9 +740,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
                 /** @description Not Implemented */
@@ -759,9 +749,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": components["schemas"]["ProblemDetails"];
-                        "application/json": components["schemas"]["ProblemDetails"];
-                        "text/json": components["schemas"]["ProblemDetails"];
+                        "application/problem+json": components["schemas"]["ProblemDetails"];
                     };
                 };
             };
@@ -980,9 +968,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "text/plain": components["schemas"]["ApiProblemDetails"];
-                    "application/json": components["schemas"]["ApiProblemDetails"];
-                    "text/json": components["schemas"]["ApiProblemDetails"];
+                    "application/problem+json": components["schemas"]["ApiProblemDetails"];
                 };
             };
             /** @description Not Found */
@@ -991,9 +977,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "text/plain": components["schemas"]["ProblemDetails"];
-                    "application/json": components["schemas"]["ProblemDetails"];
-                    "text/json": components["schemas"]["ProblemDetails"];
+                    "application/problem+json": components["schemas"]["ProblemDetails"];
                 };
             };
             /** @description Too Many Requests */
@@ -1002,9 +986,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "text/plain": components["schemas"]["ProblemDetails"];
-                    "application/json": components["schemas"]["ProblemDetails"];
-                    "text/json": components["schemas"]["ProblemDetails"];
+                    "application/problem+json": components["schemas"]["ProblemDetails"];
                 };
             };
         };

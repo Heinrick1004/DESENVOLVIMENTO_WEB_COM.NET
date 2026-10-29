@@ -67,7 +67,7 @@ public sealed class ObservabilidadeTests(PortalFactory factory, ITestOutputHelpe
         };
         ActivitySource.AddActivityListener(activities);
         var negocios = new ConcurrentQueue<(long Valor, string[] Chaves)>();
-        var duracoes = new ConcurrentQueue<(double Valor, string[] Chaves)>();
+        var duracoes = new ConcurrentQueue<(double Valor, string[] Chaves, string? Metodo)>();
         using var metrics = new MeterListener
         {
             InstrumentPublished = (instrument, listener) =>
@@ -78,7 +78,8 @@ public sealed class ObservabilidadeTests(PortalFactory factory, ITestOutputHelpe
         metrics.SetMeasurementEventCallback<long>((_, value, tags, _) =>
             negocios.Enqueue((value, tags.ToArray().Select(tag => tag.Key).ToArray())));
         metrics.SetMeasurementEventCallback<double>((_, value, tags, _) =>
-            duracoes.Enqueue((value, tags.ToArray().Select(tag => tag.Key).ToArray())));
+            duracoes.Enqueue((value, tags.ToArray().Select(tag => tag.Key).ToArray(),
+                tags.ToArray().FirstOrDefault(tag => tag.Key == "metodo").Value as string)));
         metrics.Start();
         using var client = await factory.Autenticado(factory.EmailUsuario);
         var created = await client.PostAsJsonAsync("/api/tarefas", new
@@ -90,6 +91,9 @@ public sealed class ObservabilidadeTests(PortalFactory factory, ITestOutputHelpe
         Assert.Contains(spans, span => span.StartsWith("tarefa.criar trace=", StringComparison.Ordinal));
         Assert.Contains(negocios, medida => medida.Valor == 1 && medida.Chaves.SequenceEqual(new[] { "origem" }));
         Assert.Contains(duracoes, medida => medida.Valor >= 0 && medida.Chaves.SequenceEqual(new[] { "metodo", "status" }));
+        using var metodoDesconhecido = new HttpRequestMessage(new HttpMethod("METODOCUSTOM"), "/health/live");
+        using var respostaDesconhecida = await client.SendAsync(metodoDesconhecido);
+        Assert.Contains(duracoes, medida => medida.Metodo == "_OTHER");
         output.WriteLine("portal.tarefas.criadas: incremento 1, dimensão origem. portal.http.duracao: {0} medições, dimensões metodo/status.", duracoes.Count);
         foreach (var span in spans) output.WriteLine(span);
     }

@@ -106,6 +106,13 @@ public sealed class ApiTests(PortalFactory factory) : IClassFixture<PortalFactor
         Assert.True(schema.GetProperty("paths").TryGetProperty("/api/tarefas/{id}", out var path));
         Assert.True(path.GetProperty("put").GetProperty("responses").TryGetProperty("409", out _));
         Assert.Contains("AtualizarTarefaDto", schema.GetProperty("components").GetProperty("schemas").ToString());
+        var post = schema.GetProperty("paths").GetProperty("/api/tarefas").GetProperty("post");
+        Assert.Equal(2, post.GetProperty("requestBody").GetProperty("content").GetProperty("application/json")
+            .GetProperty("example").GetProperty("prioridade").GetInt32());
+        Assert.True(post.GetProperty("responses").GetProperty("400").GetProperty("content")
+            .GetProperty("application/problem+json").GetProperty("example").GetProperty("errors").TryGetProperty("Titulo", out _));
+        Assert.Equal("X-CSRF-TOKEN", schema.GetProperty("components").GetProperty("securitySchemes")
+            .GetProperty("CsrfToken").GetProperty("name").GetString());
         var http = factory.CreateClient(new() { BaseAddress = new Uri("http://localhost"), AllowAutoRedirect = false });
         Assert.Equal(HttpStatusCode.TemporaryRedirect, (await http.GetAsync("/health/live")).StatusCode);
     }
@@ -182,6 +189,52 @@ public sealed class ApiTests(PortalFactory factory) : IClassFixture<PortalFactor
         Assert.Contains("Entrada preservada", html);
         Assert.Contains("value=\"x\"", html);
         Assert.Contains("120", html);
+    }
+
+    [SqlFact]
+    public async Task Razor_cadastro_com_versao_vazia_edicao_e_conflito_sql()
+    {
+        using var user = await factory.Autenticado(factory.EmailUsuario);
+        var form = await user.GetStringAsync("/Tarefas/Create");
+        var entrada = new Dictionary<string, string>
+        {
+            ["__RequestVerificationToken"] = Campo(form, "__RequestVerificationToken"),
+            ["Id"] = "0", ["RowVersion"] = "", ["Titulo"] = "Cadastro Razor SQL " + Guid.NewGuid().ToString("N"),
+            ["Descricao"] = "Formulário real com os campos ocultos do navegador.", ["Equipe"] = factory.Equipe,
+            ["Prioridade"] = "1", ["Situacao"] = "Pendente", ["Publica"] = "false"
+        };
+        var created = await user.PostAsync("/Tarefas/Create", new FormUrlEncodedContent(entrada));
+        Assert.Equal(HttpStatusCode.Redirect, created.StatusCode);
+        Assert.NotNull(created.Headers.Location);
+        var id = System.Text.RegularExpressions.Regex.Match(created.Headers.Location.ToString(), @"\d+$").Value;
+        Assert.NotEmpty(id);
+        var edit = await user.GetStringAsync("/Tarefas/Edit/" + id);
+        entrada["__RequestVerificationToken"] = Campo(edit, "__RequestVerificationToken");
+        entrada["Id"] = id;
+        entrada["RowVersion"] = Campo(edit, "RowVersion");
+        entrada["Titulo"] = "Edição Razor SQL confirmada";
+        var saved = await user.PostAsync("/Tarefas/Edit/" + id, new FormUrlEncodedContent(entrada));
+        Assert.Equal(HttpStatusCode.Redirect, saved.StatusCode);
+
+        // Outra aba envia a versão anterior: preservar a edição confirmada no SQL Server.
+        entrada["Titulo"] = "Edição obsoleta preservada no formulário";
+        var stale = await user.PostAsync("/Tarefas/Edit/" + id, new FormUrlEncodedContent(entrada));
+        Assert.Equal(HttpStatusCode.Conflict, stale.StatusCode);
+        var conflictHtml = WebUtility.HtmlDecode(await stale.Content.ReadAsStringAsync());
+        Assert.Contains("Edição obsoleta preservada no formulário", conflictHtml);
+        Assert.Contains("Recarregue", conflictHtml);
+        var details = WebUtility.HtmlDecode(await user.GetStringAsync("/Tarefas/Details/" + id));
+        Assert.Contains("Edição Razor SQL confirmada", details);
+        Assert.DoesNotContain("Edição obsoleta", details);
+    }
+
+    private static string Campo(string html, string nome)
+    {
+        var input = System.Text.RegularExpressions.Regex.Match(html,
+            "<input[^>]*name=\"" + System.Text.RegularExpressions.Regex.Escape(nome) + "\"[^>]*>").Value;
+        var value = System.Text.RegularExpressions.Regex.Match(input, "value=\"([^\"]*)\"").Groups[1].Value;
+        Assert.NotEmpty(value);
+        return WebUtility.HtmlDecode(value);
     }
 
     [SqlFact]

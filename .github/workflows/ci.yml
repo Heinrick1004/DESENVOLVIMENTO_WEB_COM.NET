@@ -120,14 +120,56 @@ jobs:
         run: |
           docker build --build-arg BUILD_VERSION=${{ github.sha }} -t portaltarefas:${{ github.sha }} .
           docker image inspect portaltarefas:${{ github.sha }} > artifacts/imagem.json
+      - name: Gerar certificado HTTPS efêmero para o smoke test
+        shell: bash
+        run: |
+          certificate_password="aA1!$(openssl rand -hex 24)"
+          echo "::add-mask::$certificate_password"
+          printf 'ASPNETCORE_Kestrel__Certificates__Default__Password=%s\n' "$certificate_password" >> "$GITHUB_ENV"
+          dotnet dev-certs https --export-path "$RUNNER_TEMP/portal-ci.pfx" --password "$certificate_password"
+          # O PFX é criptografado; o usuário não privilegiado precisa lê-lo.
+          chmod 644 "$RUNNER_TEMP/portal-ci.pfx"
+      - name: Executar a imagem real com SQL Server e HTTPS
+        shell: bash
+        run: |
+          docker run --detach --name portal-ci-web --network host \
+            --env ASPNETCORE_ENVIRONMENT=Production \
+            --env Portal__Storage=SqlServer --env Portal__FrontendOrigin=https://localhost:8443 \
+            --env Seed__Enabled=false --env Telemetry__Console=false \
+            --env ConnectionStrings__PortalTarefas \
+            --env ASPNETCORE_Kestrel__Certificates__Default__Password \
+            --env ASPNETCORE_Kestrel__Certificates__Default__Path=/https/portal.pfx \
+            --mount "type=bind,source=$RUNNER_TEMP/portal-ci.pfx,target=/https/portal.pfx,readonly" \
+            portaltarefas:${{ github.sha }}
+          runtime_uid=$(docker exec portal-ci-web id -u)
+          if [ "$runtime_uid" = 0 ]; then
+            echo 'A imagem não deve executar como root.' >&2
+            exit 1
+          fi
+          printf 'uid=%s\n' "$runtime_uid" > artifacts/container-user.txt
+      - name: Validar Health Checks, MVC, SPA e versão da imagem
+        shell: pwsh
+        run: |
+          $smoke = ./scripts/Smoke-Test.ps1 -BaseUrl https://localhost:8443 -VersaoEsperada $env:GITHUB_SHA -IgnorarCertificadoLocal -Tentativas 30
+          $smoke | ConvertTo-Json -Depth 4 | Set-Content artifacts/smoke-container.json -Encoding UTF8
+      - name: Salvar imagem somente após o smoke test aprovado
+        run: |
           docker save -o artifacts/portaltarefas-${{ github.sha }}.tar portaltarefas:${{ github.sha }}
-      - name: Preservar artefatos após aprovação dos testes
+      - name: Preservar artefatos após testes e smoke aprovados
         uses: actions/upload-artifact@v4
         with:
           name: portaltarefas-${{ github.sha }}
           path: artifacts/
           retention-days: 7
           if-no-files-found: error
+      - name: Capturar logs do contêiner após falha
+        if: failure()
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          if docker container inspect portal-ci-web > /dev/null 2>&1; then
+            docker logs portal-ci-web > artifacts/container-ci.log 2>&1
+          fi
       - name: Preservar diagnóstico de testes que falharam
         if: failure()
         uses: actions/upload-artifact@v4
@@ -136,6 +178,7 @@ jobs:
           path: |
             artifacts/tests/
             artifacts/api-ci.log
+            artifacts/container-ci.log
           retention-days: 7
           if-no-files-found: ignore
       - name: Encerrar somente os recursos efêmeros deste job
@@ -145,7 +188,12 @@ jobs:
           if [ -f artifacts/api-ci.pid ]; then
             kill "$(cat artifacts/api-ci.pid)" 2>/dev/null || true
           fi
-          if docker container inspect portal-ci-sql > /dev/null 2>&1; then
-            docker stop portal-ci-sql > /dev/null
-            docker rm portal-ci-sql > /dev/null
+          for container in portal-ci-web portal-ci-sql; do
+            if docker container inspect "$container" > /dev/null 2>&1; then
+              docker stop "$container" > /dev/null
+              docker rm "$container" > /dev/null
+            fi
+          done
+          if [ -f "$RUNNER_TEMP/portal-ci.pfx" ]; then
+            rm -- "$RUNNER_TEMP/portal-ci.pfx"
           fi

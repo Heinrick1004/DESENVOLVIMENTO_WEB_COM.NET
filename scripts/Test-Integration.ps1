@@ -46,11 +46,25 @@ try {
         $previousStorage = $env:Portal__Storage
         $previousSeed = $env:Seed__Enabled
         $previousSamples = $env:Seed__SampleData
+        $previousAspNetEnvironment = $env:ASPNETCORE_ENVIRONMENT
+        $previousDotNetEnvironment = $env:DOTNET_ENVIRONMENT
+        $previousAdminEmail = $env:Seed__AdminEmail
+        $previousAdminPassword = $env:Seed__AdminPassword
+        $previousUserEmail = $env:Seed__UserEmail
+        $previousUserPassword = $env:Seed__UserPassword
         try {
             $env:ConnectionStrings__PortalTarefas = $env:PORTAL_TEST_CONNECTION
             $env:Portal__Storage = 'SqlServer'
             $env:Seed__Enabled = 'false'
             $env:Seed__SampleData = 'false'
+            # Testing impede carregar User Secrets e configurações Development.
+            # Os dois nomes evitam depender da precedência do host .NET.
+            $env:ASPNETCORE_ENVIRONMENT = 'Testing'
+            $env:DOTNET_ENVIRONMENT = 'Testing'
+            $env:Seed__AdminEmail = ''
+            $env:Seed__AdminPassword = ''
+            $env:Seed__UserEmail = ''
+            $env:Seed__UserPassword = ''
             $initializeArguments = @('run', '--project', $webProject, '-c', $Configuration, '--no-launch-profile')
             if ($NoBuild) { $initializeArguments += '--no-build' }
             & dotnet @initializeArguments -- --initialize
@@ -61,6 +75,12 @@ try {
             $env:Portal__Storage = $previousStorage
             $env:Seed__Enabled = $previousSeed
             $env:Seed__SampleData = $previousSamples
+            $env:ASPNETCORE_ENVIRONMENT = $previousAspNetEnvironment
+            $env:DOTNET_ENVIRONMENT = $previousDotNetEnvironment
+            $env:Seed__AdminEmail = $previousAdminEmail
+            $env:Seed__AdminPassword = $previousAdminPassword
+            $env:Seed__UserEmail = $previousUserEmail
+            $env:Seed__UserPassword = $previousUserPassword
         }
     }
 

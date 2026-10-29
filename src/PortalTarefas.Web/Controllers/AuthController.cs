@@ -10,7 +10,9 @@ using PortalTarefas.Web.Models;
 
 namespace PortalTarefas.Web.Controllers;
 
-public sealed record LoginDto([Required, EmailAddress] string Email, [Required] string Senha);
+public sealed record LoginDto(
+    [Required(ErrorMessage = "Informe o e-mail."), EmailAddress(ErrorMessage = "Informe um e-mail válido.")] string Email,
+    [Required(ErrorMessage = "Informe a senha.")] string Senha);
 public sealed record CsrfDto(string Token);
 public sealed record SessaoDto(string Id, string Email, string Equipe, string[] Roles, bool PodeEditarOutrasEquipes);
 
@@ -28,7 +30,7 @@ public sealed class AuthController(SignInManager<Usuario> signIn, UserManager<Us
 
     /// <summary>Inicia sessão por cookie protegido. Requer X-CSRF-TOKEN.</summary>
     [HttpPost("login"), AllowAnonymous]
-    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ApiProblemDetails>(400), ProducesResponseType<ProblemDetails>(401)]
+    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ApiProblemDetails>(400, "application/problem+json"), ProducesResponseType<ProblemDetails>(401, "application/problem+json")]
     public async Task<ActionResult<SessaoDto>> Login(LoginDto input)
     {
         var user = await users.FindByEmailAsync(input.Email);
@@ -42,7 +44,7 @@ public sealed class AuthController(SignInManager<Usuario> signIn, UserManager<Us
 
     /// <summary>Restaura a sessão atual. Retorna 401 sem sessão.</summary>
     [HttpGet("me"), Authorize]
-    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ProblemDetails>(401)]
+    [ProducesResponseType<SessaoDto>(200), ProducesResponseType<ProblemDetails>(401, "application/problem+json")]
     public async Task<ActionResult<SessaoDto>> Me()
     {
         Response.Headers.CacheControl = "no-store";
@@ -52,7 +54,7 @@ public sealed class AuthController(SignInManager<Usuario> signIn, UserManager<Us
 
     /// <summary>Encerra a sessão atual. Requer X-CSRF-TOKEN.</summary>
     [HttpPost("logout"), Authorize]
-    [ProducesResponseType(204), ProducesResponseType<ProblemDetails>(400), ProducesResponseType<ProblemDetails>(401)]
+    [ProducesResponseType(204), ProducesResponseType<ProblemDetails>(400, "application/problem+json"), ProducesResponseType<ProblemDetails>(401, "application/problem+json")]
     public async Task<IActionResult> Logout()
     {
         await signIn.SignOutAsync();

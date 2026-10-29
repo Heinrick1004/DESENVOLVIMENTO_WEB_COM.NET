@@ -8,7 +8,8 @@ public sealed class TarefaFormModel : TarefaInputModel
     public int Id { get; set; }
 
     [Display(Name = "Versão da tarefa")]
-    public string RowVersion { get; set; } = string.Empty;
+    // O navegador envia o campo oculto vazio no cadastro. Somente Edit exige versão.
+    public string? RowVersion { get; set; }
 
     public static TarefaFormModel De(TarefaDetalheDto tarefa) => new()
     {

@@ -11,7 +11,7 @@ using PortalTarefas.Web.Services;
 namespace PortalTarefas.Web.Controllers;
 
 [ApiController, Route("api/tarefas"), EnableRateLimiting("api")]
-[ProducesResponseType<ApiProblemDetails>(400), ProducesResponseType<ProblemDetails>(429)]
+[ProducesResponseType<ApiProblemDetails>(400, "application/problem+json"), ProducesResponseType<ProblemDetails>(429, "application/problem+json")]
 public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheStore cache) : ControllerBase
 {
     /// <summary>Lista tarefas visíveis, com filtros, ordenação permitida e páginas de até 50 itens.</summary>
@@ -20,7 +20,7 @@ public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheSto
 
     /// <summary>Consulta os detalhes e a versão atual de uma tarefa visível.</summary>
     [HttpGet("{id:int}", Name = "ObterTarefa"), AllowAnonymous]
-    [ProducesResponseType<TarefaDetalheDto>(200), ProducesResponseType<ProblemDetails>(404)]
+    [ProducesResponseType<TarefaDetalheDto>(200), ProducesResponseType<ProblemDetails>(404, "application/problem+json")]
     public async Task<ActionResult<TarefaDetalheDto>> Obter(int id, CancellationToken ct)
     {
         var tarefa = await tarefas.ObterAsync(id, User.ToContexto(), ct);
@@ -29,7 +29,7 @@ public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheSto
 
     /// <summary>Cria tarefa para a equipe autorizada e retorna Location.</summary>
     [HttpPost, Authorize(Policy = "CriarTarefa")]
-    [ProducesResponseType<TarefaDetalheDto>(201), ProducesResponseType<ProblemDetails>(401), ProducesResponseType<ProblemDetails>(403)]
+    [ProducesResponseType<TarefaDetalheDto>(201), ProducesResponseType<ProblemDetails>(401, "application/problem+json"), ProducesResponseType<ProblemDetails>(403, "application/problem+json")]
     public async Task<ActionResult<TarefaDetalheDto>> Criar(CriarTarefaDto input, CancellationToken ct)
     {
         using var activity = Telemetria.Traces.StartActivity("tarefa.criar");
@@ -41,8 +41,8 @@ public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheSto
 
     /// <summary>Atualiza com RowVersion. A versão obsoleta retorna 409 sem sobrescrever dados.</summary>
     [HttpPut("{id:int}"), Authorize]
-    [ProducesResponseType<TarefaDetalheDto>(200), ProducesResponseType<ProblemDetails>(401), ProducesResponseType<ProblemDetails>(403),
-     ProducesResponseType<ProblemDetails>(404), ProducesResponseType<ProblemDetails>(409)]
+    [ProducesResponseType<TarefaDetalheDto>(200), ProducesResponseType<ProblemDetails>(401, "application/problem+json"), ProducesResponseType<ProblemDetails>(403, "application/problem+json"),
+     ProducesResponseType<ProblemDetails>(404, "application/problem+json"), ProducesResponseType<ProblemDetails>(409, "application/problem+json")]
     public async Task<ActionResult<TarefaDetalheDto>> Atualizar(int id, AtualizarTarefaDto input, CancellationToken ct)
     {
         var tarefa = await tarefas.AtualizarAsync(id, input, input.RowVersion, User.ToContexto(), ct);
@@ -52,8 +52,8 @@ public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheSto
 
     /// <summary>Exclui tarefa com a versão atual. Exige perfil Administrador.</summary>
     [HttpDelete("{id:int}"), Authorize(Roles = "Administrador")]
-    [ProducesResponseType(204), ProducesResponseType<ProblemDetails>(401), ProducesResponseType<ProblemDetails>(403),
-     ProducesResponseType<ProblemDetails>(404), ProducesResponseType<ProblemDetails>(409)]
+    [ProducesResponseType(204), ProducesResponseType<ProblemDetails>(401, "application/problem+json"), ProducesResponseType<ProblemDetails>(403, "application/problem+json"),
+     ProducesResponseType<ProblemDetails>(404, "application/problem+json"), ProducesResponseType<ProblemDetails>(409, "application/problem+json")]
     public async Task<IActionResult> Excluir(int id, [FromQuery, Required] string rowVersion, CancellationToken ct)
     {
         if (!VersaoTarefa.Valida(rowVersion)) return Problem(statusCode: 400, title: "A versão deve ser uma sequência Base64 de 8 bytes.");
@@ -66,10 +66,10 @@ public sealed class TarefasApiController(ITarefaService tarefas, IOutputCacheSto
 [ApiController, Route("api/painel")]
 public sealed class PainelController(ITarefaService tarefas) : ControllerBase
 {
-    [HttpGet, Authorize, ProducesResponseType<PainelDto>(200), ProducesResponseType<ProblemDetails>(401)]
+    [HttpGet, Authorize, ProducesResponseType<PainelDto>(200), ProducesResponseType<ProblemDetails>(401, "application/problem+json")]
     public Task<PainelDto> Ef(CancellationToken ct) => tarefas.PainelAsync(User.ToContexto(), ct);
 
-    [HttpGet("ado"), Authorize, ProducesResponseType<PainelDto>(200), ProducesResponseType<ProblemDetails>(501), ProducesResponseType<ProblemDetails>(401)]
+    [HttpGet("ado"), Authorize, ProducesResponseType<PainelDto>(200), ProducesResponseType<ProblemDetails>(501, "application/problem+json"), ProducesResponseType<ProblemDetails>(401, "application/problem+json")]
     public async Task<ActionResult<PainelDto>> Ado(CancellationToken ct)
     {
         try { return await tarefas.PainelAdoAsync(User.ToContexto(), ct); }
