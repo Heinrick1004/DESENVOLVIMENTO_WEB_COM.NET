@@ -2,7 +2,7 @@ name: Validar e empacotar Portal de Tarefas
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, experimento/ci-bloqueio-20261105]
   pull_request:
     branches: [main, master]
   workflow_dispatch:
