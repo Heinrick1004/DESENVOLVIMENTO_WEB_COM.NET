@@ -2,6 +2,14 @@
 
 O projeto permanece na estrutura existente. Esta preparação não cria o ZIP definitivo, não remove arquivos da pasta de trabalho e não modifica imagens. O fechamento ocorrerá depois da etapa visual prevista em [PLANO_CAPTURAS_FINAIS.md](PLANO_CAPTURAS_FINAIS.md).
 
+## Atualização de evidências — 05/11/2026
+
+O [run GitHub 42117773881](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881), commit `1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2`, foi reconfirmado com `success`: 55 testes .NET e 33 React aprovados, nenhum falho/ignorado, imagem Docker construída/executada com SQL/HTTPS e smoke aprovado. Os [registros sanitizados da consulta](evidencias/auditoria-final-20261105/github/execucao-aprovada.json) devem acompanhar a entrega. O artefato `portaltarefas-1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2`, ID `13456822922`, tem retenção até 12/11/2026 às 22:02:52 UTC; o estado registrado não garante disponibilidade após a expiração.
+
+O bloqueio Docker no Windows pertence ao ambiente local, e não invalida a execução no runner. A implantação efêmera de teste com SQL/HTTPS e smoke atende E4.3; o PDF não exige destino persistente/remoto. O roteiro 8 continua parcial por V3, [ensaio negativo](ENSAIO_FALHA_CI.md) remoto pendente de autorização, e E4.2, identidade federada/secret store do provedor ainda não demonstrado. A nova espera do health nativo Docker também aguarda execução remota própria. Hospedagem persistente e promoção/rollback remotos não foram realizados, sem acrescentá-los como critérios obrigatórios do PDF.
+
+O relatório `08-Entrega.md` e seu PDF devem refletir essa distinção. Os relatórios 1–7, seus PDFs e todas as imagens anteriores permanecem preservados. Nenhuma nova captura é produzida nesta auditoria.
+
 ## Arquivos essenciais
 
 | Grupo | Manter na entrega | Motivo |
@@ -43,7 +51,7 @@ Essa lista define o conteúdo da entrega futura; não autoriza apagar as pastas 
 3. Aplicar migrations/seed de forma explícita e controlada. Não copiar banco local como substituto das migrations.
 4. Compilar backend e frontend; executar os testes conforme o README. Integração SQL obrigatória não pode ser aceita como ignorada.
 5. Validar o contrato gerado e os clientes contra a API real quando o ambiente permitir.
-6. Repetir as verificações Docker/CI/CD somente em infraestrutura de teste disponível e autorizada.
+6. Usar o run aprovado como evidência do commit identificado e do ambiente efêmero de teste; validar alterações posteriores e o ensaio de falha após autorização para ações remotas. Comprovar E4.2 quando o mecanismo de segredos/identidade do provedor estiver definido; hospedagem adicional depende de autorização própria.
 7. Acrescentar as capturas finais em nova pasta e atualizar o inventário antes do ZIP definitivo.
 
 Os marcos reais do Git são preservados no repositório de trabalho. Os oito marcos anteriores à auditoria não são reconstruídos artificialmente para a entrega.

@@ -1,0 +1,20 @@
+﻿[
+    {
+        "instanteUtc":  "2026-11-05T22:16:02.6741908+00:00",
+        "command":  "npm test",
+        "exitCode":  0,
+        "log":  "frontend-testes.txt"
+    },
+    {
+        "instanteUtc":  "2026-11-05T22:16:08.7390303+00:00",
+        "command":  "npm run typecheck",
+        "exitCode":  0,
+        "log":  "frontend-typecheck.txt"
+    },
+    {
+        "instanteUtc":  "2026-11-05T22:16:13.6436591+00:00",
+        "command":  "npm run build",
+        "exitCode":  0,
+        "log":  "frontend-build.txt"
+    }
+]

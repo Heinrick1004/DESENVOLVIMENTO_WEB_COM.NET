@@ -1,0 +1,21 @@
+{
+  "consultaUtc": "2026-11-05 22:15:21 UTC",
+  "jobId": 127561862888,
+  "apiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/jobs/127561862888/logs",
+  "metodo": "Seleção de linhas de resultado; sequências de formatação ANSI removidas. Log bruto não versionado para reduzir risco de divulgação de segredos.",
+  "linhas": [
+    "2026-11-05T22:01:20.5743421Z Build succeeded.",
+    "2026-11-05T22:01:20.5744056Z     0 Warning(s)",
+    "2026-11-05T22:01:20.5744464Z     0 Error(s)",
+    "2026-11-05T22:01:56.3066277Z Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 5 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-05T22:01:56.7683601Z Testes: 55 aprovados, 0 falhos, 0 ignorados. Evidência: /home/runner/work/DESENVOLVIMENTO_WEB_COM.NET/DESENVOLVIMENTO_WEB_COM.NET/artifacts/tests/20261105T220145128Z-07bcdfe4",
+    "2026-11-05T22:02:05.2791520Z  Test Files  5 passed (5)",
+    "2026-11-05T22:02:05.2792386Z       Tests  33 passed (33)",
+    "2026-11-05T22:02:46.2809804Z #30 writing image sha256:c80953ffbbb3ff59232094808f251b33fd40375fc9d376e48130221944e1f80c done",
+    "2026-11-05T22:02:46.2810700Z #30 naming to docker.io/library/portaltarefas:1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2 done",
+    "2026-11-05T22:03:01.5991211Z SHA256 digest of uploaded artifact zip is 650797a7b10c8b54271d8d4885626f40b091ef59c251a47a404007643e711e2e",
+    "2026-11-05T22:03:02.1687018Z Artifact portaltarefas-1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2.zip successfully finalized. Artifact ID 13456822922",
+    "2026-11-05T22:03:02.1687936Z Artifact portaltarefas-1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2 has been successfully uploaded! Final size is 159303801 bytes. Artifact ID is 13456822922",
+    "2026-11-05T22:03:02.1693612Z Artifact download URL: https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881/artifacts/13456822922"
+  ]
+}

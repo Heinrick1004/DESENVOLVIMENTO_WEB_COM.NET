@@ -43,6 +43,7 @@ for (const step of steps) {
 const readiness = steps.findIndex(step => step.run?.includes('SELECT 1'));
 const integration = steps.findIndex(step => step.run?.includes('Test-Integration.ps1'));
 const smoke = steps.findIndex(step => step.run?.includes('Smoke-Test.ps1'));
+const nativeHealth = steps.findIndex(step => step.run?.includes('.State.Health.Status'));
 const save = steps.findIndex(step => step.run?.includes('docker save'));
 const upload = steps.findIndex(step => step.uses?.includes('upload-artifact') && step.if !== 'failure()');
 const publicationSteps = steps.filter(step => step.run?.includes('dotnet publish') || step.run?.includes('docker build') || step.run?.includes('docker save') || (step.uses?.includes('upload-artifact') && step.if !== 'failure()'));
@@ -71,6 +72,7 @@ const checks = {
   gatesObrigatoriosAntesDeEmpacotar: firstPublication >= 0 && Object.values(gateIndexes).every(index => index >= 0 && index < firstPublication),
   gatesObrigatoriosSemIgnorarOuPularFalhas: requiredGates.every(step => !step['continue-on-error'] && step.if === undefined) && !workflow.jobs.validar['continue-on-error'],
   smokeAntesDeSalvarImagemEPublicarArtefatos: smoke >= 0 && save > smoke && upload > save,
+  healthCheckNativoAntesDeSalvarImagem: nativeHealth > smoke && save > nativeHealth && steps[nativeHealth].if === undefined && !steps[nativeHealth]['continue-on-error'],
   publicacaoSemAlwaysOuContinueOnError: publicationSteps.length >= 4 && publicationSteps.every(step => !step['continue-on-error'] && step.if === undefined),
   composeIsoladoConfiguravel: compose.name === '${PORTAL_COMPOSE_PROJECT:-portal-tarefas-tests}',
   composeMantemConexaoExternaObrigatoria: compose.services.web.environment.ConnectionStrings__PortalTarefas.startsWith('${PORTAL_SQL_CONNECTION:?'),

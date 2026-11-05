@@ -1,14 +1,14 @@
 {
-  "instanteUtc": "2026-10-29T18:14:56.159Z",
+  "instanteUtc": "2026-11-05T22:16:45.702Z",
   "resultado": "aprovado na verificação estática",
   "comandoExecutado": "node scripts/Validate-CiStatic.mjs",
   "node": "v24.22.1",
   "workflow": ".github/workflows/ci.yml",
-  "workflowSha256": "410c9035b67115858fa7cb049013fb100cdf2a80b5f57bb01e1ffaa8d36458be",
+  "workflowSha256": "7057ed6ee6e56279643ee3ed811192fd95f7ac48bd786e96426ac482422580e6",
   "yaml": {
     "parser": "js-yaml",
     "aprovado": true,
-    "etapas": 30
+    "etapas": 31
   },
   "compose": {
     "arquivo": "compose.yaml",
@@ -21,7 +21,7 @@
     "sha256": "16511f7a2884bd14bd93e1c4c59c8f5db4eec25fc18909a01915644d9ae308b2"
   },
   "bash": {
-    "blocos": 21,
+    "blocos": 22,
     "resultados": [
       {
         "etapa": "Restaurar .NET",
@@ -127,6 +127,12 @@
       },
       {
         "etapa": "Executar a imagem real com SQL Server e HTTPS",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Confirmar Health Check nativo do contêiner",
         "comando": "bash -n < bloco run da etapa",
         "exitCode": 0,
         "aprovado": true
@@ -247,6 +253,7 @@
     "gatesObrigatoriosAntesDeEmpacotar": true,
     "gatesObrigatoriosSemIgnorarOuPularFalhas": true,
     "smokeAntesDeSalvarImagemEPublicarArtefatos": true,
+    "healthCheckNativoAntesDeSalvarImagem": true,
     "publicacaoSemAlwaysOuContinueOnError": true,
     "composeIsoladoConfiguravel": true,
     "composeMantemConexaoExternaObrigatoria": true,

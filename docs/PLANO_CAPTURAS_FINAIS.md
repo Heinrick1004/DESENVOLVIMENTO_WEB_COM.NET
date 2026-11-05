@@ -31,8 +31,10 @@ Cada item CF-01 a CF-10 permanece **pendente para a nova etapa visual**, por dec
 
 ## Registros do roteiro 8
 
-- [ ] Quando Docker estiver disponível, registrar build, execução, usuário do contêiner, portas, HTTPS, liveness/readiness e versão por comandos/logs reais. Uma eventual captura complementar só deverá ocorrer na etapa visual autorizada.
-- [ ] Quando houver GitHub remoto autorizado, registrar a URL e o resultado do workflow aprovado e do ensaio isolado de falha que bloqueia a publicação. Não apresentar validação estática como execução remota.
-- [ ] Quando houver destino CD autorizado, registrar artefato/commit, configuração externa, migrations controladas, smoke, Health Check, promoção e rollback. Não criar um destino fictício para preencher uma imagem.
+- [x] Registrar por comandos/logs a execução no runner: [run 42117773881](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881), commit `1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2`, `success` em 05/11/2026; build, execução SQL/HTTPS, usuário não privilegiado e smoke HTTP de saúde/versão/MVC/SPA. [Evidência textual](evidencias/auditoria-final-20261105/github/execucao-aprovada.json). Nenhuma captura nova foi necessária para esse registro.
+- [ ] Reproduzir localmente quando o Docker Engine estiver disponível e registrar o novo gate de `.State.Health.Status=healthy` em execução posterior. Isso não retira a aprovação do smoke HTTP anterior.
+- [ ] Após autorização para ações remotas, registrar URL/SHA/etapa reprovada do [ensaio isolado de falha](ENSAIO_FALHA_CI.md) e comprovar ausência de publicação daquele commit. O run aprovado e o ensaio negativo são evidências distintas.
+- [x] Registrar E4.3 por evidência textual: implantação de teste no ambiente efêmero do runner com SQL/HTTPS, smoke/Health Checks e SHA identificado; [etapas aprovadas](evidencias/auditoria-final-20261105/github/jobs-e-etapas.json). O PDF não exige destino permanente ou remoto.
+- [ ] Comprovar o mecanismo de identidade federada/secret store do provedor para E4.2. Caso seja escolhido um destino adicional de hospedagem, registrar sua implantação/promoção/rollback após autorização própria; permanência e produção não são novas exigências do PDF.
 
 Os cenários dependentes de infraestrutura permanecem bloqueados enquanto ela não estiver disponível. Não há ZIP definitivo nesta etapa; as capturas futuras serão acrescentadas antes do fechamento da entrega acadêmica.

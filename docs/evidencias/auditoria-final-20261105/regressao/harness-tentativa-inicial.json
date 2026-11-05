@@ -1,0 +1,10 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:19:46.6772833+00:00",
+    "natureza":  "Tentativa de harness local; nao e resultado de teste automatizado",
+    "resultado":  "Interrompida",
+    "motivo":  "Aviso npm notice em stderr tratado como NativeCommandError pelo Windows PowerShell 5",
+    "correcao":  "Harness privado passa a usar exit code de ferramentas nativas; aplicacao e suites sem alteracoes",
+    "processosPropriosEncerrados":  true,
+    "bancoPreservado":  true,
+    "testesFalhosPorEstaTentativa":  0
+}

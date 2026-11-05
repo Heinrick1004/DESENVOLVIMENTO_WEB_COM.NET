@@ -1,0 +1,11 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:19:56.8154077+00:00",
+    "fonte":  "https://localhost:8340/openapi/v1.json",
+    "openapiStatus":  200,
+    "openapiIdentico":  true,
+    "schemaIdentico":  true,
+    "openapiSha256":  "e1a0ef1647a9613bb4ece0b6898e7a6430749845dd3ec6d5e3e27c7995ff94cc",
+    "schemaSha256":  "27ec4a8eef9a725e8ac8ef101db2bb50ee74b71f53f20aabe1af07a477977f4b",
+    "arquivosVersionadosModificados":  false,
+    "tlsCliente":  "NODE_EXTRA_CA_CERTS com certificado publico local; validacao TLS preservada"
+}

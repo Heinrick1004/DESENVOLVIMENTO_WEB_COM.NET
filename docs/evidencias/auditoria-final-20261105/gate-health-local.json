@@ -1,0 +1,27 @@
+{
+  "instanteUtc": "2026-11-05T22:19:55.025Z",
+  "comando": "node .local/check-native-health-20261105.mjs",
+  "escopo": "Executa o bloco Bash real do workflow com docker e sleep substituidos por funcoes locais; nao executa um conteiner.",
+  "resultados": [
+    {
+      "estadoSimulado": "healthy",
+      "codigo": 0,
+      "manifestoProduzido": true,
+      "aprovado": true
+    },
+    {
+      "estadoSimulado": "unhealthy",
+      "codigo": 1,
+      "manifestoProduzido": false,
+      "aprovado": true
+    },
+    {
+      "estadoSimulado": "starting",
+      "codigo": 1,
+      "manifestoProduzido": false,
+      "aprovado": true
+    }
+  ],
+  "resultado": "Aprovado",
+  "limitacao": "Verificacao de fluxo local. O gate de Health Check nativo ainda precisa de uma execucao no runner com Docker real."
+}

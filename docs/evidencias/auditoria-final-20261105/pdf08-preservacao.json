@@ -1,0 +1,20 @@
+{
+  "instanteUtc": "2026-11-05T22:24:22.854091+00:00",
+  "pdf08": {
+    "fonte": "08-Entrega.md",
+    "pdf": "08-Entrega.pdf",
+    "bytes": 158633,
+    "paginas": 5,
+    "sha256": "8af776c00507fb15c73722d3f53a2b627ca9d76140cd16f494f0f5bde3ea63d0",
+    "renderer": "Chrome headless local, HTML sem dependências externas",
+    "escopo": "Somente PDF 08; nenhuma captura de tela ou alteração dos relatórios 1 a 7/imagens."
+  },
+  "sha256FonteMarkdown08": "b70f153e3dc5b35f90a2c3fe1942cd4d2c7e3520c786dec38340ef5fb36c6320",
+  "baseline": "baseline-preservacao.json",
+  "arquivosProtegidosAntes": 127,
+  "arquivosProtegidosDepois": 127,
+  "alteradosOuAusentes": [],
+  "capturasDeTelaExecutadas": 0,
+  "playwrightExecutado": false,
+  "zipCriado": false
+}

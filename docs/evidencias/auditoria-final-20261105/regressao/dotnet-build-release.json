@@ -1,0 +1,5 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:15:54.0602422+00:00",
+    "command":  "dotnet build PortalTarefas.sln -c Release --no-restore",
+    "exitCode":  0
+}

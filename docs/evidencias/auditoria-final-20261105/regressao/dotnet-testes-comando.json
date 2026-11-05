@@ -1,0 +1,8 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:16:46.9140328+00:00",
+    "command":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Test-Integration.ps1 -Configuration Release -NoBuild -Initialize -ResultsDirectory docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes",
+    "bancoExclusivo":  "PortalTarefas_Tests_Final20261105_26b194a7",
+    "conexao":  "Perfil local privado, valor omitido; autenticação integrada Windows",
+    "exitCode":  0,
+    "dados":  "Banco novo exclusivo preservado; nenhum banco ou volume existente removido."
+}

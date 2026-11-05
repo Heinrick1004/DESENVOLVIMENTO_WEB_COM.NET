@@ -1,0 +1,29 @@
+{
+  "instanteUtc": "2026-11-05T22:18:43.910890+00:00",
+  "estadoRemoto": "Pendente de autorizacao; nenhuma execucao negativa remota observada",
+  "branch": "experimento/ci-bloqueio-20261105",
+  "base": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+  "commitGatilho": "6779ffc2bab6ed0732f8e90f0959d834a73fa25b",
+  "commitFalha": "1423c195e52ad2aaa75fdcfab562ba53456899dc",
+  "commitRecuperacao": "943e944a13d39c08bc82b9bb314c13986f5674b3",
+  "resultadosLocais": {
+    "falha-controlada": {
+      "total": 1,
+      "aprovados": 0,
+      "reprovados": 1,
+      "ignorados": 0,
+      "trx": "falha-controlada.trx"
+    },
+    "recuperacao": {
+      "total": 29,
+      "aprovados": 29,
+      "reprovados": 0,
+      "ignorados": 0,
+      "trx": "recuperacao.trx"
+    }
+  },
+  "codigoSaidaTesteNegativo": 1,
+  "falhaRemovidaDaWorktree": true,
+  "mainAlterada": false,
+  "limitacao": "TRX local nao comprova bloqueio no GitHub Actions."
+}

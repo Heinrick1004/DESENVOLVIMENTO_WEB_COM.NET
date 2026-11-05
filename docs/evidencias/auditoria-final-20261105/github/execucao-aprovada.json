@@ -1,0 +1,61 @@
+{
+  "consultaUtc": "2026-11-05 22:15:21 UTC",
+  "origem": "GitHub REST API via conector GitHub; consultas GET, sem alteração remota.",
+  "repositorio": "Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET",
+  "execucao": {
+    "id": 42117773881,
+    "nome": "Validar e empacotar Portal de Tarefas",
+    "branch": "main",
+    "commit": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "status": "completed",
+    "conclusao": "success",
+    "event": "push",
+    "tentativa": 1,
+    "inicioUtc": "2026-11-05T22:00:55Z",
+    "ultimaAtualizacaoUtc": "2026-11-05T22:03:18Z",
+    "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881",
+    "apiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881"
+  },
+  "testes": {
+    "dotnet": {
+      "aprovados": 55,
+      "reprovados": 0,
+      "ignorados": 0,
+      "total": 55,
+      "origem": "Resumo Passed! e resumo de Test-Integration.ps1 no log do job 127561862888."
+    },
+    "frontend": {
+      "aprovados": 33,
+      "reprovados": 0,
+      "ignorados": 0,
+      "total": 33,
+      "arquivos": 5,
+      "origem": "Resumo Vitest no log do job 127561862888."
+    }
+  },
+  "imagem": {
+    "tag": "portaltarefas:1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "idLocal": "sha256:c80953ffbbb3ff59232094808f251b33fd40375fc9d376e48130221944e1f80c",
+    "origem": "Docker build no runner; nenhuma evidência de push a um registry."
+  },
+  "verificacoesConfirmadas": [
+    "Restore e build .NET Release: zero avisos, zero erros.",
+    "SQL Server efêmero e banco exclusivo; migrations e 55 testes obrigatórios, sem ignorados.",
+    "npm ci e auditoria, 33 testes React, typecheck e build.",
+    "OpenAPI real, geração e comparação do contrato e chamada pelo cliente TypeScript.",
+    "Build Docker com versão/label do commit e React integrado.",
+    "Execução de imagem com SQL e HTTPS; a etapa recusa UID zero.",
+    "Smoke de liveness/readiness, versão, MVC, SPA e assets aprovado.",
+    "Docker save e upload de artefato após as etapas obrigatórias."
+  ],
+  "limites": [
+    "Os valores de UID e respostas individuais do smoke foram gravados dentro do artefato; não foram extraídos do ZIP nesta consulta. A aprovação das etapas e os scripts permitem confirmar as verificações executadas.",
+    "O artefato de 159303801 bytes não foi baixado nesta consulta; metadados e resumo do log de upload foram conferidos.",
+    "Duas etapas de diagnóstico de falha foram skipped porque o job foi aprovado; isso não significa teste obrigatório ignorado.",
+    "Sucesso do runner não instala Docker no Windows local.",
+    "Esta execução não demonstra falha controlada, push GHCR, implantação em destino persistente, promoção para produção ou rollback remoto.",
+    "Este resultado refere-se ao commit 1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2; alterações posteriores precisam de nova validação aplicável."
+  ],
+  "capturasProduzidas": 0,
+  "alteracoesRemotas": 0
+}
