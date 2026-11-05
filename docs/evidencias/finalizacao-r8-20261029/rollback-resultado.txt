@@ -1,0 +1,1 @@
+﻿Dados e migrations preservados ao executar o artefato anterior; nenhum rollback de banco solicitado.

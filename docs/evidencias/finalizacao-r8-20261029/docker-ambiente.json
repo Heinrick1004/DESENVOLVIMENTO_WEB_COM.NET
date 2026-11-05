@@ -1,0 +1,135 @@
+{
+  "dataLocal": "2026-10-29",
+  "fuso": "America/Sao_Paulo",
+  "ultimaConsultaWslUtc": "2026-10-29T18:09:11.3358847+00:00",
+  "branch": "finalizacao/roteiro8-20261029",
+  "commitBase": "6e319d0421794022472ce2bb61f56bd956036bf2",
+  "composeSha256Verificado": "177669be26a17a8c75dd209818a0ef6261319c832bf1adb35822baee0688edef",
+  "estado": "CLI e Compose portáteis verificados; Engine e contêineres Linux bloqueados",
+  "sistema": {
+    "windows": "Microsoft Windows 11 Pro 26H2",
+    "build": "26300.9711",
+    "arquitetura": "64 bits",
+    "ramGiB": 13.9,
+    "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics",
+    "virtualizacaoFirmwareHabilitada": true,
+    "hypervisorPresente": true,
+    "sessaoAdministrativa": false,
+    "espacoLivreUnidadeDGiB": 283.83,
+    "slat": "Não confirmado isoladamente: CIM devolveu false enquanto havia hypervisor ativo; não foi interpretado como ausência de suporte.",
+    "recursosOpcionais": {
+      "comandos": "Get-WindowsOptionalFeature -Online -FeatureName <nome>",
+      "nomes": ["Microsoft-Windows-Subsystem-Linux", "VirtualMachinePlatform", "Microsoft-Hyper-V-All"],
+      "resultado": "A operação solicitada requer elevação.",
+      "estado": "não verificado; nenhum recurso foi habilitado"
+    },
+    "servicosAusentes": ["com.docker.service", "docker", "vmcompute", "LxssManager", "WslService"],
+    "lanmanServer": { "status": "Running", "inicializacao": "Automatic" }
+  },
+  "antesDaPreparacao": {
+    "dockerNoPath": false,
+    "desktopEncontrado": false,
+    "caminhosConsultados": [
+      "C:/Program Files/Docker/Docker/resources/bin/docker.exe",
+      "C:/Program Files/Docker/Docker/Docker Desktop.exe",
+      "C:/Program Files/Docker/Docker/cli-plugins/docker-compose.exe",
+      "C:/Program Files/Docker/Docker/resources/cli-plugins/docker-compose.exe",
+      "%LOCALAPPDATA%/Docker/Docker Desktop.exe",
+      "%LOCALAPPDATA%/Programs/DockerDesktop/Docker Desktop.exe",
+      "%LOCALAPPDATA%/Programs/DockerDesktop/resources/bin/docker.exe",
+      "%LOCALAPPDATA%/Programs/DockerDesktop/resources/cli-plugins/docker-compose.exe",
+      "C:/ProgramData/DockerDesktop"
+    ],
+    "resultadoDosCaminhos": "Todos inexistentes. Nenhum processo Docker Desktop, com.docker.backend ou dockerd foi encontrado."
+  },
+  "wsl": {
+    "executavelStub": "C:/Windows/System32/wsl.exe",
+    "instalado": false,
+    "comandos": [
+      { "comando": "wsl.exe --version", "exitCode": 1 },
+      { "comando": "wsl.exe --status", "exitCode": 50 },
+      { "comando": "wsl.exe --list --verbose", "exitCode": 1 }
+    ],
+    "stderrComum": "O Subsistema do Windows para Linux não está instalado. Você pode instalar executando 'wsl.exe --install'. Para obter mais informações, visite https://aka.ms/wslinstall",
+    "decodificacao": "stdout e stderr lidos em UTF-16; quebras de linha normalizadas nesta transcrição"
+  },
+  "preparacaoPortatil": {
+    "diretorio": ".tools/docker-portable",
+    "escopo": "Somente arquivos do workspace e variáveis do processo de verificação; sem PATH global, instalação de serviço, Desktop ou daemon.",
+    "dockerCli": {
+      "url": "https://download.docker.com/win/static/stable/x86_64/docker-29.9.2.zip",
+      "arquivoExtraido": "docker/docker.exe",
+      "arquivoLocal": ".tools/docker-portable/docker.exe",
+      "archiveSha256Local": "b2be959bfed1281ddaf665c0972cba9a62ce30c542b6bcce82f055bf8886bc7d",
+      "exeSha256Local": "dd40364e3e71395fb082d91227b76bf83adfcdab4ecc719803a0ef4579a27d24",
+      "authenticode": "NotSigned",
+      "limiteIntegridade": "Download do índice HTTPS oficial; SHA256 calculado localmente. Não foi obtido checksum independente publicado para o ZIP."
+    },
+    "compose": {
+      "url": "https://github.com/docker/compose/releases/download/v5.6.1/docker-compose-windows-x86_64.exe",
+      "metadados": "https://api.github.com/repos/docker/compose/releases/tags/v5.6.1",
+      "arquivoLocal": ".tools/docker-portable/docker-compose.exe",
+      "sha256LocalEOficial": "91b1492f0a923427651e2b955739d732ac36b8191193bf4799e62f3e3525c4cd",
+      "digestOficialConferido": true,
+      "authenticode": "NotSigned"
+    },
+    "configuracaoCli": ".tools/docker-portable/config/config.json contém somente cliPluginsExtraDirs apontando para a pasta portátil.",
+    "isolamentoConexao": "DOCKER_CONFIG local novo; DOCKER_HOST, DOCKER_CONTEXT, DOCKER_TLS_VERIFY e DOCKER_CERT_PATH removidos somente do processo. Nenhum daemon remoto foi utilizado."
+  },
+  "comandosDockerExecutados": [
+    {
+      "comando": "docker --version",
+      "exitCode": 0,
+      "stdout": "Docker version 29.9.2, build a82e528"
+    },
+    {
+      "comando": "docker compose version",
+      "exitCode": 0,
+      "stdout": "Docker Compose version v5.6.1"
+    },
+    {
+      "comando": "docker info",
+      "exitCode": 1,
+      "stdoutResumo": "Client: Version 29.9.2; Context default; Compose v5.6.1. Server sem resposta.",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/docker_engine; check if the path is correct and if the daemon is running: open //./pipe/docker_engine: The system cannot find the file specified."
+    }
+  ],
+  "composeOffline": [
+    {
+      "comando": "docker compose --env-file .tools/docker-portable/empty.env config --quiet",
+      "cenario": "Variáveis obrigatórias ausentes",
+      "exitCode": 1,
+      "resultado": "Rejeitou MSSQL_SA_PASSWORD, PORTAL_SQL_CONNECTION, PORTAL_HTTPS_CERTIFICATE_PASSWORD e PORTAL_HTTPS_CERTIFICATE_PATH ausentes."
+    },
+    {
+      "comando": "docker compose --env-file .tools/docker-portable/empty.env config --quiet",
+      "cenario": "Marcadores sintéticos fornecidos somente no ambiente do processo",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "comando": "docker compose --env-file .tools/docker-portable/empty.env config --services",
+      "cenario": "Mesmos marcadores sintéticos",
+      "exitCode": 0,
+      "stdout": "db\nweb"
+    }
+  ],
+  "limites": [
+    "Compose config valida a configuração e interpolação sem provar build, execução, certificado, conexão SQL ou Health Checks.",
+    "Nenhuma imagem foi construída, baixada para execução ou iniciada; hello-world, Docker Desktop e dockerd não foram executados.",
+    "Nenhum recurso Windows, serviço, configuração BIOS/UEFI, reinicialização ou interface gráfica foi acionado.",
+    "A instalação inicial de WSL requer autorização administrativa e pode exigir reinício; o estado do Engine continua bloqueado.",
+    "Nenhuma captura de tela foi produzida, imagem existente alterada/excluída ou instalação de Playwright realizada nesta execução."
+  ],
+  "fontesOficiais": [
+    "https://docs.docker.com/desktop/setup/install/windows-install/",
+    "https://docs.docker.com/desktop/features/wsl/",
+    "https://docs.docker.com/engine/install/binaries/",
+    "https://download.docker.com/win/static/stable/x86_64/",
+    "https://api.github.com/repos/docker/compose/releases/tags/v5.6.1",
+    "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+    "https://learn.microsoft.com/en-us/windows/wsl/install",
+    "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
+  ]
+}

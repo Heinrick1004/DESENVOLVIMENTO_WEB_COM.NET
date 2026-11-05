@@ -1,0 +1,8 @@
+{
+  "url": "https://localhost:8240/openapi/v1.json",
+  "status": 200,
+  "tls": "CA publica local, verificacao mantida",
+  "sha256Antes": "e1a0ef1647a9613bb4ece0b6898e7a6430749845dd3ec6d5e3e27c7995ff94cc",
+  "sha256Atual": "e1a0ef1647a9613bb4ece0b6898e7a6430749845dd3ec6d5e3e27c7995ff94cc",
+  "documentoSemAlteracao": true
+}

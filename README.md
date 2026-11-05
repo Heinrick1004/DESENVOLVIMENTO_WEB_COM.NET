@@ -194,7 +194,11 @@ Em configuração hierárquica de ambiente, `__` representa `:`. `PortalOptions`
 
 O Dockerfile compila React e o inclui em `wwwroot/app`, publica .NET em múltiplos estágios e executa com usuário sem privilégios. A estratégia integrada simplifica cookies e implantação para este domínio. Uma SPA em imagem separada exigiria configurar origem, proxy e sessão entre as aplicações.
 
-O `compose.yaml` declara SQL Server e Web, volumes de dados e chaves Data Protection, certificado externo e Health Checks. Configure externamente `MSSQL_SA_PASSWORD`, `PORTAL_SQL_CONNECTION`, `PORTAL_HTTPS_CERTIFICATE_PATH`, `PORTAL_HTTPS_CERTIFICATE_PASSWORD` e, se desejado, `PORTAL_IMAGE_TAG`/contas seed. A conexão interna usa host `db`, porta 1433. Os arquivos de ambiente/certificados devem permanecer fora do Git.
+O `compose.yaml` declara SQL Server e Web, volumes de dados e chaves Data Protection, certificado externo e Health Checks. Configure externamente `MSSQL_SA_PASSWORD`, `PORTAL_SQL_CONNECTION`, `PORTAL_HTTPS_CERTIFICATE_PATH`, `PORTAL_HTTPS_CERTIFICATE_PASSWORD` e `PORTAL_IMAGE_TAG` com o SHA completo para a homologação rastreável; contas seed são opcionais. A conexão interna usa host `db`, porta 1433. Os arquivos de ambiente/certificados devem permanecer fora do Git.
+
+A finalização do roteiro 8 preparou Docker CLI 29.9.2 e Compose 5.6.1 portáteis em `.tools/docker-portable`. As versões e `compose config` foram verificadas, mas `docker info` falhou porque não há Engine/WSL instalado. Portanto, as imagens e os Health Checks de contêiner continuam sem execução. O [diagnóstico e os passos manuais Windows](docs/DOCKER_WINDOWS.md) identificam o que exige administrador, reinício ou interação, sem executar essas alterações de sistema.
+
+O projeto Compose padrão agora é `portal-tarefas-tests`, com exemplo de configuração em [.env.example](.env.example). Para preservar o namespace de uma instalação anterior, `PORTAL_COMPOSE_PROJECT=portal-tarefas` mantém seus nomes de rede/volumes; não remova volumes para migrar. A homologação exige conexão para banco reservado `PortalTarefas_Tests_<sufixo>`, certificado externo e tag de imagem com o SHA completo do commit.
 
 ```powershell
 docker compose config --quiet
@@ -207,11 +211,15 @@ docker compose up -d web
 
 O CI deve provisionar um SQL Server de teste, executar migrations/integração, contrato gerado, testes e builds antes do empacotamento. Imagem e artefatos são identificados pelo commit. O workflow existente é preparação verificável; execução remota exige repositório e runner. Nenhum push/deploy remoto é realizado por esta correção.
 
-Para homologação local, `Publish-Local.ps1` recebe imagem identificada, arquivo externo de ambiente e PFX, preserva a instância anterior e chama o smoke test. Promoção: aprovar o mesmo artefato validado, mantendo tag/commit e configuração externa. Rollback: redirecionar para a imagem anterior preservada; migrations exigem avaliação própria e backup antes de mudanças incompatíveis. Não remova volumes para fazer rollback.
+Para homologação em contêiner, `Publish-Local.ps1` recebe imagem `portaltarefas:<SHA de 40 caracteres>`, confere a revisão OCI, o arquivo externo de ambiente e o PFX, preserva a instância anterior e chama o smoke test. A conexão precisa apontar para banco reservado de teste. `-InitializeDatabase` aplica migrations/seed de forma explícita; `-ResultsDirectory` recebe o manifesto sanitizado da execução. A rede padrão é `portal-tarefas-tests_default`; `-VolumeChaves` permite compartilhar as chaves entre versões. `-NomeAnterior` e `-PortaAnterior` registram comandos concretos para retorno à instância preservada.
+
+Promoção: aprovar o mesmo artefato validado, mantendo tag/commit e configuração externa. Rollback: retornar à imagem/instância anterior preservada; migrations exigem avaliação própria e backup antes de mudanças incompatíveis. Não remova volumes para fazer rollback. A validação das guardas do script não equivale a um deployment Docker executado.
 
 ## Relatórios, evidências e marcos
 
 Os arquivos 01 a 08 ficam em `docs/relatorios`. A matriz identifica página e item original do PDF, implementação, procedimento, evidência e estado. Uma atividade permanece parcial enquanto faltar uma verificação obrigatória, mesmo que todos os arquivos estejam presentes. Capturas não realizadas são pendências explícitas; não são substituídas por imagens artificiais.
+
+Nesta finalização não são produzidas novas capturas. O [plano de capturas finais](docs/PLANO_CAPTURAS_FINAIS.md) contém somente o checklist da etapa posterior e preserva as referências antigas. A [preparação da entrega](docs/ENTREGA_FINAL.md) e `scripts/Prepare-Delivery.ps1` identificam fontes/evidências essenciais e saídas restauráveis sem apagar arquivos ou criar o ZIP definitivo.
 
 Relatórios em PDF: [01 — Pipeline](docs/relatorios/01-Pipeline.pdf), [02 — MVC](docs/relatorios/02-MVC.pdf), [03 — Persistência](docs/relatorios/03-Persistencia.pdf), [04 — API](docs/relatorios/04-API.pdf), [05 — React](docs/relatorios/05-React.pdf), [06 — Identity](docs/relatorios/06-Identity.pdf), [07 — Observabilidade](docs/relatorios/07-Observabilidade.pdf) e [08 — Entrega](docs/relatorios/08-Entrega.pdf). O PDF 01 incorpora o anexo com código completo; capturas reais são incorporadas nos relatórios pertinentes.
 
@@ -226,4 +234,4 @@ O marco `auditoria/base-existente-20261028` preserva a base recebida; as correç
 - **409 na edição:** outra sessão alterou o recurso; preserve os valores digitados e recarregue a versão atual.
 - **Tipos TypeScript ausentes:** execute `Generate-Client.ps1` contra a API real e depois `npm run typecheck`.
 - **Readiness 503:** verifique SQL e a dependência HTTP opcional. Liveness pode continuar 200 porque mede a resposta do processo.
-- **Docker indisponível:** registre o bloqueio e mantenha build/execução do contêiner pendentes. Um Dockerfile existente não comprova uma imagem executada.
+- **Docker sem Engine:** versões da CLI/Compose podem funcionar mesmo sem serviço de contêiner. Consulte `docs/DOCKER_WINDOWS.md`; mantenha build/run/Health Check bloqueados até `docker info` responder com servidor Linux.

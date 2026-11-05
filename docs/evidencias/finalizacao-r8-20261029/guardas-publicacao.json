@@ -1,0 +1,20 @@
+﻿{
+    "instanteUtc":  "2026-10-29T18:14:02.0686792+00:00",
+    "procedimento":  "Invocar Publish-Local.ps1 com entradas invalidas e exigir recusa antes de Docker ou acesso ao SQL",
+    "scriptSha256":  "35D9417B18E80D959898E0BA107A8A86594E10DFF27798D90A3D46E538A4BC14",
+    "casos":  [
+                  {
+                      "caso":  "banco_sem_prefixo_de_teste",
+                      "aprovado":  true,
+                      "exitCode":  1,
+                      "recusadoAntesDeConsultarDocker":  true
+                  },
+                  {
+                      "caso":  "imagem_sem_commit_sha",
+                      "aprovado":  true,
+                      "exitCode":  1,
+                      "recusadoAntesDeConsultarDocker":  true
+                  }
+              ],
+    "limitacao":  "Testes negativos de guardas; nao executaram Docker, migrations, publicacao nem rollback."
+}

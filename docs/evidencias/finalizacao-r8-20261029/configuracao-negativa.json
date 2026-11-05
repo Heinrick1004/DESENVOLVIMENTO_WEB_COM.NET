@@ -1,0 +1,20 @@
+[
+  {
+    "cenario": "conexao_obrigatoria_ausente",
+    "exitCode": 3762504530,
+    "mensagemEsperadaPresente": true,
+    "aprovado": true
+  },
+  {
+    "cenario": "origem_invalida",
+    "exitCode": 3762504530,
+    "mensagemEsperadaPresente": true,
+    "aprovado": true
+  },
+  {
+    "cenario": "memory_proibido_em_production",
+    "exitCode": 3762504530,
+    "mensagemEsperadaPresente": true,
+    "aprovado": true
+  }
+]

@@ -1,0 +1,114 @@
+{
+  "inicioUtc": "2026-10-29T18:03:44.721435+00:00",
+  "commitBase": "6e319d0421794022472ce2bb61f56bd956036bf2",
+  "branch": "finalizacao/roteiro8-20261029",
+  "imagensExistentes": 12,
+  "relatorios1a7": 14,
+  "arquivosProtegidos": [
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/01-lista.png",
+      "sha256": "70e85cfc7f158da0fe50af2fda353fbcd31dd145fe608f19a92b868bc41407b7"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/02-detalhes.png",
+      "sha256": "0c798434e6bf90d040a5f17b3c11866c7d92d5ea038354724849f503f91a21a2"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/03-formulario-invalido.png",
+      "sha256": "fca020de64ff201e8750d2a278b81456d2ef0cbd2d45d72edadd45e7cca9d6f6"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/historico-rowversion-20261028/03-formulario-invalido.png",
+      "sha256": "aa00ea9553c4a8183181140b8a9ec1d3426424d8d2d5083b58f8ccb0bac62163"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-04-openapi.png",
+      "sha256": "ab70071fad47c1105c278d6b8a80862d9dabe6e180613db397ca9b8cdbb7bac5"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/01-idle.png",
+      "sha256": "af6ff59719041d9a8b8696e328a419a178fb2d43c8969ed3b599d0307d2ede44"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/02-loading.png",
+      "sha256": "114d6a716b03755b00d907bc9dc1192691a34b1e08375302a7ade7c4f72d83fa"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/03-empty.png",
+      "sha256": "4d7d7dec5db55a22b5333864df63d1c1ce71701987a119dfb8b77c220ceffa5f"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/04-success.png",
+      "sha256": "175734e2e12e2c252798943eeb014c5cdc65113f8e6820d5c3a1ef7eb1d9b99f"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/05-error-network.png",
+      "sha256": "3480a163f813e2e9b8671b7c247dece97f26c841fcb072a9ffd74c4ffb4c221b"
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/06-problem-details.png",
+      "sha256": "bf69c532e5f35a4552266742d873ec9235908e384dd6133322c70cfa96391a4a"
+    },
+    {
+      "arquivo": "docs/relatorios/01-Pipeline.md",
+      "sha256": "d3230081b482488d7b7be9983628be1b35ceafdae4c16ef62363029685b28717"
+    },
+    {
+      "arquivo": "docs/relatorios/01-Pipeline.pdf",
+      "sha256": "d9b7cc83eafe5f81e9319eb6305049d811bfd99158cb545c86e45209de97ce36"
+    },
+    {
+      "arquivo": "docs/relatorios/02-MVC.md",
+      "sha256": "18cb445c1a7f96fdcc7d016c750d0559dbd2277c2cb1945206c56824c6192a49"
+    },
+    {
+      "arquivo": "docs/relatorios/02-MVC.pdf",
+      "sha256": "22b59f0e0c6f2dee9367983557cee9a95ee81351a9025fa5166c6903f4d4b9e6"
+    },
+    {
+      "arquivo": "docs/relatorios/03-Persistencia.md",
+      "sha256": "8e972a04f5ffbca60b633b99144afd480490310b0f460441546706bc155c51ef"
+    },
+    {
+      "arquivo": "docs/relatorios/03-Persistencia.pdf",
+      "sha256": "9dd6c88904941cf153061cf3801901aa33b8ceac3cd3bfa3feb8463a8b76d645"
+    },
+    {
+      "arquivo": "docs/relatorios/04-API.md",
+      "sha256": "026256f635b9c6a0f3eef407091536827e5558ec0f4c61e4b12e207ab7eb10c7"
+    },
+    {
+      "arquivo": "docs/relatorios/04-API.pdf",
+      "sha256": "dab6a6e139786e51b6f6209d357a219e69f2a698dc38aa65089544bd30e027b5"
+    },
+    {
+      "arquivo": "docs/relatorios/05-React.md",
+      "sha256": "b2f5280086b8bc6d899a3a726dff7687bb2d0deb1597e5f11027ae0080f1b0c3"
+    },
+    {
+      "arquivo": "docs/relatorios/05-React.pdf",
+      "sha256": "0e4f99e2b788029d3bec05003d56a79e4d16e86d7a3128471208379761d5b937"
+    },
+    {
+      "arquivo": "docs/relatorios/06-Identity.md",
+      "sha256": "aba9c108482c1a093179630e94ef0789c52260cb20917e60bac38dc757b8b2ee"
+    },
+    {
+      "arquivo": "docs/relatorios/06-Identity.pdf",
+      "sha256": "c39e9cf685cb08d52e52213c4ec19e4ee373dfe6c4977594735694217b1517b9"
+    },
+    {
+      "arquivo": "docs/relatorios/07-Observabilidade.md",
+      "sha256": "690f49f0802ded0baa0ed96b17bacf46f0a94e2b48cce334120dd269e7af0fe6"
+    },
+    {
+      "arquivo": "docs/relatorios/07-Observabilidade.pdf",
+      "sha256": "a5852a74e1ff6893f070072446cecedc38fc2aa15f09cc150a9abbb88fb42d1f"
+    },
+    {
+      "arquivo": "src/PortalTarefas.Frontend/public/favicon.svg",
+      "sha256": "24706d2d553871d4b8b7405d9fd8b1f16e7e1ef505aead86e962b3e6eefeb0ec"
+    }
+  ],
+  "restricoes": "Nenhuma nova captura, nenhuma alteracao/exclusao de imagens; relatorios1-7 preservados; sem ZIP definitivo."
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "caso": "conexao_ausente",
+    "exitCode": 1,
+    "recusaEsperada": true,
+    "aprovado": true,
+    "processoAplicacaoIniciado": false
+  },
+  {
+    "caso": "banco_compartilhado",
+    "exitCode": 1,
+    "recusaEsperada": true,
+    "aprovado": true,
+    "processoAplicacaoIniciado": false
+  },
+  {
+    "caso": "certificado_ausente",
+    "exitCode": 1,
+    "recusaEsperada": true,
+    "aprovado": true,
+    "processoAplicacaoIniciado": false
+  }
+]

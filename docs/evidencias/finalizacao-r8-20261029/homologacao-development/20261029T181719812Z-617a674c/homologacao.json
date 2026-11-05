@@ -1,0 +1,23 @@
+﻿{
+    "instanteUtc":  "2026-10-29T18:17:19.8283748+00:00",
+    "ambiente":  "Development",
+    "bancoExclusivo":  "PortalTarefas_Tests_R8_20261029_b9604ba3",
+    "commitEsperado":  "b5194c9f41c96f79aa5bbbdca807dcf86faf1887",
+    "artefato":  "D:\\FACUL_PROJETOS\\DESENVOLVIMENTO_WEB_COM.NET\\Roteiro\\PortalTarefas\\.local\\r8-artifacts\\b5194c9f41c96f79aa5bbbdca807dcf86faf1887",
+    "assemblySha256":  "41147cddc054ba96f86a7bb4b965a50784fee0b51ffb2e2066b3071ac8cb0e3a",
+    "migrationsSolicitadas":  true,
+    "resultado":  "Aprovado",
+    "processoEncerrado":  true,
+    "semCapturasDeTela":  true,
+    "smoke":  {
+                  "Resultado":  "Aprovado",
+                  "Endereco":  "https://localhost:8240",
+                  "Versao":  "b5194c9f41c96f79aa5bbbdca807dcf86faf1887",
+                  "Liveness":  200,
+                  "Readiness":  200,
+                  "MVC":  200,
+                  "SPA":  200,
+                  "Assets":  2,
+                  "InstanteUtc":  "2026-10-29T18:17:25.3836355+00:00"
+              }
+}

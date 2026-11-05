@@ -1,0 +1,115 @@
+{
+  "instanteUtc": "2026-10-29T18:28:27.727949+00:00",
+  "arquivosProtegidos": [
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/01-lista.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/02-detalhes.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/03-formulario-invalido.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-02-mvc/historico-rowversion-20261028/03-formulario-invalido.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-04-openapi.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/01-idle.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/02-loading.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/03-empty.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/04-success.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/05-error-network.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/06-problem-details.png",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/01-Pipeline.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/01-Pipeline.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/02-MVC.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/02-MVC.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/03-Persistencia.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/03-Persistencia.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/04-API.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/04-API.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/05-React.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/05-React.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/06-Identity.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/06-Identity.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/07-Observabilidade.md",
+      "preservado": true
+    },
+    {
+      "arquivo": "docs/relatorios/07-Observabilidade.pdf",
+      "preservado": true
+    },
+    {
+      "arquivo": "src/PortalTarefas.Frontend/public/favicon.svg",
+      "preservado": true
+    }
+  ],
+  "quantidadeImagensAnterior": 12,
+  "quantidadeImagensAtual": 12,
+  "novasImagens": [],
+  "nenhumaCapturaNova": true,
+  "relatorios1a7Preservados": true,
+  "zipDefinitivoCriado": false
+}

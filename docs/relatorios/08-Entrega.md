@@ -41,9 +41,17 @@ Os [inventários .NET](../evidencias/dependencias-dotnet.json) e [npm](../eviden
 
 Para um provedor futuro, conexões/credenciais devem vir de secret store ou identidade federada; parâmetros do destino não são inventados. A promoção reutiliza a imagem já testada, mantendo commit/tag. O rollback deve voltar à imagem anterior preservada e considerar separadamente compatibilidade das migrations e backup do banco. Volumes não devem ser apagados para reverter uma aplicação.
 
-## Testes, evidências e conclusão
+## Finalização técnica sem novas capturas
 
-Resultados locais, validação de scripts/YAML, restauração da ferramenta EF, build/testes e bloqueios estão no [status de execução](../STATUS_DE_EXECUCAO.md). Sem Docker instalado, build/run/Health Check do contêiner permanecem bloqueados. Sem runner/destino executado, CI remoto e implantação permanecem não verificados.
+Nesta rodada foram preservados os sete relatórios anteriores e todas as imagens existentes. O [plano visual final](../PLANO_CAPTURAS_FINAIS.md) é apenas um checklist para execução posterior. Não foram instaladas ferramentas de captura nem executadas automações de navegador para screenshots nesta etapa.
+
+O [diagnóstico Docker Windows](../DOCKER_WINDOWS.md) e seu [registro de comandos](../evidencias/finalizacao-r8-20261029/docker-ambiente.json) comprovam Docker CLI 29.9.2 e Compose 5.6.1 portáteis. A configuração Compose rejeitou variáveis obrigatórias ausentes e aceitou marcadores sintéticos definidos somente no processo. `docker info` retornou código 1 por ausência de Engine; WSL também não está instalado e a sessão não possui elevação administrativa. Build, execução, usuário e Health Check de contêiner permanecem bloqueados até a instalação manual autorizada desses pré-requisitos.
+
+A configuração de homologação separa o projeto `portal-tarefas-tests` e exige banco reservado de teste. O namespace anterior pode ser mantido explicitamente por `PORTAL_COMPOSE_PROJECT=portal-tarefas`, preservando seus volumes. O script de publicação confere SHA completo da imagem contra a revisão OCI, valida o banco, aplica migrations apenas mediante opção explícita, compartilha chaves quando configurado e registra manifesto sanitizado e comandos de rollback. As guardas e sua execução negativa são verificações próprias; não substituem uma publicação Docker real.
+
+## Resultados consolidados e limites
+
+Resultados locais, validação de scripts/YAML, restauração da ferramenta EF, build/testes e bloqueios estão no [status de execução](../STATUS_DE_EXECUCAO.md). Sem Docker Engine instalado, build/run/Health Check do contêiner permanecem bloqueados. Sem runner/destino remoto executado, CI remoto e implantação remota permanecem não verificados.
 
 Os procedimentos e arquivos entregues tornam as próximas verificações concretas. Eles não substituem evidências de contêiner em execução ou workflow concluído; por isso o roteiro permanece parcial enquanto esses critérios obrigatórios não forem executados.
 

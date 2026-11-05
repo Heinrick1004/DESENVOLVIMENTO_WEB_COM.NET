@@ -94,4 +94,4 @@ O banco da integração deve ter nome reservado `PortalTarefas_Tests_<sufixo>` e
 
 Nenhum estado pendente nesta lista dispensa o requisito original. O relatório correspondente deve continuar explícito sobre sua limitação até haver prova de execução.
 
-Marco final da documenta??o e das evid?ncias: tag local `auditoria/entrega-local-20261029`. O artefato executado continua vinculado ao commit de implementa??o `47c5f2fe37768d16c1a009b9b15688941e04bb02`, conforme os smokes e o manifesto de hashes.
+Marco da auditoria anterior: tag local `auditoria/entrega-local-20261029`. O artefato executado naquela validação está vinculado ao commit de implementação `47c5f2fe37768d16c1a009b9b15688941e04bb02`, conforme os smokes e o manifesto de hashes preservados.

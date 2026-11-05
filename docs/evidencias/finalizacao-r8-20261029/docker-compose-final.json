@@ -1,0 +1,18 @@
+﻿{
+    "instanteUtc":  "2026-10-29T18:24:00.4972703+00:00",
+    "cli":  "Docker version 29.9.2, build a82e528",
+    "compose":  "Docker Compose version v5.6.1",
+    "dockerInfoExitCode":  1,
+    "engineDisponivel":  false,
+    "composeSemVariaveisExitCode":  1,
+    "composeComVariaveisSinteticasExitCode":  0,
+    "servicesExitCode":  0,
+    "services":  [
+                     "db",
+                     "web"
+                 ],
+    "composeSha256":  "177669be26a17a8c75dd209818a0ef6261319c832bf1adb35822baee0688edef",
+    "segredosSomenteNoProcesso":  true,
+    "buildOuContainerExecutado":  false,
+    "capturasProduzidas":  0
+}
