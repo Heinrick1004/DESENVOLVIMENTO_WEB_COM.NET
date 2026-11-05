@@ -1,0 +1,28 @@
+{
+  "consultaUtc": "2026-11-05 22:38:02 UTC",
+  "runId": 42122467632,
+  "runUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632",
+  "fonteApi": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632",
+  "workflow": "Validar e empacotar Portal de Tarefas",
+  "workflowPath": ".github/workflows/ci.yml",
+  "event": "pull_request",
+  "status": "completed",
+  "conclusion": "success",
+  "runNumber": 3,
+  "runAttempt": 1,
+  "createdAt": "2026-11-05T22:33:20Z",
+  "startedAt": "2026-11-05T22:33:20Z",
+  "updatedAt": "2026-11-05T22:36:40Z",
+  "headBranch": "auditoria/final-20261105",
+  "headSha": "bfc46abbf99737724055af555bd785939bb795b8",
+  "pullRequest": {
+    "numero": 1,
+    "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/pull/1",
+    "headSha": "bfc46abbf99737724055af555bd785939bb795b8",
+    "baseSha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "mergeCommitShaObservado": "3f4c18a0c47ba70d3a8190f4cc0437257d5d987b"
+  },
+  "shaDaImagemEArtefato": "3f4c18a0c47ba70d3a8190f4cc0437257d5d987b",
+  "explicacaoSha": "No evento pull_request, github.sha identifica o merge sintetico do PR; o head_sha da API identifica a ponta da branch. A tag da imagem e o nome do artefato confirmam o merge SHA.",
+  "semMutacoesRemotasPelaColeta": true
+}

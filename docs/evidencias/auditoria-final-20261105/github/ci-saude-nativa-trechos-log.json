@@ -1,0 +1,48 @@
+{
+  "consultaUtc": "2026-11-05 22:38:02 UTC",
+  "runId": 42122467632,
+  "runUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632",
+  "jobId": 127578083591,
+  "fonteApi": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/jobs/127578083591/logs",
+  "metodo": "Somente linhas de resultados e trechos do gate nativo foram selecionados; ANSI removido. Log bruto, variaveis e credenciais nao sao versionados.",
+  "dotnet": {
+    "falhos": 0,
+    "aprovados": 55,
+    "ignorados": 0,
+    "total": 55
+  },
+  "frontend": {
+    "arquivosDeTeste": 5,
+    "total": 33,
+    "aprovados": 33,
+    "falhos": 0,
+    "ignorados": 0,
+    "fonte": "Resumo Vitest no log remoto; ANSI, timestamps e espacos externos removidos. Todos os 33 de 33 testes e 5 de 5 arquivos foram aprovados."
+  },
+  "shaDaImagem": "3f4c18a0c47ba70d3a8190f4cc0437257d5d987b",
+  "healthNativo": {
+    "resultadoDaEtapa": "success",
+    "estadoExigido": "healthy",
+    "formaDeConfirmacao": "Inferencia declarada: a etapa remota terminou com success e seu script so retorna exit 0 apos docker inspect .State.Health.Status ser igual a healthy; unhealthy e esgotamento do prazo retornam exit 1.",
+    "valorDeInspectImpressoNoLog": false,
+    "conteudoDoManifestoLido": false,
+    "manifestoProduzidoPeloScript": "artifacts/container-health.json"
+  },
+  "linhasDeResultado": [
+    "2026-11-05T22:34:53.7368671Z Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 8 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-05T22:34:54.0276665Z Testes: 55 aprovados, 0 falhos, 0 ignorados. Evidência: /home/runner/work/DESENVOLVIMENTO_WEB_COM.NET/DESENVOLVIMENTO_WEB_COM.NET/artifacts/tests/20261105T223437392Z-94af2d15",
+    "2026-11-05T22:35:05.8741061Z  Test Files  5 passed (5)",
+    "2026-11-05T22:35:05.8742687Z       Tests  33 passed (33)",
+    "2026-11-05T22:35:55.2398850Z #30 writing image sha256:9661b337586cbc643067fe9c6da8988000ab0bb4da62ee0bb731232a6721266b done",
+    "2026-11-05T22:35:55.2399794Z #30 naming to docker.io/library/portaltarefas:3f4c18a0c47ba70d3a8190f4cc0437257d5d987b done",
+    "2026-11-05T22:36:24.9077736Z SHA256 digest of uploaded artifact zip is c8d75257563beda8cc831f91e764cf9c107e156312897fd9aae8a118461a369f",
+    "2026-11-05T22:36:25.6358664Z Artifact portaltarefas-3f4c18a0c47ba70d3a8190f4cc0437257d5d987b.zip successfully finalized. Artifact ID 13458418239",
+    "2026-11-05T22:36:25.6361030Z Artifact portaltarefas-3f4c18a0c47ba70d3a8190f4cc0437257d5d987b has been successfully uploaded! Final size is 159298190 bytes. Artifact ID is 13458418239"
+  ],
+  "linhasDoScriptDeHealth": [
+    "2026-11-05T22:36:00.5740068Z   health=$(docker inspect --format '{{.State.Health.Status}}' portal-ci-web)",
+    "2026-11-05T22:36:00.5740520Z   if [ \"$health\" = healthy ]; then",
+    "2026-11-05T22:36:00.5741675Z     printf '{\"commit\":\"%s\",\"container\":\"portal-ci-web\",\"imageId\":\"%s\",\"health\":\"%s\"}\\n' \"$GITHUB_SHA\" \"$image_id\" \"$health\" > artifacts/container-health.json",
+    "2026-11-05T22:36:00.5742754Z   if [ \"$health\" = unhealthy ]; then"
+  ]
+}

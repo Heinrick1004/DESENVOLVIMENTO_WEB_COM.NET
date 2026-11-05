@@ -58,9 +58,9 @@
   {
     "fonte": "08-Entrega.md",
     "pdf": "08-Entrega.pdf",
-    "bytes": 158633,
-    "paginas": 5,
-    "sha256": "8af776c00507fb15c73722d3f53a2b627ca9d76140cd16f494f0f5bde3ea63d0",
+    "bytes": 195717,
+    "paginas": 6,
+    "sha256": "008ce063fa9c36cafb108a3a5d6d703302ebea6dd962ac1ea384f2ff4ca5d08b",
     "renderer": "Chrome headless local, HTML sem dependências externas",
     "escopo": "Somente PDF 08; nenhuma captura de tela ou alteração dos relatórios 1 a 7/imagens."
   }

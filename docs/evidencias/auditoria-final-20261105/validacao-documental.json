@@ -1,16 +1,16 @@
 {
-  "instanteUtc": "2026-11-05T22:24:28.987809+00:00",
+  "instanteUtc": "2026-11-05T22:43:02.706780+00:00",
   "arquivosMarkdown": 18,
-  "linksLocaisVerificados": 726,
+  "linksLocaisVerificados": 773,
   "destinosAusentes": [],
   "arquivosProtegidosVerificados": 127,
   "arquivosProtegidosAlterados": [],
   "pdf08": {
-    "paginas": 5,
-    "sha256": "8af776c00507fb15c73722d3f53a2b627ca9d76140cd16f494f0f5bde3ea63d0",
-    "sha256FonteMarkdown": "b70f153e3dc5b35f90a2c3fe1942cd4d2c7e3520c786dec38340ef5fb36c6320",
+    "paginas": 6,
+    "sha256": "008ce063fa9c36cafb108a3a5d6d703302ebea6dd962ac1ea384f2ff4ca5d08b",
+    "sha256FonteMarkdown": "245e575b5bc35d1732a0b4c17cfa0fbe6b79fff012694f4be979707508e13bc2",
     "manifestoConsistente": true,
-    "titulosConferidos": 9,
+    "titulosConferidos": 11,
     "titulosAusentes": [],
     "fatosObrigatoriosAusentes": []
   },

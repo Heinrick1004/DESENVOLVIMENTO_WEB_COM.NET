@@ -1,0 +1,101 @@
+{
+  "consultaUtc": "2026-11-05 22:33:18 UTC",
+  "origem": "GitHub REST API via conector GitHub, consultas GET; nenhum comando remoto executado por este coletor.",
+  "resultadoDoEnsaio": "Aprovado: a falha intencional de teste impediu publicação. A conclusão failure do workflow é o resultado esperado deste cenário.",
+  "execucao": {
+    "id": 42122062762,
+    "nome": "Validar e empacotar Portal de Tarefas",
+    "branch": "experimento/ci-bloqueio-20261105",
+    "commit": "1423c195e52ad2aaa75fdcfab562ba53456899dc",
+    "status": "completed",
+    "conclusao": "failure",
+    "evento": "push",
+    "tentativa": 1,
+    "inicioUtc": "2026-11-05T22:30:28Z",
+    "ultimaAtualizacaoUtc": "2026-11-05T22:31:57Z",
+    "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122062762",
+    "apiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122062762"
+  },
+  "falhaEsperada": {
+    "jobId": 127576694925,
+    "etapa": "Aplicar migrations e executar testes sem ignorados",
+    "teste": "PortalTarefas.Tests.CiPublicationGateTests.FalhaControladaDeveInterromperPublicacao",
+    "infraestruturaAnteriorAprovada": true,
+    "exitCode": 1
+  },
+  "testesDotnet": {
+    "total": 56,
+    "aprovados": 55,
+    "reprovados": 1,
+    "reprovadosIntencionais": 1,
+    "ignorados": 0,
+    "origem": "Resumo de dotnet test e Test-Integration.ps1 nos logs do job."
+  },
+  "frontend": {
+    "executado": false,
+    "motivo": "Etapas posteriores à reprovação .NET ficaram skipped, conforme o comportamento esperado do ensaio; não são testes executados/ignorados."
+  },
+  "publicacao": {
+    "etapas": [
+      {
+        "name": "Publicar aplicação em pasta",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 22
+      },
+      {
+        "name": "Criar imagem identificada pelo commit",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 23
+      },
+      {
+        "name": "Executar a imagem real com SQL Server e HTTPS",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 25
+      },
+      {
+        "name": "Validar Health Checks, MVC, SPA e versão da imagem",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 26
+      },
+      {
+        "name": "Salvar imagem somente após o smoke test aprovado",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 27
+      },
+      {
+        "name": "Preservar artefatos após testes e smoke aprovados",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 28
+      }
+    ],
+    "artefatoPublicavelEsperado": "portaltarefas-1423c195e52ad2aaa75fdcfab562ba53456899dc",
+    "artefatoPublicavelPresente": false,
+    "artefatosObservados": [
+      {
+        "id": 13458922164,
+        "nome": "diagnostico-1423c195e52ad2aaa75fdcfab562ba53456899dc",
+        "bytes": 66567,
+        "digest": "sha256:69e5a1cdb7abe4f0708248b264a51c7eb60cd66611dd8e69d8670ee4585f6f6e",
+        "expiraUtc": "2026-11-12T22:31:44Z",
+        "natureza": "Diagnóstico de falha, não artefato publicável"
+      }
+    ]
+  },
+  "recuperacao": {
+    "estado": "Aguardar execução de reversão já preparada em commit943e944a13d39c08bc82b9bb314c13986f5674b3; resultado será registrado separadamente.",
+    "testeIntencionalEmMain": false
+  },
+  "limites": [
+    "Consulta realizada após a execução terminar; somente artefato diagnóstico presente.",
+    "A reprovação intencional é separada das suítes normais e não representa defeito de negócio.",
+    "O ensaio usa o workflow do commit experimental derivado da base aprovada; gate nativo Docker foi alterado separadamente na branch de auditoria.",
+    "A execução de recuperação e a nova validação da branch de auditoria têm evidências próprias."
+  ],
+  "capturasProduzidas": 0
+}
