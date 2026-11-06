@@ -2,6 +2,18 @@
 
 **Disciplina:** Desenvolvimento Web com .NET — UNIP. **Fonte:** Roteiros.pdf, páginas 24–26. **Consolidação:** 05/11/2026, com preservação das evidências de outubro.
 
+## Fechamento adicional de 06/11/2026
+
+**Estado: entrega preparada com pendências.** A aplicação existente foi preservada. A regressão nova aprovou 55 testes .NET com SQL exclusivo e 33 React, zero falhos/ignorados; o restore/build final ficou com zero avisos e erros. Seed repetido, contrato HTTPS/cliente gerado, CSRF/login/criação/logout e smoke do mesmo artefato em Development/Production passaram. [Evidências novas](../STATUS_DE_EXECUCAO.md) e [12 capturas reais](../PLANO_CAPTURAS_FINAIS.md) identificam versões, comandos e limites. Os PDFs 02/04/05 incorporam as novas imagens; os demais relatórios técnicos foram preservados.
+
+E4.2 foi implementado com o secret store nativo GitHub Actions: `PORTAL_CI_CERTIFICATE_PASSWORD` é obrigatório para gerar e abrir o PFX HTTPS do contêiner de teste, sem fallback. Checkout não persiste credenciais e `GITHUB_TOKEN` conserva `contents: read`. Não houve criação de provedor fictício, PAT, GHCR ou hospedagem pública. A [decisão técnica e procedimento](../E4_2_SEGREDOS.md) detalham as alternativas. A checagem local do bloco e a validação estática não comprovam consumo do cofre GitHub: configurar o secret na conta e executar o workflow enviado ainda falta. R8-17 está implementado sem execução remota.
+
+O [CI 42123968355](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42123968355) foi reconsultado e está aprovado para o head remoto `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`, testado no merge sintético `d59527f578882c83c87e58cc5fafa6aa42c7787b`. Docker/SQL/HTTPS, usuário não privilegiado, smoke/saúde nativa e upload passaram. O [PR #1](../REVISAO_PR_1.md) continua draft, aberto e sem conflitos; `main` segue em `1da2eea`. Novas alterações locais ainda não têm CI remoto. Não houve push ou merge; o ensaio negativo anterior continua válido, sem alterar a ordem de publicação.
+
+Os 248 requisitos foram conferidos: 232 concluídos/verificados, 13 não aplicáveis fundamentados, duas limitações históricas e um implementado sem execução remota. O pacote acadêmico inclui fontes, testes, migrations, contratos, scripts, oito PDFs e evidências, conforme [entrega final](../ENTREGA_FINAL.md); inventário SHA256, inspeção de segurança, extração e restore/build da cópia são verificações separadas da compactação. O estado global permanece parcial por E4.2/CI próprio e limitações históricas, sem declarar 100% ou pronto para entrega.
+
+As seções seguintes preservam os resultados e as decisões da rodada de 05/11 e de outubro. Afirmações históricas de ausência de capturas/ZIP referem-se àquelas rodadas; não substituem este fechamento adicional.
+
 ## Objetivo, introdução e ferramentas
 
 Separar código/configuração, empacotar API e frontend e impedir publicação de uma versão que falhe nas verificações. A implementação utiliza arquivos por ambiente, User Secrets/variáveis externas, Docker multi-stage, Compose, GitHub Actions e scripts PowerShell.
@@ -86,7 +98,7 @@ Na página 25, E4 exige imagem vinculada ao commit, identidade federada **ou** s
 
 O ambiente efêmero do runner implantou a imagem com SQL Server e HTTPS, verificou saúde, executou smoke e identificou a versão pelo SHA. Essa execução atende **E4.3, implantação em ambiente de teste**; a homologação local atual do mesmo artefato reforça a verificação. O PDF não determina que o ambiente seja permanente ou remoto. Não houve hospedagem persistente, promoção para produção ou rollback remoto; esses cenários não são apresentados como executados nem transformados em exigências adicionais. **E4.2, identidade federada ou secret store do provedor, continua pendente**, pois a configuração externa e as senhas efêmeras do CI não demonstram esse mecanismo. A estratégia de promoção/retorno e os scripts estão implementados; a promoção reutiliza exatamente a imagem validada, sem reconstruí-la.
 
-## Finalização técnica sem novas capturas
+## Histórico de 05/11 — finalização sem novas capturas
 
 Nesta rodada foram preservados os sete relatórios anteriores e todas as imagens existentes. O [plano visual final](../PLANO_CAPTURAS_FINAIS.md) é apenas um checklist para execução posterior. Não foram instaladas ferramentas de captura nem executadas automações de navegador para screenshots nesta etapa.
 

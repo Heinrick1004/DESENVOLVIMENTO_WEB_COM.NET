@@ -1,0 +1,14 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:42:55.1671372+00:00",
+    "origem":  "Mensagem explícita do usuário nesta sessão",
+    "segredo":  "PORTAL_CI_CERTIFICATE_PASSWORD",
+    "configuracao":  "Usuário confirmou que está criado; valor não solicitado nem lido",
+    "autorizado":  [
+                       "Commit local das correções revisadas",
+                       "Push na branch auditoria/final-20261105",
+                       "Execução e acompanhamento do CI",
+                       "Atualização das evidências/documentação e pacote"
+                   ],
+    "mergeAutorizado":  false,
+    "publicacaoExternaDoZipAutorizada":  false
+}

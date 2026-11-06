@@ -2,11 +2,14 @@
 **/obj/
 **/node_modules/
 **/dist/
+**/__pycache__/
+*.py[cod]
 .tools/
 .local/
 .nuget/
 TestResults/
 artifacts/
+docs/INVENTARIO_ENTREGA.json
 playwright-report/
 *.user
 *.suo

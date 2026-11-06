@@ -1,5 +1,58 @@
 # Estado de execução — Portal de Tarefas
 
+## Fechamento de 06/11/2026 — entrega preparada com pendências
+
+Fonte acadêmica relida: `Roteiros.pdf`, 26 páginas. A revisão confirmou os 248 IDs e a correspondência dos 244 itens dos roteiros às páginas indicadas. A implementação existente foi preservada. A versão de origem é `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`, branch `auditoria/final-20261105`, com alterações locais posteriores em CI, scripts, documentação e evidências identificadas pelo inventário SHA256. Não se apresenta o SHA de origem como commit que já inclua essas alterações.
+
+| Roteiro | Requisitos concluídos e verificados | Outros estados | Situação |
+|---|---:|---|---|
+| 1 — Pipeline | 30 | — | Verificado |
+| 2 — MVC | 27 | 2 não aplicáveis fundamentados | Verificado, novas capturas reais |
+| 3 — Persistência | 30 | 1 não aplicável fundamentado | Verificado com SQL real |
+| 4 — API | 29 | 2 não aplicáveis fundamentados | Verificado, contrato real e Swagger |
+| 5 — React | 29 | 2 não aplicáveis fundamentados | Verificado, seis estados capturados |
+| 6 — Identity | 29 | 2 não aplicáveis fundamentados | Verificado |
+| 7 — Observabilidade | 28 | 2 não aplicáveis fundamentados | Verificado |
+| 8 — Entrega | 28 | 2 não aplicáveis; R8-17 implementado sem execução remota | Parcial por E4.2 |
+
+Nos 248 requisitos há **232 concluídos e verificados, 13 não aplicáveis fundamentados, 2 limitações históricas (G-02/G-03) e 1 implementado sem execução remota (R8-17)**. Não se considera 248/248 concluídos. Os marcos Git anteriores não podem ser recriados para eliminar a limitação histórica.
+
+| Validação nova | Aprovados | Reprovados | Ignorados | Bloqueados |
+|---|---:|---:|---:|---:|
+| Suíte .NET completa, SQL/Identity/CSRF/concorrência/auditoria/observabilidade | 55 | 0 | 0 | 0 |
+| Vitest, cinco arquivos | 33 | 0 | 0 | 0 |
+| Docker local | — | — | — | 1: Engine ausente |
+| CI da alteração de secret store | — | — | — | 1: configuração externa e envio autorizado |
+
+Restore/build Release foram aprovados. A primeira tentativa no sandbox não acessou SQL/NuGet; não executou os testes. Após permitir o acesso, a suíte SQL passou. Um restore adicional atualizou a informação NuGet e o build final ficou com **zero avisos e zero erros**. Os logs da tentativa com NU1900 permanecem identificados. Não se desabilitou auditoria de dependências. `npm ci`, typecheck, build React e geração do cliente passaram; `npm audit` informou zero vulnerabilidades.
+
+Evidências: [resumo SQL](evidencias/finalizacao-20261106/backend/testes/20261106T232448331Z-892afee0/summary.json), [restore rechecado](evidencias/finalizacao-20261106/backend/restore-recheck.txt), [build final](evidencias/finalizacao-20261106/backend/build-release-recheck.txt), [frontend](evidencias/finalizacao-20261106/frontend/resumo.json), [contrato real](evidencias/finalizacao-20261106/regressao/contrato-real.json), [seed repetido](evidencias/finalizacao-20261106/regressao/seed-idempotente.json) e [homologação HTTPS](evidencias/finalizacao-20261106/regressao/homologacao-local.json).
+
+SQL foi validado em banco novo exclusivo; seed/homologação e capturas usaram outro banco novo. Duas inicializações mantiveram três tarefas, três auditorias, duas roles, dois usuários sintéticos e três migrations. O cliente TypeScript realizou leitura, CSRF/login, criação 201, detalhe 200 e logout 204 com validação TLS. As suítes obrigatórias verificam CRUD, 400/401/403/404/409, visibilidade, concorrência, auditoria transacional e observabilidade. O mesmo artefato passou smoke Development/Production com live/ready/MVC/SPA 200 e versão exata; Swagger/OpenAPI 200 em Development e 404 em Production.
+
+Foram produzidas **12 novas capturas reais**: quatro MVC, duas Swagger e seis React. O [manifesto](evidencias/capturas-finais/2026-11-06T23-29-32-812Z/manifest.json) identifica SHA de origem, mudanças locais, versão servida, banco, navegador, cenários e hashes. Idle é quadro pausado antes do efeito; loading e erro usam controle de rede declarado. Empty/success e Problem Details usam respostas reais do servidor, sem substituição de corpos ou DOM. Nenhum cadastro inválido foi gravado. Imagens anteriores foram preservadas.
+
+## GitHub, Docker e E4.2
+
+A reconsulta confirmou o [CI 42123968355](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42123968355), `success`, com 55 .NET + 33 React aprovados e Docker/SQL/HTTPS/smoke/saúde nativa/save/upload aprovados. O head remoto é `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`; o CI do PR executou o merge sintético `d59527f578882c83c87e58cc5fafa6aa42c7787b`. Isso não comprova as alterações locais seguintes. [Revisão do PR](REVISAO_PR_1.md) e [consulta sanitizada](evidencias/finalizacao-20261106/github/estado-remoto.json) registram os limites.
+
+PR #1: aberto, rascunho, sem conflitos na consulta; `main` permanece em `1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2`. Não houve push, merge ou publicação externa nesta finalização. Os runs original, negativo e recuperação foram reconsultados. O [ensaio negativo](ENSAIO_FALHA_CI.md) continua válido: a ordem dos gates de publicação foi preservada, sem repetir uma falha artificial.
+
+E4.2 foi implementado com o Actions Secret obrigatório `PORTAL_CI_CERTIFICATE_PASSWORD`, consumido para o PFX HTTPS da imagem de teste, sem fallback; ausência, tamanho insuficiente ou quebra de linha interrompem a entrega. O checkout não persiste credenciais e o token mantém `contents: read`. O [procedimento exato](E4_2_SEGREDOS.md) descreve a configuração na conta e o critério de prova. A validação estática e os cenários locais do bloco não comprovam o cofre remoto. R8-17 fica **implementado sem execução**, até configurar o secret, autorizar envio e conferir novo CI do commit correspondente. Não é necessária uma nuvem fictícia, GHCR ou implantação pública.
+
+## Pacote e encerramento
+
+O pacote acadêmico é preparado em `artifacts/entrega/UNIP_Desenvolvimento_Web_NET_PortalTarefas_Entrega_Final.zip`, com fontes, migrations, testes, workflow, scripts, contratos, configurações de exemplo, oito PDFs, Markdown e evidências. O [procedimento de entrega](ENTREGA_FINAL.md) especifica seleção, inventário, inspeção, extração e validação da cópia. O hash/tamanho efetivos e a validação do arquivo ficam nos relatórios externos ao ZIP, evitando autorreferência. A existência do pacote não transforma E4.2 ou um CI anterior em aprovação da versão local final.
+
+**Estado: ENTREGA PREPARADA COM PENDÊNCIAS.** Restam a comprovação remota de E4.2, CI próprio das novas alterações e, apenas quando autorizado, integração do PR e CI da `main`. G-02/G-03 continuam limitações históricas explícitas. A reprodução Docker neste Windows depende de Engine Linux/WSL; a execução remota anterior está comprovada para seus SHAs.
+
+---
+
+## Registro histórico preservado — consolidação de 05/11/2026
+
+O texto a seguir registra o estado e as execuções da rodada anterior. Expressões como “sem novas capturas”, “pendente” ou “CI atualizado” nesse histórico referem-se àquela data; o fechamento vigente está acima.
+
+
 Consolidação documental: 05/11/2026, America/Sao_Paulo. Fonte acadêmica: `Roteiros.pdf`, 26 páginas, com releitura das páginas 24–26. Os registros preservam a data real de cada execução, inclusive as evidências de 28–29/10. O estado individual de cada exigência está na [matriz de requisitos](MATRIZ_DE_REQUISITOS.md); este arquivo consolida execuções, evidências e bloqueios.
 
 ## Critério de classificação

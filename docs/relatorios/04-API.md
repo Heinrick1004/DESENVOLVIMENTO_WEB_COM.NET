@@ -51,3 +51,11 @@ A implementação e a geração são verificadas separadamente. A atividade só 
 O cliente gerado executou leituras reais sobre SQL Server via HTTPS, com 200 para página e detalhe. Um segundo fluxo obteve CSRF, autenticou, renovou CSRF, criou tarefa com 201, leu detalhes com 200 e encerrou sessão com 204. Os logs são `frontend-cliente-sql.txt` e `frontend-cliente-autenticado.txt`; os valores de cookies/tokens/credenciais não foram copiados para a evidência. O Node validou o certificado com a CA pública local configurada para o processo.
 
 O [registro HTTP final](../evidencias/http-contrato.json) preserva os corpos reais dos quatro casos exigidos: lista 200, página vazia 200, validação 400 e recurso inexistente 404. O contrato final inclui exemplos de cadastro/criação/validação e o esquema do cabeçalho CSRF. Em Production, [OpenAPI e Swagger responderam 404](../evidencias/production-documentacao-restrita.json), confirmando a restrição ao ambiente apropriado.
+
+## Validação final de 06/11/2026
+
+A homologação HTTPS repetiu a leitura real do contrato e os clientes de leitura/autenticado. O OpenAPI servido e os tipos regenerados permaneceram idênticos aos arquivos versionados; a [regeneração do cliente](../evidencias/finalizacao-20261106/frontend/cliente-geracao.json) preserva os hashes. Após 55 testes .NET e 33 React aprovados, a Swagger UI foi recapturada em Development: visão das operações e bloco GET `/api/tarefas` com parâmetros/respostas carregados. A [evidência definitiva](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/manifest.json) registra o binário `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`, SQL exclusivo, URL local e hashes. Não foram inseridas credenciais na Swagger UI. Os registros e a imagem anteriores permanecem históricos.
+
+![06/11 — operações reais da Swagger UI](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r4-01-swagger-operacoes.png)
+
+![06/11 — contrato GET tarefas com parâmetros e respostas carregados](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r4-02-swagger-contrato.png)

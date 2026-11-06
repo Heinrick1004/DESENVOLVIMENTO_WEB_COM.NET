@@ -1,0 +1,52 @@
+{
+  "observedAtUtc": "2026-11-06 23:31:08 UTC",
+  "script": "scripts/Verify-Delivery.py",
+  "commands": [
+    "python scripts/Verify-Delivery.py --self-test",
+    "python -m py_compile scripts/Verify-Delivery.py"
+  ],
+  "selfTest": "passed",
+  "checksExecuted": [
+    "Rejeição de path traversal antes de criar pasta de saída",
+    "Rejeição de caminhos absolutos, Windows reservados, barra invertida e symlinks",
+    "Rejeição de duplicação de nomes com variação de caixa",
+    "Identificação de arquivos privados e caches",
+    "Detecção de token sintético e senha literal sintética",
+    "Referências externas e geração aleatória não classificadas como credencial literal",
+    "Baseline só aceita hash de linha exato e justificativa de falso positivo",
+    "Baseline não suprime tokens/chaves",
+    "Recusa de pasta de saída existente"
+  ],
+  "fixture": {
+    "nature": "ZIP temporário de fontes reais selecionadas para exercitar o verificador; não é o pacote definitivo",
+    "result": "passed",
+    "crcAndExtraction": true,
+    "requiredFiles": true,
+    "inventoryMatches": true,
+    "eightReadablePdfs": true,
+    "finalManifestCaptures": 12,
+    "migrationsPresent": true,
+    "unreviewedSecurityFindings": 0,
+    "pdfReader": "PyPDF2 3.0.1",
+    "pdfPages": {
+      "01-Pipeline": 9,
+      "02-MVC": 6,
+      "03-Persistencia": 3,
+      "04-API": 4,
+      "05-React": 8,
+      "06-Identity": 2,
+      "07-Observabilidade": 2,
+      "08-Entrega": 6
+    }
+  },
+  "sourceScan": {
+    "scope": "Arquivos textuais atuais selecionados pelo Git, inclusive logs UTF-16; PDFs verificados no fixture",
+    "unreviewedFindings": 0
+  },
+  "limits": [
+    "O pacote definitivo precisa passar por uma execução própria do verificador.",
+    "Restore/build/testes do projeto extraído são verificados separadamente.",
+    "Leitura PDF confirma estrutura/páginas/texto; revisão visual é independente.",
+    "Busca de padrões conhecidos não garante matematicamente ausência de segredos."
+  ]
+}

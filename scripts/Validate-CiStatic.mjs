@@ -65,7 +65,12 @@ const firstPublication = steps.findIndex(step => publicationSteps.includes(step)
 const requiredGates = Object.values(gateIndexes).filter(index => index >= 0).map(index => steps[index]);
 const sdkStep = steps.find(step => step.uses?.startsWith('actions/setup-dotnet@'));
 const sdk = JSON.parse(await fs.readFile(path.join(root, 'global.json'), 'utf8')).sdk.version;
+const certificateStep = steps.find(step => step.run?.includes('PORTAL_CI_CERTIFICATE_PASSWORD'));
 const checks = {
+  tokenSomenteLeitura: JSON.stringify(workflow.permissions) === JSON.stringify({ contents: 'read' }),
+  checkoutSemCredencialPersistida: steps.find(step => step.uses?.startsWith('actions/checkout@'))?.with?.['persist-credentials'] === false,
+  certificadoRecebeActionsSecret: certificateStep?.env?.PORTAL_CI_CERTIFICATE_PASSWORD === '${{ secrets.PORTAL_CI_CERTIFICATE_PASSWORD }}',
+  secretObrigatorioSemFallback: Boolean(certificateStep?.run?.includes('${#PORTAL_CI_CERTIFICATE_PASSWORD}') && certificateStep.run.includes('exit 1') && !certificateStep.run.includes('openssl rand')),
   gatilhosPullRequestEBranchPrincipal: Boolean(workflow.on?.pull_request?.branches?.includes('main') && workflow.on?.push?.branches?.includes('main')),
   sdkExplicitoIgualGlobalJson: sdkStep?.with?.['dotnet-version'] === sdk,
   sqlProntoAntesDeMigrationsETestes: readiness >= 0 && integration > readiness,
@@ -103,7 +108,9 @@ const report = {
     'Esta evidência não comprova build da imagem, Health Check do contêiner, upload de artefatos ou implantação.',
   ],
 };
-const target = path.join(root, 'docs/evidencias/ci-validacao-estatica.json');
+const outputIndex = process.argv.indexOf('--output');
+const target = path.resolve(root, outputIndex >= 0 ? process.argv[outputIndex + 1] : 'docs/evidencias/ci-validacao-estatica.json');
+if (!target.startsWith(root + path.sep)) throw new Error('A evidência deve ficar dentro do projeto.');
 await fs.mkdir(path.dirname(target), { recursive: true });
 await fs.writeFile(target, JSON.stringify(report, null, 2) + '\n', 'utf8');
 console.log(`YAML: ${steps.length} etapas; Bash: ${bashResults.length} blocos; PowerShell: ${powershellResults.length} scripts e ${powershellBlocks.length} blocos. ${report.resultado}.`);

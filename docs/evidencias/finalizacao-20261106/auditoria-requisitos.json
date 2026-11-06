@@ -1,0 +1,1968 @@
+{
+  "instanteUtc": "2026-11-06T23:26:41.278715+00:00",
+  "natureza": "Inspe??o acad?mica inicial de 06/11/2026, anterior ? consolida??o e ao pacote final. Preservar os estados observados; a valida??o documental final registra altera??es posteriores.",
+  "gitObservado": {
+    "commitObservado": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+    "branchObservada": "auditoria/final-20261105",
+    "limite": "Os hashes descrevem os arquivos atuais; o SHA Git não incorpora alterações não commitadas."
+  },
+  "fonteAcademica": {
+    "executada": true,
+    "fonteExterna": "D:\\FACUL_PROJETOS\\DESENVOLVIMENTO_WEB_COM.NET\\Roteiros.pdf",
+    "sha256": "43253f1fcd4e6b04ac0c628ceb5094e4547302ec561368f42c53f174d7107384",
+    "paginas": 26,
+    "textosRoteirosConferidos": 244,
+    "divergencias": [],
+    "itensGerais": "G-01 a G-04 são sínteses da página 2 e exigem revisão humana.",
+    "copiadoParaEntrega": false
+  },
+  "matrizObservada": {
+    "arquivo": "docs/MATRIZ_DE_REQUISITOS.md",
+    "sha256": "aa876e0036b22a49ddf912d72ed6a91e06e6e1e6e0e99cb20398e7b5bb69ab6a",
+    "quantidade": 248,
+    "idsUnicos": 248,
+    "idsDuplicados": [],
+    "estadosDesconhecidos": [],
+    "estados": {
+      "Concluído e verificado": 232,
+      "Limitação histórica": 2,
+      "Não aplicável": 13,
+      "Pendente": 1
+    },
+    "estadosPorRoteiro": {
+      "G": {
+        "Concluído e verificado": 2,
+        "Limitação histórica": 2
+      },
+      "R1": {
+        "Concluído e verificado": 30
+      },
+      "R2": {
+        "Concluído e verificado": 27,
+        "Não aplicável": 2
+      },
+      "R3": {
+        "Concluído e verificado": 30,
+        "Não aplicável": 1
+      },
+      "R4": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R5": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R6": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R7": {
+        "Concluído e verificado": 28,
+        "Não aplicável": 2
+      },
+      "R8": {
+        "Concluído e verificado": 28,
+        "Pendente": 1,
+        "Não aplicável": 2
+      }
+    },
+    "naoConcluidos": [
+      {
+        "id": "G-02",
+        "paginaItem": "2 / Verificação",
+        "estado": "Limitação histórica"
+      },
+      {
+        "id": "G-03",
+        "paginaItem": "2 / Verificação",
+        "estado": "Limitação histórica"
+      },
+      {
+        "id": "R8-17",
+        "paginaItem": "25 / E4.2",
+        "estado": "Pendente"
+      }
+    ],
+    "limite": "Classificações são contadas da matriz; sua veracidade depende das evidências de execução, não deste validador."
+  },
+  "achados": [
+    {
+      "item": "E4.2 / R8-17",
+      "pagina": 25,
+      "exigencia": "Usar identidade federada ou secret store do provedor, evitando credenciais longas quando poss?vel.",
+      "interpretacao": "O documento permite secret store e n?o exige provedor espec?fico, OIDC, GitHub Environments, GHCR ou hospedagem persistente.",
+      "alternativa": "GitHub Actions Secrets pode armazenar o segredo de senha do certificado usado no ambiente de teste. A execu??o deve demonstrar consumo do segredo na cria??o do PFX e no smoke do cont?iner.",
+      "limite": "Permiss?es m?nimas do GITHUB_TOKEN e gera??o de senhas ef?meras, isoladamente, n?o demonstram uso de secret store. Configura??o implementada sem execu??o n?o permite declarar o requisito verificado."
+    },
+    {
+      "item": "G-02 / G-03",
+      "estado": "Limita??o hist?rica",
+      "fundamento": "A p?gina 2 exige vers?o anterior execut?vel e branch/tag antes de cada atividade. A base recebida n?o comprova os oito marcos passados. O hist?rico real deve ser preservado; novos marcos n?o podem provar procedimentos retroativos."
+    },
+    {
+      "item": "Roteiros 1 a 7",
+      "resultado": "Conte?do e refer?ncias coerentes com os artefatos atuais; altera??es t?cnicas desnecess?rias. Relat?rios 02/04/05 devem incorporar ou referenciar as novas capturas quando produzidas."
+    },
+    {
+      "item": "Documenta??o de finaliza??o",
+      "resultado": "README, status, entrega final, plano de capturas e relat?rio 08 precisam registrar as novas execu??es, capturas e ZIP. A restri??o antiga a novas capturas foi substitu?da pela autoriza??o do pedido atual."
+    },
+    {
+      "item": "Hist?ricos",
+      "resultado": "docs/evidencias/validacao-documental.json cont?m contagens de uma etapa anterior e deve permanecer como hist?rico. A confer?ncia atual recebe outro caminho."
+    }
+  ],
+  "linksNaInspecao": {
+    "arquivosMarkdown": 21,
+    "linksLocaisVerificados": 778,
+    "destinosAusentes": [],
+    "limite": "Confere arquivos locais; não acessa URLs externas nem valida âncoras internas."
+  },
+  "pdfsNaInspecao": [
+    {
+      "fonte": "docs/relatorios/01-Pipeline.md",
+      "pdf": "docs/relatorios/01-Pipeline.pdf",
+      "sha256FonteMarkdown": "d3230081b482488d7b7be9983628be1b35ceafdae4c16ef62363029685b28717",
+      "bytes": 146115,
+      "paginas": 9,
+      "sha256": "d9b7cc83eafe5f81e9319eb6305049d811bfd99158cb545c86e45209de97ce36",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/02-MVC.md",
+      "pdf": "docs/relatorios/02-MVC.pdf",
+      "sha256FonteMarkdown": "18cb445c1a7f96fdcc7d016c750d0559dbd2277c2cb1945206c56824c6192a49",
+      "bytes": 311809,
+      "paginas": 6,
+      "sha256": "22b59f0e0c6f2dee9367983557cee9a95ee81351a9025fa5166c6903f4d4b9e6",
+      "titulosConferidos": 8,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/03-Persistencia.md",
+      "pdf": "docs/relatorios/03-Persistencia.pdf",
+      "sha256FonteMarkdown": "8e972a04f5ffbca60b633b99144afd480490310b0f460441546706bc155c51ef",
+      "bytes": 107493,
+      "paginas": 3,
+      "sha256": "9dd6c88904941cf153061cf3801901aa33b8ceac3cd3bfa3feb8463a8b76d645",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/04-API.md",
+      "pdf": "docs/relatorios/04-API.pdf",
+      "sha256FonteMarkdown": "026256f635b9c6a0f3eef407091536827e5558ec0f4c61e4b12e207ab7eb10c7",
+      "bytes": 205281,
+      "paginas": 4,
+      "sha256": "dab6a6e139786e51b6f6209d357a219e69f2a698dc38aa65089544bd30e027b5",
+      "titulosConferidos": 6,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/05-React.md",
+      "pdf": "docs/relatorios/05-React.pdf",
+      "sha256FonteMarkdown": "b2f5280086b8bc6d899a3a726dff7687bb2d0deb1597e5f11027ae0080f1b0c3",
+      "bytes": 371388,
+      "paginas": 8,
+      "sha256": "0e4f99e2b788029d3bec05003d56a79e4d16e86d7a3128471208379761d5b937",
+      "titulosConferidos": 6,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/06-Identity.md",
+      "pdf": "docs/relatorios/06-Identity.pdf",
+      "sha256FonteMarkdown": "aba9c108482c1a093179630e94ef0789c52260cb20917e60bac38dc757b8b2ee",
+      "bytes": 95391,
+      "paginas": 2,
+      "sha256": "c39e9cf685cb08d52e52213c4ec19e4ee373dfe6c4977594735694217b1517b9",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/07-Observabilidade.md",
+      "pdf": "docs/relatorios/07-Observabilidade.pdf",
+      "sha256FonteMarkdown": "690f49f0802ded0baa0ed96b17bacf46f0a94e2b48cce334120dd269e7af0fe6",
+      "bytes": 90702,
+      "paginas": 2,
+      "sha256": "a5852a74e1ff6893f070072446cecedc38fc2aa15f09cc150a9abbb88fb42d1f",
+      "titulosConferidos": 5,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/08-Entrega.md",
+      "pdf": "docs/relatorios/08-Entrega.pdf",
+      "sha256FonteMarkdown": "245e575b5bc35d1732a0b4c17cfa0fbe6b79fff012694f4be979707508e13bc2",
+      "bytes": 195717,
+      "paginas": 6,
+      "sha256": "008ce063fa9c36cafb108a3a5d6d703302ebea6dd962ac1ea384f2ff4ca5d08b",
+      "titulosConferidos": 11,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    }
+  ],
+  "anexoFonteCompletoAtualizado": {
+    "src/PortalTarefas.Web/Program.cs": true,
+    "src/PortalTarefas.Web/Middleware/RequisicaoMiddleware.cs": true,
+    "src/PortalTarefas.Web/Controllers/DiagnosticoController.cs": true
+  },
+  "requisitosRevisados": [
+    {
+      "id": "G-01",
+      "paginaItem": "2 / Organização",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": false,
+      "tipoConferencia": "S?ntese da p?gina 2 revista manualmente"
+    },
+    {
+      "id": "G-02",
+      "paginaItem": "2 / Verificação",
+      "estadoNaInspecao": "Limitação histórica",
+      "exigenciaConferidaNaFonte": false,
+      "tipoConferencia": "S?ntese da p?gina 2 revista manualmente"
+    },
+    {
+      "id": "G-03",
+      "paginaItem": "2 / Verificação",
+      "estadoNaInspecao": "Limitação histórica",
+      "exigenciaConferidaNaFonte": false,
+      "tipoConferencia": "S?ntese da p?gina 2 revista manualmente"
+    },
+    {
+      "id": "G-04",
+      "paginaItem": "2 / Extensões",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": false,
+      "tipoConferencia": "S?ntese da p?gina 2 revista manualmente"
+    },
+    {
+      "id": "R1-01",
+      "paginaItem": "3 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-02",
+      "paginaItem": "3 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-03",
+      "paginaItem": "3 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-04",
+      "paginaItem": "3 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-05",
+      "paginaItem": "3 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-06",
+      "paginaItem": "3 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-07",
+      "paginaItem": "3 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-08",
+      "paginaItem": "4 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-09",
+      "paginaItem": "4 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-10",
+      "paginaItem": "4 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-11",
+      "paginaItem": "4 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-12",
+      "paginaItem": "4 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-13",
+      "paginaItem": "4 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-14",
+      "paginaItem": "4 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-15",
+      "paginaItem": "4 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-16",
+      "paginaItem": "4 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-17",
+      "paginaItem": "4 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-18",
+      "paginaItem": "4 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-19",
+      "paginaItem": "4 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-20",
+      "paginaItem": "4 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-21",
+      "paginaItem": "4 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-22",
+      "paginaItem": "5 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-23",
+      "paginaItem": "5 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-24",
+      "paginaItem": "5 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-25",
+      "paginaItem": "5 / A2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-26",
+      "paginaItem": "5 / A3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-27",
+      "paginaItem": "5 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-28",
+      "paginaItem": "5 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-29",
+      "paginaItem": "5 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R1-30",
+      "paginaItem": "5 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-01",
+      "paginaItem": "6 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-02",
+      "paginaItem": "6 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-03",
+      "paginaItem": "6 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-04",
+      "paginaItem": "6 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-05",
+      "paginaItem": "6 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-06",
+      "paginaItem": "6 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-07",
+      "paginaItem": "6 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-08",
+      "paginaItem": "6 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-09",
+      "paginaItem": "7 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-10",
+      "paginaItem": "7 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-11",
+      "paginaItem": "7 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-12",
+      "paginaItem": "7 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-13",
+      "paginaItem": "7 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-14",
+      "paginaItem": "7 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-15",
+      "paginaItem": "7 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-16",
+      "paginaItem": "7 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-17",
+      "paginaItem": "7 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-18",
+      "paginaItem": "7 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-19",
+      "paginaItem": "7 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-20",
+      "paginaItem": "7 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-21",
+      "paginaItem": "7 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-22",
+      "paginaItem": "7 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-23",
+      "paginaItem": "8 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-24",
+      "paginaItem": "8 / A2",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-25",
+      "paginaItem": "8 / A3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-26",
+      "paginaItem": "8 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-27",
+      "paginaItem": "8 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-28",
+      "paginaItem": "8 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R2-29",
+      "paginaItem": "8 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-01",
+      "paginaItem": "9 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-02",
+      "paginaItem": "9 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-03",
+      "paginaItem": "9 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-04",
+      "paginaItem": "9 / E1.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-05",
+      "paginaItem": "9 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-06",
+      "paginaItem": "9 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-07",
+      "paginaItem": "10 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-08",
+      "paginaItem": "10 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-09",
+      "paginaItem": "10 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-10",
+      "paginaItem": "10 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-11",
+      "paginaItem": "10 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-12",
+      "paginaItem": "10 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-13",
+      "paginaItem": "10 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-14",
+      "paginaItem": "10 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-15",
+      "paginaItem": "10 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-16",
+      "paginaItem": "10 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-17",
+      "paginaItem": "10 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-18",
+      "paginaItem": "10 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-19",
+      "paginaItem": "10 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-20",
+      "paginaItem": "11 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-21",
+      "paginaItem": "11 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-22",
+      "paginaItem": "11 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-23",
+      "paginaItem": "11 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-24",
+      "paginaItem": "11 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-25",
+      "paginaItem": "11 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-26",
+      "paginaItem": "11 / A2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-27",
+      "paginaItem": "11 / A3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-28",
+      "paginaItem": "11 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-29",
+      "paginaItem": "11 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-30",
+      "paginaItem": "11 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R3-31",
+      "paginaItem": "11 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-01",
+      "paginaItem": "12 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-02",
+      "paginaItem": "12 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-03",
+      "paginaItem": "12 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-04",
+      "paginaItem": "12 / E1.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-05",
+      "paginaItem": "12 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-06",
+      "paginaItem": "12 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-07",
+      "paginaItem": "12 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-08",
+      "paginaItem": "12 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-09",
+      "paginaItem": "12 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-10",
+      "paginaItem": "12 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-11",
+      "paginaItem": "13 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-12",
+      "paginaItem": "13 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-13",
+      "paginaItem": "13 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-14",
+      "paginaItem": "13 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-15",
+      "paginaItem": "13 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-16",
+      "paginaItem": "13 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-17",
+      "paginaItem": "13 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-18",
+      "paginaItem": "13 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-19",
+      "paginaItem": "13 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-20",
+      "paginaItem": "13 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-21",
+      "paginaItem": "13 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-22",
+      "paginaItem": "13 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-23",
+      "paginaItem": "13 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-24",
+      "paginaItem": "13 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-25",
+      "paginaItem": "14 / A1",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-26",
+      "paginaItem": "14 / A2",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-27",
+      "paginaItem": "14 / A3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-28",
+      "paginaItem": "14 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-29",
+      "paginaItem": "14 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-30",
+      "paginaItem": "14 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R4-31",
+      "paginaItem": "14 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-01",
+      "paginaItem": "15 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-02",
+      "paginaItem": "15 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-03",
+      "paginaItem": "15 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-04",
+      "paginaItem": "15 / E1.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-05",
+      "paginaItem": "15 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-06",
+      "paginaItem": "15 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-07",
+      "paginaItem": "15 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-08",
+      "paginaItem": "15 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-09",
+      "paginaItem": "15 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-10",
+      "paginaItem": "16 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-11",
+      "paginaItem": "16 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-12",
+      "paginaItem": "16 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-13",
+      "paginaItem": "16 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-14",
+      "paginaItem": "16 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-15",
+      "paginaItem": "16 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-16",
+      "paginaItem": "16 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-17",
+      "paginaItem": "16 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-18",
+      "paginaItem": "16 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-19",
+      "paginaItem": "16 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-20",
+      "paginaItem": "16 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-21",
+      "paginaItem": "16 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-22",
+      "paginaItem": "16 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-23",
+      "paginaItem": "16 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-24",
+      "paginaItem": "16 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-25",
+      "paginaItem": "17 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-26",
+      "paginaItem": "17 / A2",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-27",
+      "paginaItem": "17 / A3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-28",
+      "paginaItem": "17 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-29",
+      "paginaItem": "17 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-30",
+      "paginaItem": "17 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R5-31",
+      "paginaItem": "17 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-01",
+      "paginaItem": "18 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-02",
+      "paginaItem": "18 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-03",
+      "paginaItem": "18 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-04",
+      "paginaItem": "18 / E1.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-05",
+      "paginaItem": "18 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-06",
+      "paginaItem": "18 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-07",
+      "paginaItem": "18 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-08",
+      "paginaItem": "19 / E2.3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-09",
+      "paginaItem": "19 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-10",
+      "paginaItem": "19 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-11",
+      "paginaItem": "19 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-12",
+      "paginaItem": "19 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-13",
+      "paginaItem": "19 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-14",
+      "paginaItem": "19 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-15",
+      "paginaItem": "19 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-16",
+      "paginaItem": "19 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-17",
+      "paginaItem": "19 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-18",
+      "paginaItem": "19 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-19",
+      "paginaItem": "19 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-20",
+      "paginaItem": "19 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-21",
+      "paginaItem": "19 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-22",
+      "paginaItem": "19 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-23",
+      "paginaItem": "19 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-24",
+      "paginaItem": "20 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-25",
+      "paginaItem": "20 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-26",
+      "paginaItem": "20 / A2",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-27",
+      "paginaItem": "20 / A3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-28",
+      "paginaItem": "20 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-29",
+      "paginaItem": "20 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-30",
+      "paginaItem": "20 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R6-31",
+      "paginaItem": "20 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-01",
+      "paginaItem": "21 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-02",
+      "paginaItem": "21 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-03",
+      "paginaItem": "21 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-04",
+      "paginaItem": "21 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-05",
+      "paginaItem": "21 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-06",
+      "paginaItem": "21 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-07",
+      "paginaItem": "21 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-08",
+      "paginaItem": "21 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-09",
+      "paginaItem": "22 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-10",
+      "paginaItem": "22 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-11",
+      "paginaItem": "22 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-12",
+      "paginaItem": "22 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-13",
+      "paginaItem": "22 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-14",
+      "paginaItem": "22 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-15",
+      "paginaItem": "22 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-16",
+      "paginaItem": "22 / E4.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-17",
+      "paginaItem": "22 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-18",
+      "paginaItem": "22 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-19",
+      "paginaItem": "22 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-20",
+      "paginaItem": "22 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-21",
+      "paginaItem": "22 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-22",
+      "paginaItem": "22 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-23",
+      "paginaItem": "22 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-24",
+      "paginaItem": "23 / A1",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-25",
+      "paginaItem": "23 / A2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-26",
+      "paginaItem": "23 / A3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-27",
+      "paginaItem": "23 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-28",
+      "paginaItem": "23 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-29",
+      "paginaItem": "23 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R7-30",
+      "paginaItem": "23 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-01",
+      "paginaItem": "24 / E1.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-02",
+      "paginaItem": "24 / E1.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-03",
+      "paginaItem": "24 / E1.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-04",
+      "paginaItem": "24 / E1.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-05",
+      "paginaItem": "24 / V1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-06",
+      "paginaItem": "24 / E2.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-07",
+      "paginaItem": "24 / E2.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-08",
+      "paginaItem": "25 / E2.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-09",
+      "paginaItem": "25 / E2.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-10",
+      "paginaItem": "25 / V2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-11",
+      "paginaItem": "25 / E3.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-12",
+      "paginaItem": "25 / E3.2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-13",
+      "paginaItem": "25 / E3.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-14",
+      "paginaItem": "25 / E3.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-15",
+      "paginaItem": "25 / V3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-16",
+      "paginaItem": "25 / E4.1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-17",
+      "paginaItem": "25 / E4.2",
+      "estadoNaInspecao": "Pendente",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-18",
+      "paginaItem": "25 / E4.3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-19",
+      "paginaItem": "25 / E4.4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-20",
+      "paginaItem": "25 / V4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-21",
+      "paginaItem": "25 / C1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-22",
+      "paginaItem": "25 / C2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-23",
+      "paginaItem": "26 / C3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-24",
+      "paginaItem": "26 / C4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-25",
+      "paginaItem": "26 / A1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-26",
+      "paginaItem": "26 / A2",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-27",
+      "paginaItem": "26 / A3",
+      "estadoNaInspecao": "Não aplicável",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-28",
+      "paginaItem": "26 / EV1",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-29",
+      "paginaItem": "26 / EV2",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-30",
+      "paginaItem": "26 / EV3",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    },
+    {
+      "id": "R8-31",
+      "paginaItem": "26 / EV4",
+      "estadoNaInspecao": "Concluído e verificado",
+      "exigenciaConferidaNaFonte": true,
+      "tipoConferencia": "Texto comparado ? p?gina original; espa?os/pontua??o normalizados"
+    }
+  ],
+  "limites": [
+    "A compara??o acad?mica confirma texto/p?gina, n?o substitui executar os testes de cada requisito.",
+    "Abertura, texto, t?tulos e hashes dos PDFs foram conferidos; revis?o visual final ? separada.",
+    "Nenhuma publica??o, cria??o de segredo GitHub, push ou merge foi executado por esta auditoria."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "job_id": 127578222485,
+  "selection": "Somente resultados e identificação do commit/artefato, sem ambiente, credenciais, cookies ou tokens",
+  "lines": [
+    "2026-11-05T22:33:41.3403301Z ##[group]GITHUB_TOKEN Permissions",
+    "2026-11-05T22:33:41.3405568Z Contents: read",
+    "2026-11-05T22:34:40.1683896Z A total of 1 test files matched the specified pattern.",
+    "2026-11-05T22:34:49.6037672Z Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 8 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-05T22:35:01.7407504Z  Test Files  5 passed (5)",
+    "2026-11-05T22:35:01.7408736Z       Tests  33 passed (33)",
+    "2026-11-05T22:36:19.9347638Z SHA256 digest of uploaded artifact zip is bd8d384b0d5b0f7caaf386c4ce3206714e23db586c093af8e32429adeeb286ff",
+    "2026-11-05T22:36:20.5281936Z Artifact portaltarefas-943e944a13d39c08bc82b9bb314c13986f5674b3 has been successfully uploaded! Final size is 159295700 bytes. Artifact ID is 13460037445"
+  ]
+}

@@ -1,0 +1,8 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:26:12.7083029Z",
+    "comando":  "npm run generate:client",
+    "exitCode":  0,
+    "sha256Antes":  "27EC4A8EEF9A725E8AC8EF101DB2BB50EE74B71F53F20AABE1AF07A477977F4B",
+    "sha256Depois":  "27EC4A8EEF9A725E8AC8EF101DB2BB50EE74B71F53F20AABE1AF07A477977F4B",
+    "identico":  true
+}

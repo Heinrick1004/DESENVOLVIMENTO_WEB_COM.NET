@@ -67,6 +67,18 @@ As [capturas finais de 29/10](../evidencias/roteiro-02-mvc/manifest.json) foram 
 
 ![Formulário inválido após a correção](../evidencias/roteiro-02-mvc/03-formulario-invalido.png)
 
+## Validação final de 06/11/2026
+
+Após a aprovação de 55 testes .NET e 33 React, foram capturadas novamente lista, detalhes, cadastro e validação em MVC/SQL Server reais, usando HTTPS e conta sintética. O binário respondeu com a versão `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`; as alterações posteriores desta entrega abrangem CI, scripts e documentação, sem mudança do código da aplicação. O [manifesto definitivo](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/manifest.json) identifica ambiente, banco exclusivo, navegador, status HTTP e hashes. Os cadastros inválidos mantiveram quatro tarefas antes/depois; login/logout responderam 200/204. Nenhuma resposta, estado ou DOM foi fabricado; a exceção TLS ficou limitada ao navegador local de captura. Os registros de 29/10 acima permanecem históricos.
+
+![06/11 — lista MVC real](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r2-01-lista-mvc.png)
+
+![06/11 — detalhes MVC reais](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r2-02-detalhes-mvc.png)
+
+![06/11 — formulário de cadastro MVC](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r2-03-cadastro-mvc.png)
+
+![06/11 — erro de título e valores preservados no MVC](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r2-04-validacao-mvc.png)
+
 ## Conclusão
 
 As responsabilidades da interface, validação e serviço permanecem separadas e cumulativas. A aprovação dos cenários automatizados é evidência concreta; transcrições de telas e demais requisitos ainda dependem dos artefatos identificados na matriz. Não se presume a conclusão de um requisito pela presença de sua view.

@@ -1,0 +1,439 @@
+{
+  "observedAtUtc": "2026-11-06T23:23:06Z",
+  "files": [
+    {
+      "filename": ".github/workflows/ci.yml",
+      "status": "modified",
+      "additions": 18,
+      "deletions": 0,
+      "changes": 18
+    },
+    {
+      "filename": "README.md",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 3,
+      "changes": 14
+    },
+    {
+      "filename": "docs/DOCKER_WINDOWS.md",
+      "status": "modified",
+      "additions": 8,
+      "deletions": 2,
+      "changes": 10
+    },
+    {
+      "filename": "docs/ENSAIO_FALHA_CI.md",
+      "status": "added",
+      "additions": 75,
+      "deletions": 0,
+      "changes": 75
+    },
+    {
+      "filename": "docs/ENTREGA_FINAL.md",
+      "status": "modified",
+      "additions": 9,
+      "deletions": 1,
+      "changes": 10
+    },
+    {
+      "filename": "docs/MATRIZ_DE_REQUISITOS.md",
+      "status": "modified",
+      "additions": 21,
+      "deletions": 19,
+      "changes": 40
+    },
+    {
+      "filename": "docs/PLANO_CAPTURAS_FINAIS.md",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 3,
+      "changes": 9
+    },
+    {
+      "filename": "docs/STATUS_DE_EXECUCAO.md",
+      "status": "modified",
+      "additions": 66,
+      "deletions": 7,
+      "changes": 73
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/baseline-preservacao.json",
+      "status": "added",
+      "additions": 516,
+      "deletions": 0,
+      "changes": 516
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/docker-local.json",
+      "status": "added",
+      "additions": 21,
+      "deletions": 0,
+      "changes": 21
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/ensaio-local/falha-controlada.trx",
+      "status": "added",
+      "additions": 53,
+      "deletions": 0,
+      "changes": 53
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/ensaio-local/recuperacao.trx",
+      "status": "added",
+      "additions": 202,
+      "deletions": 0,
+      "changes": 202
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/ensaio-local/resumo.json",
+      "status": "added",
+      "additions": 29,
+      "deletions": 0,
+      "changes": 29
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/gate-health-local.json",
+      "status": "added",
+      "additions": 27,
+      "deletions": 0,
+      "changes": 27
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/artefatos.json",
+      "status": "added",
+      "additions": 26,
+      "deletions": 0,
+      "changes": 26
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/autorizacao-envios.json",
+      "status": "added",
+      "additions": 17,
+      "deletions": 0,
+      "changes": 17
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/autorizacao-pr.json",
+      "status": "added",
+      "additions": 16,
+      "deletions": 0,
+      "changes": 16
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-artefatos.json",
+      "status": "added",
+      "additions": 28,
+      "deletions": 0,
+      "changes": 28
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-execucao.json",
+      "status": "added",
+      "additions": 28,
+      "deletions": 0,
+      "changes": 28
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-jobs.json",
+      "status": "added",
+      "additions": 321,
+      "deletions": 0,
+      "changes": 321
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-trechos-log.json",
+      "status": "added",
+      "additions": 48,
+      "deletions": 0,
+      "changes": 48
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-artefatos.json",
+      "status": "added",
+      "additions": 25,
+      "deletions": 0,
+      "changes": 25
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-execucao.json",
+      "status": "added",
+      "additions": 101,
+      "deletions": 0,
+      "changes": 101
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-jobs.json",
+      "status": "added",
+      "additions": 226,
+      "deletions": 0,
+      "changes": 226
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-trechos-log.json",
+      "status": "added",
+      "additions": 16,
+      "deletions": 0,
+      "changes": 16
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-artefatos.json",
+      "status": "added",
+      "additions": 25,
+      "deletions": 0,
+      "changes": 25
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-execucao.json",
+      "status": "added",
+      "additions": 111,
+      "deletions": 0,
+      "changes": 111
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-jobs.json",
+      "status": "added",
+      "additions": 226,
+      "deletions": 0,
+      "changes": 226
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-trechos-log.json",
+      "status": "added",
+      "additions": 21,
+      "deletions": 0,
+      "changes": 21
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/execucao-aprovada.json",
+      "status": "added",
+      "additions": 61,
+      "deletions": 0,
+      "changes": 61
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/jobs-e-etapas.json",
+      "status": "added",
+      "additions": 226,
+      "deletions": 0,
+      "changes": 226
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/github/trechos-log.json",
+      "status": "added",
+      "additions": 21,
+      "deletions": 0,
+      "changes": 21
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/pdf08-preservacao.json",
+      "status": "added",
+      "additions": 20,
+      "deletions": 0,
+      "changes": 20
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/cliente-autenticado-https.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/cliente-sql-https.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/contrato-geracao.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/contrato-real.json",
+      "status": "added",
+      "additions": 11,
+      "deletions": 0,
+      "changes": 11
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-build-release.json",
+      "status": "added",
+      "additions": 5,
+      "deletions": 0,
+      "changes": 5
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-build-release.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-publish.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-restore.json",
+      "status": "added",
+      "additions": 6,
+      "deletions": 0,
+      "changes": 6
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-restore.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes-comando.json",
+      "status": "added",
+      "additions": 8,
+      "deletions": 0,
+      "changes": 8
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes-comando.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes/20261105T221626427Z-9a7a84b4/integration.trx",
+      "status": "added",
+      "additions": 10523,
+      "deletions": 0,
+      "changes": 10523
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes/20261105T221626427Z-9a7a84b4/summary.json",
+      "status": "added",
+      "additions": 13,
+      "deletions": 0,
+      "changes": 13
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/frontend-build.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/frontend-resultados.json",
+      "status": "added",
+      "additions": 20,
+      "deletions": 0,
+      "changes": 20
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/frontend-testes.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/frontend-typecheck.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/harness-tentativa-inicial.json",
+      "status": "added",
+      "additions": 10,
+      "deletions": 0,
+      "changes": 10
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/homologacao-local.json",
+      "status": "added",
+      "additions": 46,
+      "deletions": 0,
+      "changes": 46
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/resumo-regressao.json",
+      "status": "added",
+      "additions": 100,
+      "deletions": 0,
+      "changes": 100
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/regressao/seed-idempotente.json",
+      "status": "added",
+      "additions": 21,
+      "deletions": 0,
+      "changes": 21
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/revisao-preservacao-segredos.json",
+      "status": "added",
+      "additions": 25,
+      "deletions": 0,
+      "changes": 25
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/revisao-remota-segredos.json",
+      "status": "added",
+      "additions": 41,
+      "deletions": 0,
+      "changes": 41
+    },
+    {
+      "filename": "docs/evidencias/auditoria-final-20261105/validacao-documental.json",
+      "status": "added",
+      "additions": 19,
+      "deletions": 0,
+      "changes": 19
+    },
+    {
+      "filename": "docs/evidencias/ci-validacao-estatica.json",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 4,
+      "changes": 15
+    },
+    {
+      "filename": "docs/evidencias/relatorios-pdf.json",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 5,
+      "changes": 11
+    },
+    {
+      "filename": "docs/relatorios/08-Entrega.md",
+      "status": "modified",
+      "additions": 61,
+      "deletions": 8,
+      "changes": 69
+    },
+    {
+      "filename": "docs/relatorios/08-Entrega.pdf",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "scripts/Validate-CiStatic.mjs",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0,
+      "changes": 2
+    }
+  ]
+}

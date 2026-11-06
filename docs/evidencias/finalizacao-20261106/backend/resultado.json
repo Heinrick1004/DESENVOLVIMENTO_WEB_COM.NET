@@ -1,0 +1,23 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:25:05.9123269+00:00",
+    "bancoExclusivo":  "PortalTarefas_Tests_Entrega20261106_4a167ae9",
+    "commitOrigem":  "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+    "checks":  [
+                   {
+                       "comando":  "dotnet restore PortalTarefas.sln",
+                       "inicioUtc":  "2026-11-06T23:24:45.2031404+00:00",
+                       "exitCode":  0
+                   },
+                   {
+                       "comando":  "dotnet build PortalTarefas.sln -c Release --no-restore",
+                       "inicioUtc":  "2026-11-06T23:24:46.7061772+00:00",
+                       "exitCode":  0
+                   },
+                   {
+                       "comando":  "scripts/Test-Integration.ps1 -Configuration Release -NoBuild -Initialize",
+                       "exitCode":  0
+                   }
+               ],
+    "conexaoOmitida":  true,
+    "dadosExistentesRemovidos":  false
+}

@@ -1,0 +1,31 @@
+{
+  "job_id": 127583245434,
+  "selection": "Somente resultados e identificação do commit/artefato, sem ambiente, credenciais, cookies ou tokens",
+  "lines": [
+    "2026-11-05T22:44:07.3702303Z ##[group]GITHUB_TOKEN Permissions",
+    "2026-11-05T22:44:07.3703900Z Contents: read",
+    "2026-11-05T22:44:09.6602729Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d59527f578882c83c87e58cc5fafa6aa42c7787b:refs/remotes/pull/1/merge",
+    "2026-11-05T22:44:10.2885393Z  * [new ref]         d59527f578882c83c87e58cc5fafa6aa42c7787b -> pull/1/merge",
+    "2026-11-05T22:44:10.3339622Z HEAD is now at d59527f Merge 5bf8fefcdd2b7b02dfb7012f8663e584a530b79e into 1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "2026-11-05T22:44:10.3423540Z d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "2026-11-05T22:45:22.3571084Z A total of 1 test files matched the specified pattern.",
+    "2026-11-05T22:45:31.2985697Z Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 8 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-05T22:45:41.3341887Z  Test Files  5 passed (5)",
+    "2026-11-05T22:45:41.3343160Z       Tests  33 passed (33)",
+    "2026-11-05T22:45:48.7298336Z 'd59527f578882c83c87e58cc5fafa6aa42c7787b' | Set-Content artifacts/commit.txt",
+    "2026-11-05T22:45:50.7881185Z ##[group]Run dotnet publish src/PortalTarefas.Web/PortalTarefas.Web.csproj -c Release --no-restore -o artifacts/publish /p:InformationalVersion=d59527f578882c83c87e58cc5fafa6aa42c7787b /p:IncludeSourceRevisionInInformationalVersion=false",
+    "2026-11-05T22:45:50.7882534Z dotnet publish src/PortalTarefas.Web/PortalTarefas.Web.csproj -c Release --no-restore -o artifacts/publish /p:InformationalVersion=d59527f578882c83c87e58cc5fafa6aa42c7787b /p:IncludeSourceRevisionInInformationalVersion=false",
+    "2026-11-05T22:45:54.9363004Z ##[group]Run docker build --build-arg BUILD_VERSION=d59527f578882c83c87e58cc5fafa6aa42c7787b -t portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b .",
+    "2026-11-05T22:45:54.9363893Z docker build --build-arg BUILD_VERSION=d59527f578882c83c87e58cc5fafa6aa42c7787b -t portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b .",
+    "2026-11-05T22:45:54.9364573Z docker image inspect portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b > artifacts/imagem.json",
+    "2026-11-05T22:46:22.0572363Z #27 [backend 7/8] RUN dotnet publish src/PortalTarefas.Web/PortalTarefas.Web.csproj -c Release --no-restore -o /publish /p:UseAppHost=false /p:InformationalVersion=d59527f578882c83c87e58cc5fafa6aa42c7787b /p:IncludeSourceRevisionInInformationalVersion=false",
+    "2026-11-05T22:46:30.0241341Z #30 naming to docker.io/library/portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b done",
+    "2026-11-05T22:46:30.4396571Z   portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "2026-11-05T22:46:37.0933994Z ##[group]Run docker save -o artifacts/portaltarefas-d59527f578882c83c87e58cc5fafa6aa42c7787b.tar portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "2026-11-05T22:46:37.0934871Z docker save -o artifacts/portaltarefas-d59527f578882c83c87e58cc5fafa6aa42c7787b.tar portaltarefas:d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "2026-11-05T22:46:51.4101941Z   name: portaltarefas-d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "2026-11-05T22:47:02.5196380Z SHA256 digest of uploaded artifact zip is 5865482dc0f13bb9cef206891b9030a297e65d453b1344197cb913ac40fa3a68",
+    "2026-11-05T22:47:03.1801670Z Artifact portaltarefas-d59527f578882c83c87e58cc5fafa6aa42c7787b.zip successfully finalized. Artifact ID 13459598252",
+    "2026-11-05T22:47:03.1804033Z Artifact portaltarefas-d59527f578882c83c87e58cc5fafa6aa42c7787b has been successfully uploaded! Final size is 159307642 bytes. Artifact ID is 13459598252"
+  ]
+}

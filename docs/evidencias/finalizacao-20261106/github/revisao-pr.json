@@ -1,0 +1,35 @@
+{
+  "observedAtUtc": "2026-11-06T23:23:06Z",
+  "scope": "PR #1 e estado remoto antes das alterações locais de finalização",
+  "prUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/pull/1",
+  "headSha": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+  "baseSha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+  "testedSyntheticMergeSha": "d59527f578882c83c87e58cc5fafa6aa42c7787b",
+  "result": "Revisão aprovada para o conteúdo remoto identificado; integração depende de autorização explícita e das alterações locais seguintes.",
+  "findings": [],
+  "checks": {
+    "expectedCommits": [
+      "bfc46abbf99737724055af555bd785939bb795b8",
+      "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e"
+    ],
+    "conflictFree": true,
+    "headCheckSuccess": true,
+    "testSyntheticAbsentFromNormalSources": true,
+    "applicationTestsDockerfileComposeAndReports01To07Unchanged": true,
+    "nativeDockerHealthBeforeSaveUpload": true,
+    "nativeGateRejectsUnhealthyOrTimeout": true,
+    "failureEvidenceStillValid": true,
+    "negativeExperimentMustNotBeRepeated": true,
+    "changedFiles": 62,
+    "binaryTextEvidenceEncoding": "Alguns logs históricos são UTF-16 e aparecem binários no diff; arquivos preservados.",
+    "knownSecretPatternFindings": [],
+    "secretScanLimit": "Pesquisa de padrões conhecidos no patch textual do PR; PDFs/TRX/logs e pacote final devem ser conferidos adicionalmente na finalização."
+  },
+  "requiredAfterAuthorization": [
+    "Enviar somente as correções locais revisadas para auditoria/final-20261105 e aguardar o CI do novo head.",
+    "Conferir checks e SHA do novo head/merge sintético; atualizar a descrição do PR com os resultados atuais.",
+    "Somente após autorização explícita, marcar pronto para revisão e integrar o PR à main.",
+    "Conferir CI da main no SHA realmente integrado."
+  ],
+  "remoteWritesPerformed": 0
+}

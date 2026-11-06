@@ -64,6 +64,24 @@ As seis capturas abaixo foram feitas em Chrome 156, com a SPA publicada em `http
 
 ![Tratamento de Problem Details](../evidencias/roteiro-05-ui/2026-10-28T18-54-28-931Z/06-problem-details.png)
 
+## Validação final de 06/11/2026
+
+A [nova execução frontend](../evidencias/finalizacao-20261106/frontend/resumo.json) aprovou npm ci, 33 testes em cinco arquivos, zero falhos/ignorados, typecheck e build de produção com 54 módulos. A auditoria npm consultada após liberação da rede sandbox informou zero vulnerabilidades. A regeneração do cliente preservou integralmente o arquivo de tipos.
+
+As seis imagens finais abaixo usam a aplicação real em `https://localhost:8340/app/`, SQL Server exclusivo e sessão sintética real. A [versão e os hashes](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/manifest.json) identificam o binário `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`; as mudanças posteriores são de CI, scripts e documentação. Success consulta dados fictícios reais; empty usa um filtro inexistente; Problem Details resulta de POST real com prioridade alta sem prazo, HTTP 400 e erro associado ao campo. Loading retém temporariamente a requisição real; error aborta uma consulta no navegador e confirma a recuperação ao tentar novamente. Idle pausa o quadro transitório via CDP antes do efeito React. Nenhum corpo HTTP, DOM ou estado React foi fabricado. A exceção TLS aplica-se somente ao navegador de captura. As imagens de outubro permanecem como histórico dos cenários então simulados.
+
+![06/11 — estado idle real pausado antes do efeito React](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-01-idle.png)
+
+![06/11 — loading com atraso controlado da requisição real](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-02-loading.png)
+
+![06/11 — empty por filtro sem resultados reais](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-03-empty.png)
+
+![06/11 — success com tarefas fictícias do SQL de teste](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-04-success.png)
+
+![06/11 — erro por interrupção controlada da rede](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-05-error-rede.png)
+
+![06/11 — Problem Details 400 real e erro no campo prazo](../evidencias/capturas-finais/2026-11-06T23-29-32-812Z/r5-06-problem-details.png)
+
 ## Conclusão
 
 O frontend possui páginas, estados e camada HTTP identificáveis. O estado de conclusão acompanha a matriz: build e testes podem estar aprovados enquanto capturas ou navegação manual continuam pendentes. Essa separação preserva a evidência verdadeira da entrega.

@@ -2,6 +2,12 @@
 
 Aplicação acadêmica cumulativa da UNIP: ASP.NET Core MVC e API REST, EF Core com SQL Server, SPA React/TypeScript, Identity, observabilidade e empacotamento. A solução existente foi preservada. Os oito relatórios descrevem a implementação atual; o estado de execução de cada requisito está em [docs/MATRIZ_DE_REQUISITOS.md](docs/MATRIZ_DE_REQUISITOS.md) e [docs/STATUS_DE_EXECUCAO.md](docs/STATUS_DE_EXECUCAO.md).
 
+## Estado da entrega — 06/11/2026
+
+**ENTREGA PREPARADA COM PENDÊNCIAS.** Nova validação: 55 testes .NET com SQL exclusivo e 33 testes React aprovados, zero falhas/ignorados, build Release sem avisos, contrato HTTPS idêntico e 12 capturas reais. São 232 requisitos verificados, 13 não aplicáveis fundamentados, duas limitações históricas e um implementado sem comprovação remota (R8-17).
+
+O [CI remoto auditado 42123968355](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42123968355) passou para a versão remota do PR. As alterações locais seguintes precisam de novo CI. O PR #1 continua draft, sem merge. Configure o [Actions Secret de E4.2](docs/E4_2_SEGREDOS.md) antes de executar o workflow atualizado; o valor não deve ficar no projeto. Push e merge dependem de autorização explícita separada. [Status e limites](docs/STATUS_DE_EXECUCAO.md), [revisão do PR](docs/REVISAO_PR_1.md), [pacote e verificação](docs/ENTREGA_FINAL.md).
+
 ## Pré-requisitos e versões
 
 - Windows/PowerShell ou ambiente compatível com o .NET SDK **10.0.403**, selecionado em `global.json`; alvo `net10.0`.
@@ -167,6 +173,7 @@ Frontend:
 Push-Location src/PortalTarefas.Frontend
 npm.cmd ci
 npm.cmd test
+npm.cmd run typecheck
 npm.cmd run build
 Pop-Location
 ```
@@ -219,7 +226,7 @@ Para homologação em contêiner, `Publish-Local.ps1` recebe imagem `portaltaref
 
 Promoção: aprovar o mesmo artefato validado, mantendo tag/commit e configuração externa. Rollback: retornar à imagem/instância anterior preservada; migrations exigem avaliação própria e backup antes de mudanças incompatíveis. Não remova volumes para fazer rollback. A validação das guardas do script não equivale a um deployment Docker executado.
 
-As páginas 24–26 do `Roteiros.pdf` exigem imagem vinculada ao commit, mecanismo externo do provedor para segredos, implantação em ambiente de teste com smoke/saúde e estratégia de promoção/retorno. O ambiente efêmero do runner comprovou a implantação de teste com SQL/HTTPS, smoke e versão rastreável, atendendo E4.3; o PDF não exige destino permanente ou remoto para esse item. GHCR é uma escolha possível de distribuição, sem exigência de produto no PDF. Staging com aprovação antes de produção é uma extensão alternativa da página 26; o projeto selecionou inventários de dependências. **E4.2, identidade federada ou secret store do provedor, permanece pendente**. V3 já possui evidência remota de bloqueio após falha; o resultado da recuperação é registrado separadamente. Hospedagem persistente e promoção/rollback remotos não foram executados e não são apresentados como obrigações adicionais do PDF.
+As páginas 24–26 do `Roteiros.pdf` exigem imagem vinculada ao commit, mecanismo externo do provedor para segredos, implantação em ambiente de teste com smoke/saúde e estratégia de promoção/retorno. O ambiente efêmero do runner comprovou a implantação de teste com SQL/HTTPS, smoke e versão rastreável, atendendo E4.3; o PDF não exige destino permanente ou remoto para esse item. GHCR é uma escolha possível de distribuição, sem exigência de produto no PDF. Staging com aprovação antes de produção é uma extensão alternativa da página 26; o projeto selecionou inventários de dependências. **E4.2 está implementado localmente com Actions Secrets, mas sua comprovação remota ainda falta**. V3 já possui evidência remota de bloqueio após falha; o resultado da recuperação é registrado separadamente. Hospedagem persistente e promoção/rollback remotos não foram executados e não são apresentados como obrigações adicionais do PDF.
 
 A regressão local de 05/11 repetiu as suítes normais com **55 testes .NET e 33 React aprovados, zero falhos/ignorados**, build/typecheck, seed idempotente, contrato/cliente HTTPS e smoke do mesmo artefato em Development/Production. O [status](docs/STATUS_DE_EXECUCAO.md) identifica os bancos exclusivos, comandos, resultados e limites. A reprovação sintética do ensaio experimental fica separada dos testes do produto.
 
@@ -227,7 +234,7 @@ A regressão local de 05/11 repetiu as suítes normais com **55 testes .NET e 33
 
 Os arquivos 01 a 08 ficam em `docs/relatorios`. A matriz identifica página e item original do PDF, implementação, procedimento, evidência e estado. Uma atividade permanece parcial enquanto faltar uma verificação obrigatória, mesmo que todos os arquivos estejam presentes. Capturas não realizadas são pendências explícitas; não são substituídas por imagens artificiais.
 
-Nesta finalização não são produzidas novas capturas. O [plano de capturas finais](docs/PLANO_CAPTURAS_FINAIS.md) contém somente o checklist da etapa posterior e preserva as referências antigas. A [preparação da entrega](docs/ENTREGA_FINAL.md) e `scripts/Prepare-Delivery.ps1` identificam fontes/evidências essenciais e saídas restauráveis sem apagar arquivos ou criar o ZIP definitivo.
+Em 06/11/2026 foram produzidas 12 novas capturas reais, relacionadas no [plano de capturas finais](docs/PLANO_CAPTURAS_FINAIS.md), preservando as antigas. A [entrega](docs/ENTREGA_FINAL.md) descreve o ZIP, inventário SHA256, inspeção e validação da cópia extraída. `Prepare-Delivery.ps1 -CreateZip` gera o pacote sem incluir saídas restauráveis ou arquivos privados.
 
 Relatórios em PDF: [01 — Pipeline](docs/relatorios/01-Pipeline.pdf), [02 — MVC](docs/relatorios/02-MVC.pdf), [03 — Persistência](docs/relatorios/03-Persistencia.pdf), [04 — API](docs/relatorios/04-API.pdf), [05 — React](docs/relatorios/05-React.pdf), [06 — Identity](docs/relatorios/06-Identity.pdf), [07 — Observabilidade](docs/relatorios/07-Observabilidade.pdf) e [08 — Entrega](docs/relatorios/08-Entrega.pdf). O PDF 01 incorpora o anexo com código completo; capturas reais são incorporadas nos relatórios pertinentes.
 

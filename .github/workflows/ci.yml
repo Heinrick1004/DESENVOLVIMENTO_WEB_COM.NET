@@ -19,6 +19,8 @@ jobs:
       API_URL: http://127.0.0.1:5240
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.403'
@@ -131,10 +133,21 @@ jobs:
         run: |
           docker build --build-arg BUILD_VERSION=${{ github.sha }} -t portaltarefas:${{ github.sha }} .
           docker image inspect portaltarefas:${{ github.sha }} > artifacts/imagem.json
-      - name: Gerar certificado HTTPS efêmero para o smoke test
+      - name: Gerar certificado HTTPS efêmero com Actions Secret
         shell: bash
+        env:
+          PORTAL_CI_CERTIFICATE_PASSWORD: ${{ secrets.PORTAL_CI_CERTIFICATE_PASSWORD }}
         run: |
-          certificate_password="aA1!$(openssl rand -hex 24)"
+          # Sem fallback: variável gerada no runner não comprova secret store.
+          if [ "${#PORTAL_CI_CERTIFICATE_PASSWORD}" -lt 16 ]; then
+            echo 'Configure o Actions Secret PORTAL_CI_CERTIFICATE_PASSWORD com ao menos 16 caracteres.' >&2
+            exit 1
+          fi
+          if [[ "$PORTAL_CI_CERTIFICATE_PASSWORD" == *$'\n'* || "$PORTAL_CI_CERTIFICATE_PASSWORD" == *$'\r'* ]]; then
+            echo 'O Actions Secret deve conter uma única linha.' >&2
+            exit 1
+          fi
+          certificate_password="$PORTAL_CI_CERTIFICATE_PASSWORD"
           echo "::add-mask::$certificate_password"
           printf 'ASPNETCORE_Kestrel__Certificates__Default__Password=%s\n' "$certificate_password" >> "$GITHUB_ENV"
           dotnet dev-certs https --export-path "$RUNNER_TEMP/portal-ci.pfx" --password "$certificate_password"

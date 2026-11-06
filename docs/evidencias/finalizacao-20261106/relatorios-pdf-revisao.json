@@ -1,0 +1,67 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:34:45.033258+00:00",
+    "ferramenta":  "PyMuPDF 2.1",
+    "escopo":  "PDFs afetados 02/04/05/08; abertura real, extração de texto, limites dos blocos e renderização de todas as páginas.",
+    "resultadoEstrutural":  "aprovado",
+    "documentos":  [
+                       {
+                           "arquivo":  "02-MVC.pdf",
+                           "paginas":  10,
+                           "bytes":  495644,
+                           "sha256":  "4328c3e43edca0dabb6ea51f75c41acd27277726961727fa5c0ee0e08ec2daaf",
+                           "aberturaReal":  "aprovada",
+                           "textoExtraidoCaracteres":  8112,
+                           "blocosTextoForaDaPagina":  [
+
+                                                       ],
+                           "imagensUnicas":  7,
+                           "paginasRenderizadas":  10,
+                           "previews":  ".local/pdf-final-review/"
+                       },
+                       {
+                           "arquivo":  "04-API.pdf",
+                           "paginas":  6,
+                           "bytes":  362385,
+                           "sha256":  "0a8d30701e49acce66a47b5289c6c8d118d4d1da4a1382018a7a9955e34766ff",
+                           "aberturaReal":  "aprovada",
+                           "textoExtraidoCaracteres":  5989,
+                           "blocosTextoForaDaPagina":  [
+
+                                                       ],
+                           "imagensUnicas":  3,
+                           "paginasRenderizadas":  6,
+                           "previews":  ".local/pdf-final-review/"
+                       },
+                       {
+                           "arquivo":  "05-React.pdf",
+                           "paginas":  14,
+                           "bytes":  658554,
+                           "sha256":  "cd9d2de5a9e4b64cc7f6eb170f511a25f2b43410208a7891f680475b12dbd186",
+                           "aberturaReal":  "aprovada",
+                           "textoExtraidoCaracteres":  6179,
+                           "blocosTextoForaDaPagina":  [
+
+                                                       ],
+                           "imagensUnicas":  12,
+                           "paginasRenderizadas":  14,
+                           "previews":  ".local/pdf-final-review/"
+                       },
+                       {
+                           "arquivo":  "08-Entrega.pdf",
+                           "paginas":  8,
+                           "bytes":  197673,
+                           "sha256":  "0aeea928873a81aca6fc8b0db9be13d59143c365c49c1560f67139e081cb489e",
+                           "aberturaReal":  "aprovada",
+                           "textoExtraidoCaracteres":  22415,
+                           "blocosTextoForaDaPagina":  [
+
+                                                       ],
+                           "imagensUnicas":  0,
+                           "paginasRenderizadas":  8,
+                           "previews":  ".local/pdf-final-review/"
+                       }
+                   ],
+    "inspecaoVisual":  "Aprovada: 38 páginas renderizadas e inspecionadas em folhas de contato; páginas com tabelas, contrato Swagger e Problem Details também conferidas individualmente. Sem imagens/linhas/tabelas cortadas. Capturas completas preservam resolução original; o contrato Swagger denso pode ser ampliado no PDF ou aberto no PNG de origem.",
+    "previewsPrivados":  ".local/pdf-final-review/ (fora do ZIP; não são capturas da aplicação)",
+    "instanteInspecaoVisualUtc":  "2026-11-06T23:35:25.2962459Z"
+}
