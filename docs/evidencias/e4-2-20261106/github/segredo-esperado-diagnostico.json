@@ -1,0 +1,13 @@
+{
+  "expectedName": "PORTAL_CI_CERTIFICATE_PASSWORD",
+  "runId": 42313806838,
+  "runAttempt": 1,
+  "repositoryMetadataRead": false,
+  "metadataBlock": "Git credential fill indisponível no processo local: exit 128 com terminal prompts disabled; nenhum token/campo retornado, GH_TOKEN/GITHUB_TOKEN ausentes.",
+  "logEnvironmentValueClassification": "masked",
+  "guardFailed": "length < 16",
+  "inference": "O nome esperado recebeu um valor mascarado não vazio, mas a guarda reprovou por tamanho menor que 16. A localização exata do cofre não foi consultada pela API.",
+  "secretValuesRead": false,
+  "remoteWrites": 0,
+  "requiredAction": "Atualizar o mesmo Actions Secret com pelo menos 16 caracteres e uma única linha; confirmar a correção sem informar o valor. Somente depois reexecutar o job no mesmo SHA."
+}

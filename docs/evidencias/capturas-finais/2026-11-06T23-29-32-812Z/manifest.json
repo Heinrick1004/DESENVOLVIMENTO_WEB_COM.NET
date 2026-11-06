@@ -1,0 +1,232 @@
+{
+  "instanteUtc": "2026-11-06T23:29:33.298Z",
+  "origem": "https://localhost:8340",
+  "banco": "PortalTarefas_Tests_EntregaSeed20261106_6ef28a8a",
+  "ambiente": "Development",
+  "navegador": "156.0.8078.81",
+  "playwright": "1.64.1",
+  "commitBase": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+  "alteracoesLocais": [
+    ".github/workflows/ci.yml",
+    "scripts/Prepare-Delivery.ps1",
+    "scripts/Validate-CiStatic.mjs"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "natureza": "Aplicação real publicada com SQL Server exclusivo e conta sintética. Nenhum corpo HTTP, DOM ou estado React foi fabricado.",
+  "limites": "TLS local ignorado exclusivamente no navegador de captura. Idle pausado via CDP; loading e erro usam controle de rede declarado. Imagens anteriores preservadas.",
+  "verificacoes": [
+    {
+      "metodo": "GET",
+      "caminho": "/health/live",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/health/ready",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/version",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/csrf",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/login",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/csrf",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=50",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/Tarefas/Index",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/Tarefas/Details/2",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/Tarefas/Create",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/Tarefas/Create",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/swagger/index.html",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "cenario": "Recuperação após erro de rede controlado",
+      "resultado": "aprovado",
+      "estadoFinal": "empty"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/tarefas",
+      "status": 400,
+      "esperado": 400
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tarefas?tamanho=50",
+      "status": 200,
+      "esperado": 200
+    },
+    {
+      "cenario": "Cadastros inválidos não gravaram tarefas",
+      "totalAntes": 4,
+      "totalDepois": 4,
+      "resultado": "aprovado"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/logout",
+      "status": 204,
+      "esperado": 204
+    }
+  ],
+  "capturas": [
+    {
+      "arquivo": "r2-01-lista-mvc.png",
+      "caminho": "/Tarefas/Index",
+      "sha256": "49f569434bf7fd0bdadec0797b8c2b31334fd75647c8d8245977d6187688093b",
+      "roteiro": 2,
+      "cenario": "Lista real autenticada."
+    },
+    {
+      "arquivo": "r2-02-detalhes-mvc.png",
+      "caminho": "/Tarefas/Details/2",
+      "sha256": "79c36d14467b8e07e90bcb2434c75dfcfa97543fbf3188bbf1e28addc6eb4555",
+      "roteiro": 2,
+      "cenario": "Detalhes reais da tarefa do seed."
+    },
+    {
+      "arquivo": "r2-03-cadastro-mvc.png",
+      "caminho": "/Tarefas/Create",
+      "sha256": "6049d069c74e10ebca1cce14402418c07ec63381f934197877468c1a1dd43bd0",
+      "roteiro": 2,
+      "cenario": "Formulário de cadastro real."
+    },
+    {
+      "arquivo": "r2-04-validacao-mvc.png",
+      "caminho": "/Tarefas/Create",
+      "sha256": "352775c891d0e93db9460958227a6d75a8107b46b04eb5b8b64a2e6650829402",
+      "roteiro": 2,
+      "cenario": "POST real inválido; valores preservados e nenhuma gravação.",
+      "mensagens": [
+        "O título deve ter entre 3 e 120 caracteres."
+      ]
+    },
+    {
+      "arquivo": "r4-01-swagger-operacoes.png",
+      "caminho": "/swagger/index.html",
+      "sha256": "eacffddf3d7d23e3403d0ec41d5c1ea98e1a22829ba79c83fa4c5c4a338204ef",
+      "roteiro": 4,
+      "cenario": "Swagger UI servido em Development, operações reais."
+    },
+    {
+      "arquivo": "r4-02-swagger-contrato.png",
+      "caminho": "/swagger/index.html",
+      "sha256": "b5dd55f2beaaed9afe427c21983f19013aef9f0f3eaf0015c5ba49343c7c927d",
+      "roteiro": 4,
+      "cenario": "Captura do bloco real da operação expandida, após carregar parâmetros e respostas do contrato.",
+      "regiao": "Bloco GET /api/tarefas da Swagger UI; captura direta do elemento, sem editar imagem."
+    },
+    {
+      "arquivo": "r5-04-success.png",
+      "caminho": "/app/tarefas",
+      "sha256": "1ef1742ab89d9362e3502f0e8d81d326c16c1b4bfddd9ee45434d1d0cbf1fad0",
+      "roteiro": 5,
+      "estado": "success",
+      "cenario": "Dados fictícios reais do SQL de teste, sem interceptação."
+    },
+    {
+      "arquivo": "r5-03-empty.png",
+      "caminho": "/app/tarefas?pagina=1&tamanho=10&ordenarPor=prazo&direcao=asc&busca=sem_resultados_entrega_1794007778063",
+      "sha256": "02a978c140247edfdf8fff4269c47c7c7ec512c560a253a799e4c95124ecffcf",
+      "roteiro": 5,
+      "estado": "empty",
+      "cenario": "Filtro único sem resultados, resposta real do servidor."
+    },
+    {
+      "arquivo": "r5-02-loading.png",
+      "caminho": "/app/tarefas?pagina=1&tamanho=10&ordenarPor=prazo&direcao=asc",
+      "sha256": "e5a3444db248ca96612a4beb2d0e2b088969c035c4e2a13fb4070eda98fb7aca",
+      "roteiro": 5,
+      "estado": "loading",
+      "cenario": "Controle de rede: requisição real temporariamente retida antes de seguir ao servidor; nenhum corpo substituído."
+    },
+    {
+      "arquivo": "r5-05-error-rede.png",
+      "caminho": "/app/tarefas?pagina=1&tamanho=10&ordenarPor=prazo&direcao=asc&busca=captura_erro_controlado",
+      "sha256": "8155e6749d3e03c01e4059a8b2211db6ea6c2a6664c72dc1d42d165258128eda",
+      "roteiro": 5,
+      "estado": "error",
+      "cenario": "Controle de rede: uma consulta GET abortada no navegador. Corpo de erro não fabricado."
+    },
+    {
+      "arquivo": "r5-06-problem-details.png",
+      "caminho": "/app/tarefas/nova",
+      "sha256": "f8b5de279692b323b8bd2ef3320dc4b16c7fe827ca09de0d75563e0d5386cef0",
+      "roteiro": 5,
+      "estado": "problem-details",
+      "cenario": "POST real: prioridade alta sem prazo, HTTP 400 e mensagens do servidor.",
+      "resposta": {
+        "status": 400,
+        "title": "Confira os campos informados.",
+        "errors": {
+          "Prazo": [
+            "Tarefas de prioridade alta exigem prazo."
+          ]
+        }
+      }
+    },
+    {
+      "arquivo": "r5-01-idle.png",
+      "roteiro": 5,
+      "estado": "idle",
+      "caminho": "/app/tarefas",
+      "sha256": "af6ff59719041d9a8b8696e328a419a178fb2d43c8969ed3b599d0307d2ede44",
+      "cenario": "Quadro real pausado via CDP/MutationObserver antes do useEffect; DOM/estado React preservados."
+    }
+  ],
+  "versaoServida": {
+    "version": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e"
+  },
+  "resultado": "aprovado"
+}

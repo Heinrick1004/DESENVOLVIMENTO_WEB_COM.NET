@@ -1,0 +1,118 @@
+{
+  "pr": {
+    "number": 1,
+    "title": "Validar saúde Docker e consolidar auditoria final",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "head": {
+      "ref": "auditoria/final-20261105",
+      "sha": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2"
+    },
+    "merge_commit_sha": "d59527f578882c83c87e58cc5fafa6aa42c7787b",
+    "commits": 2,
+    "changed_files": 62,
+    "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/pull/1"
+  },
+  "main": {
+    "name": "main",
+    "sha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "protected": false
+  },
+  "runs": [
+    {
+      "id": 42123968355,
+      "name": "Validar e empacotar Portal de Tarefas",
+      "event": "pull_request",
+      "head_branch": "auditoria/final-20261105",
+      "head_sha": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42123968355",
+      "created_at": "2026-11-05T22:44:03Z",
+      "updated_at": "2026-11-05T22:47:19Z"
+    },
+    {
+      "id": 42122508347,
+      "name": "Validar e empacotar Portal de Tarefas",
+      "event": "push",
+      "head_branch": "experimento/ci-bloqueio-20261105",
+      "head_sha": "943e944a13d39c08bc82b9bb314c13986f5674b3",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122508347",
+      "created_at": "2026-11-05T22:33:37Z",
+      "updated_at": "2026-11-05T22:36:36Z"
+    },
+    {
+      "id": 42122467632,
+      "name": "Validar e empacotar Portal de Tarefas",
+      "event": "pull_request",
+      "head_branch": "auditoria/final-20261105",
+      "head_sha": "bfc46abbf99737724055af555bd785939bb795b8",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632",
+      "created_at": "2026-11-05T22:33:20Z",
+      "updated_at": "2026-11-05T22:36:40Z"
+    },
+    {
+      "id": 42122062762,
+      "name": "Validar e empacotar Portal de Tarefas",
+      "event": "push",
+      "head_branch": "experimento/ci-bloqueio-20261105",
+      "head_sha": "1423c195e52ad2aaa75fdcfab562ba53456899dc",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122062762",
+      "created_at": "2026-11-05T22:30:28Z",
+      "updated_at": "2026-11-05T22:31:57Z"
+    },
+    {
+      "id": 42117773881,
+      "name": "Validar e empacotar Portal de Tarefas",
+      "event": "push",
+      "head_branch": "main",
+      "head_sha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42117773881",
+      "created_at": "2026-11-05T22:00:55Z",
+      "updated_at": "2026-11-05T22:03:18Z"
+    }
+  ],
+  "observedAtUtc": "2026-11-06T23:23:06Z",
+  "method": "GitHub plugin; somente GET; respostas resumidas sem tokens/ambiente/dados pessoais",
+  "checks": [
+    {
+      "name": "validar",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+      "details_url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42123968355/job/127583245434"
+    }
+  ],
+  "prCommits": [
+    {
+      "sha": "bfc46abbf99737724055af555bd785939bb795b8",
+      "message": "fix: validar saude Docker e consolidar auditoria final com CI real",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/commit/bfc46abbf99737724055af555bd785939bb795b8"
+    },
+    {
+      "sha": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+      "message": "docs: comprovar bloqueio de publicacao e recuperacao no GitHub",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/commit/5bf8fefcdd2b7b02dfb7012f8663e584a530b79e"
+    }
+  ],
+  "limitations": [
+    "Novas alterações locais não possuem CI remoto até serem enviadas com autorização.",
+    "O head informado pela API do run é o head do PR; checkout, imagem e artefato usam o merge sintético d59527f578882c83c87e58cc5fafa6aa42c7787b.",
+    "Artefatos conferidos por metadados e logs; o ZIP remoto de 159 MB não foi baixado nem extraído."
+  ]
+}

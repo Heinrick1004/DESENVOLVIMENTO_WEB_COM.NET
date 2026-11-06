@@ -1,0 +1,21 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:19:24.8623010+00:00",
+    "dockerCli":  {
+                      "versao":  "Docker version 29.9.2, build a82e528",
+                      "codigo":  0
+                  },
+    "compose":  {
+                    "configuracao":  "Marcadores sinteticos somente no processo, sem banco/certificado real.",
+                    "codigo":  0,
+                    "configQuietCodigo":  0,
+                    "versao":  "Docker Compose version v5.6.1"
+                },
+    "engineLocal":  {
+                        "codigo":  1,
+                        "diagnostico":  "docker.exe : failed to connect to the docker API at npipe:////./pipe/docker_engine; check if the path is correct and \r\nif the daemon is running: open //./pipe/docker_engine: The system cannot find the file specified.\r\nNo linha:14 caractere:12\r\n+ $engine = (\u0026 $dockerExe info --format \u0027{{.OSType}}\u0027 2\u003e\u00261 | Out-String ...\r\n+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (failed to conne...file specified.:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError",
+                        "disponivel":  false
+                    },
+    "alteracoesGlobais":  false,
+    "instalacoes":  false,
+    "capturasDeTela":  0
+}

@@ -1,0 +1,21 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 13460037445,
+      "name": "portaltarefas-943e944a13d39c08bc82b9bb314c13986f5674b3",
+      "size_in_bytes": 159295700,
+      "digest": "sha256:bd8d384b0d5b0f7caaf386c4ce3206714e23db586c093af8e32429adeeb286ff",
+      "expired": false,
+      "created_at": "2026-11-05T22:36:20Z",
+      "expires_at": "2026-11-12T22:36:06Z",
+      "workflow_run": {
+        "id": 42122508347,
+        "repository_id": 1447556306,
+        "head_repository_id": 1447556306,
+        "head_branch": "experimento/ci-bloqueio-20261105",
+        "head_sha": "943e944a13d39c08bc82b9bb314c13986f5674b3"
+      }
+    }
+  ]
+}

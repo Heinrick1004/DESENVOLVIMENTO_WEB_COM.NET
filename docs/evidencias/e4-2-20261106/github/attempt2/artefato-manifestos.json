@@ -1,0 +1,51 @@
+{
+  "observedAtUtc": "2026-11-06T23:55:22.670021+00:00",
+  "artifactId": 13550705101,
+  "archiveBytes": 158655104,
+  "archiveSha256": "8d1ac50384c897997ea1acc910aec16f0844f44fd68f77e8ef90b788b85e31d7",
+  "archiveDownloaded": true,
+  "archiveHashMatches": true,
+  "testedCommit": "731aadb3d531e22820f086f472f7ddad8b5151db",
+  "container": {
+    "commit": "731aadb3d531e22820f086f472f7ddad8b5151db",
+    "container": "portal-ci-web",
+    "imageId": "sha256:b24e4cc0af3f27f81d1b92691a49e8a881d08212542cfcb7b1c68f613b4e56fa",
+    "health": "healthy",
+    "uid": "1654"
+  },
+  "smoke": {
+    "Resultado": "Aprovado",
+    "Endereco": "https://localhost:8443",
+    "Versao": "731aadb3d531e22820f086f472f7ddad8b5151db",
+    "Liveness": 200,
+    "Readiness": 200,
+    "MVC": 200,
+    "SPA": 200,
+    "Assets": 2,
+    "InstanteUtc": "2026-11-06T23:53:11.2454770+00:00"
+  },
+  "image": {
+    "id": "sha256:b24e4cc0af3f27f81d1b92691a49e8a881d08212542cfcb7b1c68f613b4e56fa",
+    "tags": [
+      "portaltarefas:731aadb3d531e22820f086f472f7ddad8b5151db"
+    ],
+    "user": "1654",
+    "revision": "731aadb3d531e22820f086f472f7ddad8b5151db"
+  },
+  "selectedEntries": [
+    "ci-validacao-estatica.json",
+    "commit.txt",
+    "container-health.json",
+    "container-user.txt",
+    "imagem.json",
+    "smoke-container.json"
+  ],
+  "archiveEntryCount": 103,
+  "privateCertificateFiles": [],
+  "verified": true,
+  "limits": [
+    "ZIP bruto preservado somente em .local ignorado.",
+    "Somente manifestos permitidos foram lidos; imagem TAR não foi carregada novamente.",
+    "Nenhum token, URL assinada, ambiente, log bruto ou certificado integra esta evidência."
+  ]
+}

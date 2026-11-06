@@ -1,0 +1,16 @@
+{
+  "consultaUtc": "2026-11-05 22:33:18 UTC",
+  "jobId": 127576694925,
+  "apiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/jobs/127576694925/logs",
+  "metodo": "Somente linhas de resultado, com formatação ANSI removida; nenhum log bruto versionado.",
+  "linhas": [
+    "2026-11-05T22:31:37.3238953Z [xUnit.net 00:00:00.24]     PortalTarefas.Tests.CiPublicationGateTests.FalhaControladaDeveInterromperPublicacao [FAIL]",
+    "2026-11-05T22:31:37.3866754Z   Failed PortalTarefas.Tests.CiPublicationGateTests.FalhaControladaDeveInterromperPublicacao [1 ms]",
+    "2026-11-05T22:31:37.3869183Z      at PortalTarefas.Tests.CiPublicationGateTests.FalhaControladaDeveInterromperPublicacao() in /home/runner/work/DESENVOLVIMENTO_WEB_COM.NET/DESENVOLVIMENTO_WEB_COM.NET/tests/PortalTarefas.Tests/CiPublicationGateTests.cs:line 9",
+    "2026-11-05T22:31:43.1869146Z Failed!  - Failed:     1, Passed:    55, Skipped:     0, Total:    56, Duration: 5 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-05T22:31:43.7777986Z Testes: 55 aprovados, 1 falhos, 0 ignorados. Evidência: /home/runner/work/DESENVOLVIMENTO_WEB_COM.NET/DESENVOLVIMENTO_WEB_COM.NET/artifacts/tests/20261105T223129500Z-bd76a4d0",
+    "2026-11-05T22:31:44.1721600Z ##[error]Process completed with exit code 1.",
+    "2026-11-05T22:31:45.3241873Z Artifact diagnostico-1423c195e52ad2aaa75fdcfab562ba53456899dc.zip successfully finalized. Artifact ID 13458922164",
+    "2026-11-05T22:31:45.3242510Z Artifact diagnostico-1423c195e52ad2aaa75fdcfab562ba53456899dc has been successfully uploaded! Final size is 66567 bytes. Artifact ID is 13458922164"
+  ]
+}

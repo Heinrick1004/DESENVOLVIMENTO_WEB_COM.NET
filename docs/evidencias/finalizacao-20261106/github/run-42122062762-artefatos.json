@@ -1,0 +1,21 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 13458922164,
+      "name": "diagnostico-1423c195e52ad2aaa75fdcfab562ba53456899dc",
+      "size_in_bytes": 66567,
+      "digest": "sha256:69e5a1cdb7abe4f0708248b264a51c7eb60cd66611dd8e69d8670ee4585f6f6e",
+      "expired": false,
+      "created_at": "2026-11-05T22:31:45Z",
+      "expires_at": "2026-11-12T22:31:44Z",
+      "workflow_run": {
+        "id": 42122062762,
+        "repository_id": 1447556306,
+        "head_repository_id": 1447556306,
+        "head_branch": "experimento/ci-bloqueio-20261105",
+        "head_sha": "1423c195e52ad2aaa75fdcfab562ba53456899dc"
+      }
+    }
+  ]
+}

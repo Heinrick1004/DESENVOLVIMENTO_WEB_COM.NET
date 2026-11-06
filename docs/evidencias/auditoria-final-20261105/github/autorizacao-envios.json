@@ -1,0 +1,17 @@
+﻿{
+    "instanteRegistroUtc":  "2026-11-05T22:32:17.7614275+00:00",
+    "origem":  "Respostas explicitas do usuario as duas perguntas de autorizacao nesta conversa",
+    "autorizado":  [
+                       "Enviar branch auditoria/final-20261105 para revisao mantendo main intacta",
+                       "Enviar commit experimental 1423c195e52ad2aaa75fdcfab562ba53456899dc, observar falha e depois enviar reversao 943e944a13d39c08bc82b9bb314c13986f5674b3"
+                   ],
+    "primeiroEnvio":  {
+                          "resultado":  "Push atomico aprovado para as duas novas branches",
+                          "experimento":  "1423c195e52ad2aaa75fdcfab562ba53456899dc",
+                          "auditoria":  "bfc46abbf99737724055af555bd785939bb795b8"
+                      },
+    "mainEsperada":  "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "mergeAutorizado":  false,
+    "deployPublicoAutorizado":  false,
+    "exclusaoBranchAutorizada":  false
+}

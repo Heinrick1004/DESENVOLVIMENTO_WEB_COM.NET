@@ -1,0 +1,14 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 13550027261,
+      "name": "diagnostico-731aadb3d531e22820f086f472f7ddad8b5151db",
+      "size_in_bytes": 67358,
+      "digest": "sha256:286639a22c59b4199c70ebc7f59a7b9348fb56cee2fe428056edec8c83a5cd5f",
+      "expired": false,
+      "created_at": "2026-11-06T23:45:52Z",
+      "expires_at": "2026-11-13T23:45:51Z"
+    }
+  ]
+}

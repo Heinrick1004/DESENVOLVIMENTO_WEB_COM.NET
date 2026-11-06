@@ -1,0 +1,100 @@
+{
+  "instanteUtc": "2026-11-06T23:33:27.493385+00:00",
+  "pastaDefinitiva": "2026-11-06T23-29-32-812Z",
+  "resultado": "aprovado",
+  "imagensDefinitivas": 12,
+  "inspecoes": [
+    {
+      "arquivo": "r2-01-lista-mvc.png",
+      "largura": 1440,
+      "altura": 1492,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r2-02-detalhes-mvc.png",
+      "largura": 1440,
+      "altura": 1100,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r2-03-cadastro-mvc.png",
+      "largura": 1440,
+      "altura": 1265,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r2-04-validacao-mvc.png",
+      "largura": 1440,
+      "altura": 1364,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r4-01-swagger-operacoes.png",
+      "largura": 1440,
+      "altura": 1553,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r4-02-swagger-contrato.png",
+      "largura": 1400,
+      "altura": 2025,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-04-success.png",
+      "largura": 1440,
+      "altura": 1158,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-03-empty.png",
+      "largura": 1440,
+      "altura": 1100,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-02-loading.png",
+      "largura": 1440,
+      "altura": 1100,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-05-error-rede.png",
+      "largura": 1440,
+      "altura": 1100,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-06-problem-details.png",
+      "largura": 1440,
+      "altura": 1464,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    },
+    {
+      "arquivo": "r5-01-idle.png",
+      "largura": 1440,
+      "altura": 1100,
+      "hashConferido": true,
+      "inspecaoVisual": "conteúdo correspondente ao cenário, legível, sem credenciais/cookies/tokens visíveis"
+    }
+  ],
+  "versaoServida": {
+    "version": "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e"
+  },
+  "limites": "Revisão visual por agente das 12 imagens reais, com hashes e dimensões conferidos. Não constitui certificação de acessibilidade ou aprovação remota das mudanças locais.",
+  "tentativasDiagnosticasPreservadas": [
+    "2026-11-06T23-28-02-600Z",
+    "2026-11-06T23-28-33-857Z"
+  ]
+}

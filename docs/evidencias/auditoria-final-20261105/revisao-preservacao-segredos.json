@@ -1,0 +1,25 @@
+{
+  "instanteUtc": "2026-11-05T22:23:22.064762+00:00",
+  "evidenciasTextuaisRevisadas": 31,
+  "encodings": {
+    "utf-8-sig": 21,
+    "utf-16": 10
+  },
+  "padroesPesquisados": [
+    "GitHub_PAT",
+    "AWS_access_key",
+    "private_key",
+    "OpenAI_key",
+    "Google_key"
+  ],
+  "achados": [],
+  "revisaoComplementar": "Agente de regressao leu 31 evidencias incluindo 10 UTF16 e verificou ausencia de Password literal nao mascarado.",
+  "arquivosProtegidosVerificados": 127,
+  "arquivosProtegidosAlterados": [],
+  "novasImagensVersionaveis": [],
+  "capturasDeTelaExecutadas": 0,
+  "limitacoes": [
+    "Busca por padroes conhecidos nao garante ausencia de todo segredo possivel.",
+    "Logs privados, certificados e configuracao local continuam ignorados pelo Git."
+  ]
+}

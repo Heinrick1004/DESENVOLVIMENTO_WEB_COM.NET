@@ -1,0 +1,13 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:25:05.8777886+00:00",
+    "banco":  "PortalTarefas_Tests_Entrega20261106_4a167ae9",
+    "total":  55,
+    "aprovados":  55,
+    "falhos":  0,
+    "ignorados":  0,
+    "suitesAusentes":  [
+
+                       ],
+    "exitCode":  0,
+    "trx":  "integration.trx"
+}

@@ -1,17 +1,23 @@
 ﻿[CmdletBinding()]
-param()
+param(
+    [switch]$CreateZip,
+    [string]$OutputDirectory = 'artifacts/entrega'
+)
 
 $ErrorActionPreference = 'Stop'
 $raizProjeto = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $raizGit = $raizProjeto.Replace('\', '/')
 $destinoInventario = Join-Path $raizProjeto 'docs/INVENTARIO_ENTREGA.json'
 
-# Este procedimento apenas lê as fontes e escreve o inventário. Não cria ZIP,
-# não copia a árvore, não remove caches e não altera imagens ou relatórios.
+# A seleção é explícita, baseada no Git e nas fontes atuais. Nenhum cache,
+# banco, volume ou arquivo de origem é removido. ZIP somente com -CreateZip.
 $referenciaGit = & git -c "safe.directory=$raizGit" -C $raizProjeto rev-parse HEAD
 if ($LASTEXITCODE -ne 0) { throw 'Não foi possível identificar o commit observado.' }
 $branchGit = & git -c "safe.directory=$raizGit" -C $raizProjeto branch --show-current
 if ($LASTEXITCODE -ne 0) { throw 'Não foi possível identificar a branch.' }
+$estadoGit = @(& git -c "safe.directory=$raizGit" -C $raizProjeto status --porcelain --untracked-files=normal)
+if ($LASTEXITCODE -ne 0) { throw 'Não foi possível inspecionar as alterações locais.' }
+$fontesModificadas = $estadoGit.Count -gt 0
 $arquivosGit = & git -c "safe.directory=$raizGit" -c core.quotePath=false -C $raizProjeto ls-files --cached --others --exclude-standard
 if ($LASTEXITCODE -ne 0) { throw 'Não foi possível listar os arquivos versionados e novos não ignorados.' }
 
@@ -22,12 +28,12 @@ foreach ($caminhoRelativo in ($arquivosGit | Sort-Object -Unique)) {
     $relativo = $caminhoRelativo.Replace('\', '/')
     if ($relativo -eq 'docs/INVENTARIO_ENTREGA.json') { continue }
     $motivo = $null
-    if ($relativo -match '(^|/)(bin|obj|node_modules|dist|artifacts|TestResults)(/|$)' -or
+    if ($relativo -match '(^|/)(bin|obj|node_modules|dist|artifacts|TestResults|__pycache__)(/|$)' -or
         $relativo -match '^(\.git|\.local|\.tools|\.nuget)(/|$)' -or
         $relativo -match '^src/PortalTarefas\.Web/wwwroot/app(/|$)') {
         $motivo = 'Saída restaurável, cache, ferramenta baixada ou ambiente local.'
     }
-    elseif ($relativo -match '\.(pfx|p12|key|pem|mdf|ldf|bak|tmp|tsbuildinfo)$' -or
+    elseif ($relativo -match '\.(pfx|p12|key|pem|mdf|ldf|bak|tmp|tsbuildinfo|pyc|pyo)$' -or
         $relativo -match '(^|/)secrets\.json$' -or
         ($relativo -match '(^|/)\.env($|\.)' -and $relativo -notmatch '\.env\.example$')) {
         $motivo = 'Arquivo privado/local ou temporário; não incluir na entrega.'
@@ -85,14 +91,17 @@ $gruposRestauraveis = @(
     }
 }
 
+$bytesEssenciais = [long]0
+foreach ($item in $essenciais) { $bytesEssenciais += [long]$item['bytes'] }
 $inventario = [ordered]@{
     instanteUtc = [DateTimeOffset]::UtcNow.ToString('o')
-    natureza = 'Inventário preparatório de entrega; nenhum ZIP ou cópia de arquivos foi criado.'
+    natureza = 'Inventário das fontes atuais selecionadas para entrega; ZIP opcional com -CreateZip.'
     branchObservada = ($branchGit -join '').Trim()
     commitObservadoNaGeracao = ($referenciaGit -join '').Trim()
-    observacaoGit = 'Os hashes incluem arquivos atuais, inclusive novos ainda não commitados. O commit final da entrega é registrado depois no Git.'
+    fontesModificadas = $fontesModificadas
+    observacaoGit = 'O SHA identifica a origem; fontesModificadas informa se há alterações locais. O inventário é metadado gerado, ignorado pelo Git e incluído no ZIP.'
     quantidadeEssenciais = $essenciais.Count
-    bytesEssenciais = ($essenciais | Measure-Object -Property bytes -Sum).Sum
+    bytesEssenciais = $bytesEssenciais
     essenciais = $essenciais
     indiceAutorreferente = 'docs/INVENTARIO_ENTREGA.json é essencial, mas não recebe hash de si próprio neste índice.'
     gruposRestauraveisOuPrivados = @($gruposRestauraveis)
@@ -102,10 +111,42 @@ $inventario = [ordered]@{
         'Não existe inspeção de valores secretos neste inventário; a revisão de segredos é uma verificação separada.',
         'Arquivos ignorados pelo Git não são enumerados como fontes essenciais.',
         'Os contratos OpenAPI/schema.d.ts e as evidências reais são preservados como arquivos essenciais.',
-        'O ZIP definitivo aguarda as capturas finais autorizadas.'
+        'A existência do ZIP não significa aprovação acadêmica: consultar STATUS_DE_EXECUCAO.md e os relatórios de verificação.'
     )
 }
 [IO.File]::WriteAllText($destinoInventario, ($inventario | ConvertTo-Json -Depth 8) + [Environment]::NewLine, [Text.UTF8Encoding]::new($false))
+if ($CreateZip) {
+    Add-Type -AssemblyName System.IO.Compression
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $outputRoot = if ([IO.Path]::IsPathRooted($OutputDirectory)) { [IO.Path]::GetFullPath($OutputDirectory) } else { [IO.Path]::GetFullPath((Join-Path $raizProjeto $OutputDirectory)) }
+    if (-not $outputRoot.StartsWith($raizProjeto + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+        throw 'O destino da entrega deve permanecer dentro da pasta do projeto.'
+    }
+    New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
+    $zipPath = Join-Path $outputRoot 'UNIP_Desenvolvimento_Web_NET_PortalTarefas_Entrega_Final.zip'
+    if (Test-Path -LiteralPath $zipPath) { throw 'O ZIP de destino já existe. Use outro OutputDirectory para preservar a entrega anterior.' }
+    $archive = [IO.Compression.ZipFile]::Open($zipPath, [IO.Compression.ZipArchiveMode]::Create)
+    try {
+        foreach ($item in $essenciais) {
+            [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, (Join-Path $raizProjeto $item.caminho), ('PortalTarefas/' + $item.caminho), [IO.Compression.CompressionLevel]::Optimal) | Out-Null
+        }
+        [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $destinoInventario, 'PortalTarefas/docs/INVENTARIO_ENTREGA.json', [IO.Compression.CompressionLevel]::Optimal) | Out-Null
+    } finally { $archive.Dispose() }
+    $summary = [ordered]@{
+        instanteUtc = [DateTimeOffset]::UtcNow.ToString('o')
+        zip = $zipPath
+        bytes = (Get-Item -LiteralPath $zipPath).Length
+        sha256 = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        arquivos = $essenciais.Count + 1
+        commitOrigem = ($referenciaGit -join '').Trim()
+        fontesModificadas = $fontesModificadas
+        versao = if ($fontesModificadas) { 'Snapshot local identificado por inventário SHA256; há alterações ainda não commitadas.' } else { 'Fontes do commit Git identificado, sem alterações locais; inventário gerado após o commit.' }
+        verificacao = 'Executar Verify-Delivery.py e validar restore/build na cópia extraída antes de considerar o pacote validado.'
+    }
+    [IO.File]::WriteAllText((Join-Path $outputRoot 'pacote.json'), ($summary | ConvertTo-Json -Depth 4), [Text.UTF8Encoding]::new($false))
+    Write-Output ([pscustomobject]$summary)
+    return
+}
 [pscustomobject]@{
     Inventario = $destinoInventario
     ArquivosEssenciais = $essenciais.Count

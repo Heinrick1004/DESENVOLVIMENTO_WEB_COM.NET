@@ -1,0 +1,14 @@
+{
+  "jobId": 128221398582,
+  "selection": "Somente erro de configuração, contadores de testes e SHA de checkout; sem ambiente/credenciais/URLs assinadas.",
+  "lines": [
+    "2026-11-06T23:43:50.2603973Z HEAD is now at 731aadb Merge 90ad9a2f6241a520df38d3be9b77a60fc76df9db into 1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+    "2026-11-06T23:43:50.2688117Z 731aadb3d531e22820f086f472f7ddad8b5151db",
+    "2026-11-06T23:44:52.2652157Z Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 8 s - PortalTarefas.Tests.dll (net10.0)",
+    "2026-11-06T23:45:04.1948877Z       Tests  33 passed (33)",
+    "2026-11-06T23:45:51.3845317Z   echo 'Configure o Actions Secret PORTAL_CI_CERTIFICATE_PASSWORD com ao menos 16 caracteres.' >&2",
+    "2026-11-06T23:45:51.3918910Z Configure o Actions Secret PORTAL_CI_CERTIFICATE_PASSWORD com ao menos 16 caracteres.",
+    "2026-11-06T23:45:51.3930043Z ##[error]Process completed with exit code 1.",
+    "2026-11-06T23:45:51.4284023Z   name: diagnostico-731aadb3d531e22820f086f472f7ddad8b5151db"
+  ]
+}

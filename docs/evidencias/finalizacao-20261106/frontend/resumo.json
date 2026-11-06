@@ -1,0 +1,51 @@
+﻿{
+    "instanteConsolidacaoUtc":  "2026-11-06T23:27:37.0129974Z",
+    "commitBase":  "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+    "fonteFrontendAlterada":  false,
+    "node":  "24.22.1",
+    "npm":  "11.19.1",
+    "npmCi":  {
+                  "exitCode":  0,
+                  "evidencia":  "npm-ci.txt",
+                  "pacotesInstalados":  185,
+                  "diretorio":  "src/PortalTarefas.Frontend"
+              },
+    "testes":  {
+                   "ignorados":  0,
+                   "evidencia":  "vitest-resultados.json",
+                   "total":  33,
+                   "aprovados":  33,
+                   "reprovados":  0,
+                   "sucesso":  true
+               },
+    "typecheck":  {
+                      "exitCode":  0,
+                      "evidencia":  "typecheck.txt"
+                  },
+    "build":  {
+                  "exitCode":  0,
+                  "evidencia":  "build.txt",
+                  "modulos":  54
+              },
+    "contratoGerado":  {
+                           "evidencia":  "cliente-geracao.json",
+                           "identico":  true,
+                           "limite":  "Regenerado a partir de docs/openapi.json versionado; validação contra servidor real depende da homologação HTTPS."
+                       },
+    "audit":  {
+                  "exitCode":  0,
+                  "vulnerabilidades":  0,
+                  "rede":  "Reexecução com autorização automática require_escalated após bloqueio da rede sandbox.",
+                  "evidencia":  "npm-audit.json",
+                  "tentativaAnterior":  "npm-audit-sandbox-bloqueado.json"
+              },
+    "browser":  {
+                    "headlessValidado":  true,
+                    "capturasNestaVerificacao":  0,
+                    "playwrightCore":  "1.64.1",
+                    "chrome":  "156.0.8078.81"
+                },
+    "limitacoes":  [
+                       "npm ci registrou aviso de depreciação whatwg-encoding e aviso de política de scripts esbuild; typecheck, testes e build posteriores passaram."
+                   ]
+}

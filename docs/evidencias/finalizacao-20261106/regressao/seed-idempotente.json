@@ -1,0 +1,21 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:27:23.2001632+00:00",
+    "bancoExclusivo":  "PortalTarefas_Tests_EntregaSeed20261106_6ef28a8a",
+    "primeira":  {
+                     "tarefas":  3,
+                     "auditorias":  3,
+                     "roles":  2,
+                     "usuarios":  2,
+                     "migrations":  3
+                 },
+    "segunda":  {
+                    "tarefas":  3,
+                    "auditorias":  3,
+                    "roles":  2,
+                    "usuarios":  2,
+                    "migrations":  3
+                },
+    "idempotente":  true,
+    "credenciais":  "Contas sintéticas .invalid e senhas aleatórias fornecidas somente ao processo; valores omitidos",
+    "remocoes":  "Nenhum banco ou volume removido"
+}

@@ -1,49 +1,55 @@
-# Preparação da entrega acadêmica
+# Entrega acadêmica — Portal de Tarefas
 
-O projeto permanece na estrutura existente. Esta preparação não cria o ZIP definitivo, não remove arquivos da pasta de trabalho e não modifica imagens. O fechamento ocorrerá depois da etapa visual prevista em [PLANO_CAPTURAS_FINAIS.md](PLANO_CAPTURAS_FINAIS.md).
+Estado após comprovação de E4.2 em 06/11/2026: **ENTREGA PREPARADA COM PENDÊNCIAS HISTÓRICAS**. A matriz registra 233 concluídos e verificados, 13 não aplicáveis fundamentados e duas limitações históricas (G-02/G-03). Há 55 testes .NET e 33 React aprovados, zero falhas/ignorados, 12 capturas reais e oito relatórios Markdown/PDF. E4.2 foi comprovado no [run 42313806838, tentativa 2](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/2); os marcos anteriores G-02/G-03 continuam sem comprovação retroativa. O PR permanece sem merge. [Status](STATUS_DE_EXECUCAO.md), [matriz](MATRIZ_DE_REQUISITOS.md), [revisão do PR](REVISAO_PR_1.md) e [E4.2](E4_2_SEGREDOS.md) identificam evidências e limites.
 
-## Arquivos essenciais
+## Pacote e conteúdo
 
-| Grupo | Manter na entrega | Motivo |
-|---|---|---|
-| Solução e ferramentas | `PortalTarefas.sln`, `global.json`, `NuGet.Config`, `.config/dotnet-tools.json` | Seleção do SDK, projetos, fontes de pacotes e ferramenta EF restaurável |
-| Backend | `src/PortalTarefas.Web/`, exceto saídas de build | Código, Razor, CSS, modelos, DTOs, validações, serviços, Identity e infraestrutura |
-| Migrations | `src/PortalTarefas.Web/Data/Migrations/` e `docs/sql/migrations.sql` | Histórico e revisão do esquema; não podem ser substituídos pelo banco local |
-| Frontend | Fontes React, `public/`, `index.html`, configurações Vite/TypeScript, `package.json` e `package-lock.json` | Restauração e build reproduzíveis |
-| Contrato | `docs/openapi.json`, `src/PortalTarefas.Frontend/src/api/schema.d.ts` e cliente | Artefatos gerados versionados usados pelo cliente; não são cache descartável |
-| Testes | `tests/PortalTarefas.Tests/` e testes frontend | Validação de domínio, HTTP, SQL, autenticação, concorrência, interface e infraestrutura |
-| Operação | `Dockerfile`, `compose.yaml`, `.dockerignore`, `.github/workflows/` e `scripts/` | Configuração de contêiner, CI e procedimentos reproduzíveis |
-| Documentação | `README.md`, matriz, status, plano visual e documentos de ambiente/entrega | Execução, rastreabilidade, bloqueios e procedimentos |
-| Relatórios | Oito fontes Markdown, oito PDFs e anexos exigidos | Entrega acadêmica e código completo documentado |
-| Evidências reais | `docs/evidencias/`, inclusive imagens históricas, manifests, logs sanitizados, TRX e inventários | Provas reais e limites das verificações; preservar a origem de cada resultado |
-| Regras do repositório | `.gitignore` e configurações necessárias | Separação entre fontes, saídas restauráveis e arquivos privados |
+Arquivo da nova rodada: `artifacts/entrega-e4-2-20261106/UNIP_Desenvolvimento_Web_NET_PortalTarefas_Entrega_Final.zip`. Há uma única pasta principal `PortalTarefas/`. As fontes versionadas devem estar limpas e corresponder ao snapshot Git indicado no manifesto do pacote, com CI próprio aprovado antes da entrega. O inventário interno `docs/INVENTARIO_ENTREGA.json` é metadado gerado no empacotamento, registra caminho, tamanho e SHA256 de cada fonte selecionada e não calcula hash de si mesmo. O pacote anterior em `artifacts/entrega/` permanece histórico, com suas pendências e hashes; não é sobrescrito.
 
-O inventário detalhado é produzido por `scripts/Prepare-Delivery.ps1` em `INVENTARIO_ENTREGA.json`, identificando os arquivos essenciais, tamanho/SHA256 e os grupos restauráveis. Ele não inclui valores secretos nem funciona como cópia de banco. Execute-o depois das últimas alterações e novamente após acrescentar as capturas futuras:
+Inclui solução, projetos backend/frontend, migrations/SQL, testes, Dockerfile/Compose, workflow, scripts, OpenAPI e tipos, README, matriz/status, oito PDFs e Markdown/anexos, todas as evidências relevantes, 12 imagens finais e configurações de exemplo. A seleção usa arquivos versionados e novos não ignorados, excluindo caches, `bin`, `obj`, `dist`, `node_modules`, ferramentas baixadas, `.local`, `.nuget`, `.git`, saídas de publicação, User Secrets, certificados/chaves, arquivos privados de ambiente, bancos e backups. Não há limpeza de pastas nem remoção de dados/volumes existentes.
+
+## Geração reproduzível e inspeção
+
+Na raiz do repositório, com Git, PowerShell, Python 3.10+ e PyPDF2 3.0.1 instalados:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Prepare-Delivery.ps1
+python scripts/Validate-Documents.py
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Prepare-Delivery.ps1 -CreateZip -OutputDirectory artifacts/entrega-e4-2-20261106
+python scripts/Verify-Delivery.py artifacts/entrega-e4-2-20261106/UNIP_Desenvolvimento_Web_NET_PortalTarefas_Entrega_Final.zip --output-dir artifacts/entrega-e4-2-20261106/verificacao
 ```
 
-O script somente lê fontes e grava o índice. Não cria ZIP, não copia a árvore, não remove caches e não altera imagens/relatórios. O índice inclui arquivos novos não ignorados; o commit observado na geração não é apresentado como commit final de arquivos ainda não commitados.
+O script de preparação recusa sobrescrever um ZIP existente; para outra execução, informe novo `-OutputDirectory` dentro do projeto. O verificador também recusa sobrescrever a pasta de inspeção. Ele valida integridade CRC, nomes/caminhos/seleção, inventário/hash, presença dos arquivos obrigatórios, oito PDFs, imagens e padrões conhecidos de segredos; extrai em diretório novo e registra relatórios externos ao ZIP. O tamanho/SHA256 efetivos estão em `artifacts/entrega-e4-2-20261106/pacote.json`, repetidos no relatório de verificação. Os dados de integridade da própria entrega ficam fora do ZIP para evitar autorreferência.
 
-## Arquivos restauráveis ou privados que não devem compor o ZIP futuro
+## Validação da cópia extraída
 
-- Saídas `bin/`, `obj/`, `dist/`, `artifacts/` e `TestResults/` quando os resultados acadêmicos pertinentes já estiverem preservados em `docs/evidencias/`.
-- `node_modules/`, caches NuGet/npm, ferramentas portáteis baixadas e seus arquivos de instalação.
-- `.local/`, `.tools/`, `.nuget/`, perfis temporários, publicações de teste e caches de navegador.
-- `wwwroot/app/` quando contiver somente a cópia restaurável do build React; manter as fontes e o procedimento de integração.
-- Senhas, tokens, User Secrets, arquivos externos de ambiente com valores reais, certificados privados/PFX/chaves, arquivos de banco e backups locais.
+O verificador informa o caminho do projeto extraído. Dentro dele:
 
-Essa lista define o conteúdo da entrega futura; não autoriza apagar as pastas atuais. Os logs/evidências essenciais não devem ser removidos apenas por terem sido gerados por ferramenta.
+```powershell
+dotnet restore PortalTarefas.sln
+dotnet build PortalTarefas.sln -c Release --no-restore
+Push-Location src/PortalTarefas.Frontend
+npm.cmd ci
+npm.cmd test
+npm.cmd run typecheck
+npm.cmd run build
+Pop-Location
+python scripts/Validate-Documents.py --output artifacts/validacao-documental-extraida.json
+```
 
-## Restauração e validação da cópia de entrega
+Como alternativa reproduzível, a partir do projeto original, `scripts/Test-ExtractedDelivery.ps1 -ProjectPath <projeto-extraido> -ResultsDirectory <pasta-nova-de-resultados>` executa restore/build, restaura a ferramenta EF, roda os testes de domínio/memória e frontend, typecheck/build e a validação documental. Ele preserva os logs e recusa sobrescrever resultados anteriores.
 
-1. Instalar as versões documentadas de .NET e Node, restaurar a ferramenta EF e executar `dotnet restore` e `npm ci`.
-2. Configurar a conexão e as contas sintéticas externamente, mantendo desenvolvimento e integração em bancos distintos e reservados.
-3. Aplicar migrations/seed de forma explícita e controlada. Não copiar banco local como substituto das migrations.
-4. Compilar backend e frontend; executar os testes conforme o README. Integração SQL obrigatória não pode ser aceita como ignorada.
-5. Validar o contrato gerado e os clientes contra a API real quando o ambiente permitir.
-6. Repetir as verificações Docker/CI/CD somente em infraestrutura de teste disponível e autorizada.
-7. Acrescentar as capturas finais em nova pasta e atualizar o inventário antes do ZIP definitivo.
+Essas verificações independem de banco. A suíte completa de integração exige **outro banco SQL exclusivo** e configuração externa, conforme README; não executar testes SQL sem essa configuração e interpretar ignorados como aprovação. O contrato deve ser regenerado contra a API real, e não por edição manual. O README explica migrations, seed, HTTPS e acesso a MVC/React/API em uma instalação limpa. A fonte acadêmica `Roteiros.pdf` é externa ao projeto; a verificação opcional `--academic-pdf` permite fornecê-la novamente e não é pré-requisito de compilação.
 
-Os marcos reais do Git são preservados no repositório de trabalho. Os oito marcos anteriores à auditoria não são reconstruídos artificialmente para a entrega.
+A inspeção de segurança procura arquivos privados e padrões de credenciais, sem imprimir valores; achados potenciais precisam de revisão. O relatório registra o escopo e falsos positivos fundamentados. Não se promete ausência matemática de qualquer segredo desconhecido. O pacote só deve ser considerado verificado depois de conferir esse relatório e os resultados reais de restore/build/frontend na cópia.
+
+## Validação da revisão empacotada e integração
+
+O [CI 42313806838, tentativa 2](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/2) terminou aprovado para o head `90ad9a2f6241a520df38d3be9b77a60fc76df9db`, testado no merge sintético `731aadb3d531e22820f086f472f7ddad8b5151db`. Foram aprovados 55 testes .NET e 33 React, zero falhos e zero ignorados, além de SQL/migrations, contrato/cliente, builds, Docker com HTTPS e usuário não privilegiado, smoke, saúde nativa e save/upload. A etapa sem fallback consumiu o Actions Secret para gerar o PFX; o contêiner abriu esse certificado e respondeu por HTTPS, com manifesto nativo `healthy`. O agente não consultou o valor do segredo; ele não foi incluído nas evidências, imagem ou pacote. A [comprovação sanitizada](evidencias/e4-2-20261106/github/comprovacao-e4-2.json) fundamenta a mudança de R8-17. A aprovação remota da revisão efetivamente empacotada deve ser conferida nos checks do PR e no comprovante final associado ao SHA registrado no manifesto do pacote. A execução citada comprova seus próprios head e checkout; não aprova automaticamente commits posteriores. O comprovante do CI final e os dados de integridade do ZIP ficam nos arquivos de acompanhamento ao lado do pacote, sem alterar novamente as fontes versionadas.
+
+A [tentativa 1](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/1) foi reprovada pela guarda que exige ao menos 16 caracteres no Actions Secret, antes de executar o contêiner, smoke, saúde nativa e entrega. Os testes anteriores da execução haviam passado; essa rejeição foi de configuração. O responsável informou a correção do segredo e a tentativa 2 reexecutou o mesmo head/checkout. Os [registros da primeira tentativa](evidencias/e4-2-20261106/github/comprovacao-e4-2-attempt1.json) permanecem preservados; não são substituídos pelo resultado aprovado posterior.
+
+Depois da consolidação documental, conferir o CI do head realmente selecionado para o pacote e seu checkout sintético. Gerar o ZIP a partir das fontes versionadas limpas; guardar a prova desse CI, `pacote.json`, inventário e verificações externas ao ZIP na mesma pasta de entrega. Metadados pós-commit são identificados como tais e não se atribuem ao conteúdo versionado do commit. Alterar o conteúdo do ZIP exige novos hashes e nova verificação.
+
+O responsável já configurou o segredo e autorizou commit/push na branch do PR. Uma eventual integração à `main` depende de autorização específica; se realizada, deve receber CI do SHA integrado. G-02/G-03 permanecem limitações históricas, sem transformar a conclusão atual de E4.2 em declaração de 248 requisitos concluídos.
+
+Nenhum ZIP foi publicado em serviço externo. As execuções históricas permanecem identificadas em seus diretórios; a revisão de 06/11 reconfirmou os runs original, negativo, recuperação e CI final remoto. O ensaio negativo continua válido para a ordem dos gates preservada. Os oito marcos anteriores de G-02/G-03 não foram fabricados.

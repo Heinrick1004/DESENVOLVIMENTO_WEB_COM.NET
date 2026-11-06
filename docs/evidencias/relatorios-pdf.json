@@ -10,10 +10,12 @@
   {
     "fonte": "02-MVC.md",
     "pdf": "02-MVC.pdf",
-    "bytes": 311809,
-    "paginas": 6,
-    "sha256": "22b59f0e0c6f2dee9367983557cee9a95ee81351a9025fa5166c6903f4d4b9e6",
-    "renderer": "Chrome headless local, HTML sem dependências externas"
+    "bytes": 495644,
+    "paginas": 10,
+    "sha256": "4328c3e43edca0dabb6ea51f75c41acd27277726961727fa5c0ee0e08ec2daaf",
+    "fonteSha256": "579d296fa1dc9caa82ea6109b87e874f175169ec42d41515837ced3c2c6e616e",
+    "instanteUtc": "2026-11-06T23:32:26.332935+00:00",
+    "renderer": "Chrome headless local, HTML sem dependências externas; referências locais impressas como caminhos relativos"
   },
   {
     "fonte": "03-Persistencia.md",
@@ -26,18 +28,22 @@
   {
     "fonte": "04-API.md",
     "pdf": "04-API.pdf",
-    "bytes": 205281,
-    "paginas": 4,
-    "sha256": "dab6a6e139786e51b6f6209d357a219e69f2a698dc38aa65089544bd30e027b5",
-    "renderer": "Chrome headless local, HTML sem dependências externas"
+    "bytes": 362385,
+    "paginas": 6,
+    "sha256": "0a8d30701e49acce66a47b5289c6c8d118d4d1da4a1382018a7a9955e34766ff",
+    "fonteSha256": "a8cc651676521dc3aa026d92d5e35408727eaaeb84569c4fe69da4558f1a996d",
+    "instanteUtc": "2026-11-06T23:32:28.067141+00:00",
+    "renderer": "Chrome headless local, HTML sem dependências externas; referências locais impressas como caminhos relativos"
   },
   {
     "fonte": "05-React.md",
     "pdf": "05-React.pdf",
-    "bytes": 371388,
-    "paginas": 8,
-    "sha256": "0e4f99e2b788029d3bec05003d56a79e4d16e86d7a3128471208379761d5b937",
-    "renderer": "Chrome headless local, HTML sem dependências externas"
+    "bytes": 658554,
+    "paginas": 14,
+    "sha256": "cd9d2de5a9e4b64cc7f6eb170f511a25f2b43410208a7891f680475b12dbd186",
+    "fonteSha256": "44269582525bfc49593ab4a472f8bf514138a04c672a158fc17881011f585756",
+    "instanteUtc": "2026-11-06T23:32:29.651151+00:00",
+    "renderer": "Chrome headless local, HTML sem dependências externas; referências locais impressas como caminhos relativos"
   },
   {
     "fonte": "06-Identity.md",
@@ -58,9 +64,11 @@
   {
     "fonte": "08-Entrega.md",
     "pdf": "08-Entrega.pdf",
-    "bytes": 94883,
-    "paginas": 3,
-    "sha256": "df1c120d0f1d1324252d1a3698df8145121a49aa5999c8c5df3f64fbd82fc2e8",
-    "renderer": "Chrome headless local, HTML sem dependências externas"
+    "bytes": 209453,
+    "paginas": 9,
+    "sha256": "5cafaddcda0b5c6179d2429889bd7347b6d1c8343b12cbf233ac63a5e7e9a206",
+    "fonteSha256": "7fe9d5490aa8c2bc015c6d4bfd9050205e5444695e19b09d02b8caaab3fd3bab",
+    "instanteUtc": "2026-11-06T23:57:20.639892+00:00",
+    "renderer": "Chrome headless local, HTML sem dependências externas; referências locais impressas como caminhos relativos"
   }
 ]

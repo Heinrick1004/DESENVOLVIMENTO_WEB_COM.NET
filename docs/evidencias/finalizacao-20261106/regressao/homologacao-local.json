@@ -1,0 +1,46 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:27:30.2861597+00:00",
+    "commitOrigem":  "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+    "assemblySha256":  "f70b41f77dc3f36ae9e0d35dc91b1a6749140ebd19194b95eca1d9c14c6e6de0",
+    "bancoExclusivo":  "PortalTarefas_Tests_EntregaSeed20261106_6ef28a8a",
+    "escopo":  "Publicacao em pasta e hosts locais loopback; nao equivale a deploy remoto/CD",
+    "checks":  [
+                   {
+                       "ambiente":  "Development",
+                       "smoke":  {
+                                     "Resultado":  "Aprovado",
+                                     "Endereco":  "https://localhost:8340",
+                                     "Versao":  "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+                                     "Liveness":  200,
+                                     "Readiness":  200,
+                                     "MVC":  200,
+                                     "SPA":  200,
+                                     "Assets":  2,
+                                     "InstanteUtc":  "2026-11-06T23:27:25.6416387+00:00"
+                                 },
+                       "openapi":  200,
+                       "swagger":  200,
+                       "processoEncerrado":  true
+                   },
+                   {
+                       "ambiente":  "Production",
+                       "smoke":  {
+                                     "Resultado":  "Aprovado",
+                                     "Endereco":  "https://localhost:8340",
+                                     "Versao":  "5bf8fefcdd2b7b02dfb7012f8663e584a530b79e",
+                                     "Liveness":  200,
+                                     "Readiness":  200,
+                                     "MVC":  200,
+                                     "SPA":  200,
+                                     "Assets":  2,
+                                     "InstanteUtc":  "2026-11-06T23:27:30.1789783+00:00"
+                                 },
+                       "openapi":  404,
+                       "swagger":  404,
+                       "processoEncerrado":  true
+                   }
+               ],
+    "capturasRealizadas":  0,
+    "processosPropriosEncerrados":  true,
+    "dadosPreservados":  true
+}

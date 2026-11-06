@@ -1,0 +1,200 @@
+{
+  "instanteUtc": "2026-11-06T23:58:11.600849+00:00",
+  "natureza": "Validação documental atual, sem modificar evidências históricas.",
+  "git": {
+    "commitObservado": "90ad9a2f6241a520df38d3be9b77a60fc76df9db",
+    "branchObservada": "auditoria/final-20261105",
+    "limite": "Os hashes descrevem os arquivos atuais; o SHA Git não incorpora alterações não commitadas."
+  },
+  "requisitos": {
+    "arquivo": "docs/MATRIZ_DE_REQUISITOS.md",
+    "sha256": "19a19cf54d851be7097324cd365b9569eb4208b3a1565517ba92a16148031ce5",
+    "quantidade": 248,
+    "idsUnicos": 248,
+    "idsDuplicados": [],
+    "idsAusentes": [],
+    "idsInesperados": [],
+    "estadosDesconhecidos": [],
+    "estados": {
+      "Concluído e verificado": 233,
+      "Limitação histórica": 2,
+      "Não aplicável": 13
+    },
+    "estadosPorRoteiro": {
+      "G": {
+        "Concluído e verificado": 2,
+        "Limitação histórica": 2
+      },
+      "R1": {
+        "Concluído e verificado": 30
+      },
+      "R2": {
+        "Concluído e verificado": 27,
+        "Não aplicável": 2
+      },
+      "R3": {
+        "Concluído e verificado": 30,
+        "Não aplicável": 1
+      },
+      "R4": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R5": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R6": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      },
+      "R7": {
+        "Concluído e verificado": 28,
+        "Não aplicável": 2
+      },
+      "R8": {
+        "Concluído e verificado": 29,
+        "Não aplicável": 2
+      }
+    },
+    "naoConcluidos": [
+      {
+        "id": "G-02",
+        "paginaItem": "2 / Verificação",
+        "estado": "Limitação histórica"
+      },
+      {
+        "id": "G-03",
+        "paginaItem": "2 / Verificação",
+        "estado": "Limitação histórica"
+      }
+    ],
+    "limite": "Classificações são contadas da matriz; sua veracidade depende das evidências de execução, não deste validador."
+  },
+  "links": {
+    "arquivosMarkdown": 25,
+    "linksLocaisVerificados": 860,
+    "destinosAusentes": [],
+    "limite": "Confere arquivos locais; não acessa URLs externas nem valida âncoras internas."
+  },
+  "pdfs": [
+    {
+      "fonte": "docs/relatorios/01-Pipeline.md",
+      "pdf": "docs/relatorios/01-Pipeline.pdf",
+      "sha256FonteMarkdown": "d3230081b482488d7b7be9983628be1b35ceafdae4c16ef62363029685b28717",
+      "bytes": 146115,
+      "paginas": 9,
+      "sha256": "d9b7cc83eafe5f81e9319eb6305049d811bfd99158cb545c86e45209de97ce36",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/02-MVC.md",
+      "pdf": "docs/relatorios/02-MVC.pdf",
+      "sha256FonteMarkdown": "579d296fa1dc9caa82ea6109b87e874f175169ec42d41515837ced3c2c6e616e",
+      "bytes": 495644,
+      "paginas": 10,
+      "sha256": "4328c3e43edca0dabb6ea51f75c41acd27277726961727fa5c0ee0e08ec2daaf",
+      "titulosConferidos": 9,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/03-Persistencia.md",
+      "pdf": "docs/relatorios/03-Persistencia.pdf",
+      "sha256FonteMarkdown": "8e972a04f5ffbca60b633b99144afd480490310b0f460441546706bc155c51ef",
+      "bytes": 107493,
+      "paginas": 3,
+      "sha256": "9dd6c88904941cf153061cf3801901aa33b8ceac3cd3bfa3feb8463a8b76d645",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/04-API.md",
+      "pdf": "docs/relatorios/04-API.pdf",
+      "sha256FonteMarkdown": "a8cc651676521dc3aa026d92d5e35408727eaaeb84569c4fe69da4558f1a996d",
+      "bytes": 362385,
+      "paginas": 6,
+      "sha256": "0a8d30701e49acce66a47b5289c6c8d118d4d1da4a1382018a7a9955e34766ff",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/05-React.md",
+      "pdf": "docs/relatorios/05-React.pdf",
+      "sha256FonteMarkdown": "44269582525bfc49593ab4a472f8bf514138a04c672a158fc17881011f585756",
+      "bytes": 658554,
+      "paginas": 14,
+      "sha256": "cd9d2de5a9e4b64cc7f6eb170f511a25f2b43410208a7891f680475b12dbd186",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/06-Identity.md",
+      "pdf": "docs/relatorios/06-Identity.pdf",
+      "sha256FonteMarkdown": "aba9c108482c1a093179630e94ef0789c52260cb20917e60bac38dc757b8b2ee",
+      "bytes": 95391,
+      "paginas": 2,
+      "sha256": "c39e9cf685cb08d52e52213c4ec19e4ee373dfe6c4977594735694217b1517b9",
+      "titulosConferidos": 7,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/07-Observabilidade.md",
+      "pdf": "docs/relatorios/07-Observabilidade.pdf",
+      "sha256FonteMarkdown": "690f49f0802ded0baa0ed96b17bacf46f0a94e2b48cce334120dd269e7af0fe6",
+      "bytes": 90702,
+      "paginas": 2,
+      "sha256": "a5852a74e1ff6893f070072446cecedc38fc2aa15f09cc150a9abbb88fb42d1f",
+      "titulosConferidos": 5,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    },
+    {
+      "fonte": "docs/relatorios/08-Entrega.md",
+      "pdf": "docs/relatorios/08-Entrega.pdf",
+      "sha256FonteMarkdown": "7fe9d5490aa8c2bc015c6d4bfd9050205e5444695e19b09d02b8caaab3fd3bab",
+      "bytes": 209453,
+      "paginas": 9,
+      "sha256": "5cafaddcda0b5c6179d2429889bd7347b6d1c8343b12cbf233ac63a5e7e9a206",
+      "titulosConferidos": 13,
+      "titulosAusentes": [],
+      "paginasSemTexto": [],
+      "manifestoConsistente": true
+    }
+  ],
+  "anexoFonteCompletoAtualizado": {
+    "src/PortalTarefas.Web/Program.cs": true,
+    "src/PortalTarefas.Web/Middleware/RequisicaoMiddleware.cs": true,
+    "src/PortalTarefas.Web/Controllers/DiagnosticoController.cs": true
+  },
+  "pdfAcademico": {
+    "executada": true,
+    "fonteExterna": "D:\\FACUL_PROJETOS\\DESENVOLVIMENTO_WEB_COM.NET\\Roteiros.pdf",
+    "sha256": "43253f1fcd4e6b04ac0c628ceb5094e4547302ec561368f42c53f174d7107384",
+    "paginas": 26,
+    "textosRoteirosConferidos": 244,
+    "divergencias": [],
+    "itensGerais": "G-01 a G-04 são sínteses da página 2 e exigem revisão humana.",
+    "copiadoParaEntrega": false
+  },
+  "aprovado": true,
+  "erros": [],
+  "limites": [
+    "Não executa testes da aplicação, CI remoto, Docker ou navegador.",
+    "Hashes e títulos não substituem revisão visual de tabelas, código e imagens.",
+    "Não declara 100% dos requisitos atendidos nem transforma bloqueios em aprovações."
+  ]
+}

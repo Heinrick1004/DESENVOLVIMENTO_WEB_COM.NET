@@ -1,0 +1,41 @@
+{
+  "instanteUtc": "2026-11-05T22:39:11.804007+00:00",
+  "escopo": "Arquivos novos ou modificados apos bfc46ab, incluindo evidencias de GitHub e atualizacoes documentais",
+  "arquivosTextuaisRevisados": [
+    "README.md",
+    "docs/DOCKER_WINDOWS.md",
+    "docs/ENSAIO_FALHA_CI.md",
+    "docs/ENTREGA_FINAL.md",
+    "docs/MATRIZ_DE_REQUISITOS.md",
+    "docs/PLANO_CAPTURAS_FINAIS.md",
+    "docs/STATUS_DE_EXECUCAO.md",
+    "docs/evidencias/auditoria-final-20261105/github/autorizacao-envios.json",
+    "docs/evidencias/auditoria-final-20261105/github/autorizacao-pr.json",
+    "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-artefatos.json",
+    "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-execucao.json",
+    "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-jobs.json",
+    "docs/evidencias/auditoria-final-20261105/github/ci-saude-nativa-trechos-log.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-artefatos.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-execucao.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-jobs.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-negativo-trechos-log.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-artefatos.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-execucao.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-jobs.json",
+    "docs/evidencias/auditoria-final-20261105/github/ensaio-recuperacao-trechos-log.json",
+    "docs/relatorios/08-Entrega.md"
+  ],
+  "total": 22,
+  "padroesPesquisados": [
+    "GitHub_PAT",
+    "AWS_access_key",
+    "private_key",
+    "OpenAI_key",
+    "Google_key"
+  ],
+  "achados": [],
+  "arquivosProtegidosVerificados": 127,
+  "arquivosProtegidosAlterados": [],
+  "capturasDeTelaExecutadas": 0,
+  "limite": "Pesquisa de padroes conhecidos; nao garante detectar todo segredo possivel."
+}

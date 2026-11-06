@@ -1,0 +1,282 @@
+{
+  "instanteUtc": "2026-11-06T23:37:53.254Z",
+  "resultado": "aprovado na verificação estática",
+  "comandoExecutado": "node scripts/Validate-CiStatic.mjs",
+  "node": "v24.22.1",
+  "workflow": ".github/workflows/ci.yml",
+  "workflowSha256": "067b1ff8bc6c60f33b2b3b7d5f3e398934414d799f36ee0376b90c7a3057dc71",
+  "yaml": {
+    "parser": "js-yaml",
+    "aprovado": true,
+    "etapas": 31
+  },
+  "compose": {
+    "arquivo": "compose.yaml",
+    "parser": "js-yaml",
+    "aprovado": true,
+    "sha256": "177669be26a17a8c75dd209818a0ef6261319c832bf1adb35822baee0688edef"
+  },
+  "dockerfile": {
+    "arquivo": "Dockerfile",
+    "sha256": "16511f7a2884bd14bd93e1c4c59c8f5db4eec25fc18909a01915644d9ae308b2"
+  },
+  "bash": {
+    "blocos": 22,
+    "resultados": [
+      {
+        "etapa": "Restaurar .NET",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Compilar .NET",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Preparar credencial efêmera e banco exclusivo",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Iniciar SQL Server isolado para esta execução",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Aguardar SQL Server antes das migrations",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Restaurar frontend",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Bloquear dependencias com vulnerabilidades altas ou criticas",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Iniciar API real para conferir o contrato",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Impedir divergência do contrato versionado",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Executar chamada real com o cliente TypeScript",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Testar frontend",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Verificar tipos TypeScript",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Compilar frontend",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Validar sintaxe e ordem dos bloqueios do pipeline",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Publicar aplicação em pasta",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Criar imagem identificada pelo commit",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Gerar certificado HTTPS efêmero com Actions Secret",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Executar a imagem real com SQL Server e HTTPS",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Confirmar Health Check nativo do contêiner",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Salvar imagem somente após o smoke test aprovado",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Capturar logs do contêiner após falha",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      },
+      {
+        "etapa": "Encerrar somente os recursos efêmeros deste job",
+        "comando": "bash -n < bloco run da etapa",
+        "exitCode": 0,
+        "aprovado": true
+      }
+    ]
+  },
+  "powershell": {
+    "scripts": [
+      {
+        "arquivo": "scripts/Generate-Client.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "06f095864e62428a4641a58ac207deca1bbcf1c06338f59411f89d2349e32e71"
+      },
+      {
+        "arquivo": "scripts/Prepare-Delivery.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "60ee4c1088144bfeed70b4ddc2bb838aa8ca3412991449389a2d48abef2922af"
+      },
+      {
+        "arquivo": "scripts/Publish-Local.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "35d9417b18e80d959898e0ba107a8a86594e10dff27798d90a3d46e538a4bc14"
+      },
+      {
+        "arquivo": "scripts/Smoke-Test.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "ac4555e503b318fc5c67dab975cffd4094eb5fb6916978471d28b108e4b6b195"
+      },
+      {
+        "arquivo": "scripts/Test-ArtifactLocal.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "8f9baea9674f52aa0f618340a265c846521d3facd88b1ce45076c7edaf0c19ae"
+      },
+      {
+        "arquivo": "scripts/Test-ExtractedDelivery.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "19055de44ebf33d85316b0ba15294c5b52b2f314d3d097feb60ef81a2408eb07"
+      },
+      {
+        "arquivo": "scripts/Test-Integration.ps1",
+        "comando": "PowerShell Parser.ParseFile (sem executar o script)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "46dcf4441dd8c4b1e757dcfaddfe00956f8348f913cc86b9998b1a3fbbc55483"
+      }
+    ],
+    "blocosWorkflow": [
+      {
+        "etapa": "Aplicar migrations e executar testes sem ignorados",
+        "comando": "PowerShell Parser.ParseInput (sem executar o bloco run)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "901e481a6ecbefc31e57ed0e54bd6b0b0d83dc87c36289ce68f2eddaafaea4fd"
+      },
+      {
+        "etapa": "Gerar cliente a partir do OpenAPI servido pela API",
+        "comando": "PowerShell Parser.ParseInput (sem executar o bloco run)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "b2b755208fd7753b97179429915a7be3c61d1118528e22a6fd12ca5790504ed7"
+      },
+      {
+        "etapa": "Inventariar dependências e versão",
+        "comando": "PowerShell Parser.ParseInput (sem executar o bloco run)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "9a76daa64fa7cb710eae958ea8d0213c3aa7cff62317e534c03df731d8337177"
+      },
+      {
+        "etapa": "Validar Health Checks, MVC, SPA e versão da imagem",
+        "comando": "PowerShell Parser.ParseInput (sem executar o bloco run)",
+        "exitCode": 0,
+        "aprovado": true,
+        "sha256": "361fa7478c8a4d6713ede74e682beba6837b8eacd407eb9d3051ce1a072cbef6"
+      }
+    ]
+  },
+  "gatesObrigatorios": {
+    "restoreDotnet": 3,
+    "buildDotnet": 4,
+    "integrationSql": 8,
+    "npmCi": 9,
+    "npmAudit": 10,
+    "generatedContract": 12,
+    "contractDiff": 13,
+    "realClient": 14,
+    "frontendTests": 15,
+    "typecheck": 16,
+    "frontendBuild": 17
+  },
+  "verificacoesDeOrdemEBloqueio": {
+    "tokenSomenteLeitura": true,
+    "checkoutSemCredencialPersistida": true,
+    "certificadoRecebeActionsSecret": true,
+    "secretObrigatorioSemFallback": true,
+    "gatilhosPullRequestEBranchPrincipal": true,
+    "sdkExplicitoIgualGlobalJson": true,
+    "sqlProntoAntesDeMigrationsETestes": true,
+    "gatesObrigatoriosAntesDeEmpacotar": true,
+    "gatesObrigatoriosSemIgnorarOuPularFalhas": true,
+    "smokeAntesDeSalvarImagemEPublicarArtefatos": true,
+    "healthCheckNativoAntesDeSalvarImagem": true,
+    "publicacaoSemAlwaysOuContinueOnError": true,
+    "composeIsoladoConfiguravel": true,
+    "composeMantemConexaoExternaObrigatoria": true,
+    "composeSemSeedAutomatico": true,
+    "imagemComUsuarioFinalNaoPrivilegiado": true,
+    "imagemDefineHealthCheck": true
+  },
+  "limitacoes": [
+    "O parser YAML e bash -n validam sintaxe; não executam as etapas.",
+    "O parser de compose.yaml nao resolve interpolacao nem substitui docker compose config.",
+    "O parser PowerShell apenas lê os scripts, sem migrations ou testes SQL.",
+    "O workflow GitHub Actions não foi disparado e Docker não foi executado por este comando.",
+    "Esta evidência não comprova build da imagem, Health Check do contêiner, upload de artefatos ou implantação."
+  ]
+}

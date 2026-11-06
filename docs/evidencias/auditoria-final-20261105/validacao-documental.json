@@ -1,0 +1,19 @@
+{
+  "instanteUtc": "2026-11-05T22:43:02.706780+00:00",
+  "arquivosMarkdown": 18,
+  "linksLocaisVerificados": 773,
+  "destinosAusentes": [],
+  "arquivosProtegidosVerificados": 127,
+  "arquivosProtegidosAlterados": [],
+  "pdf08": {
+    "paginas": 6,
+    "sha256": "008ce063fa9c36cafb108a3a5d6d703302ebea6dd962ac1ea384f2ff4ca5d08b",
+    "sha256FonteMarkdown": "245e575b5bc35d1732a0b4c17cfa0fbe6b79fff012694f4be979707508e13bc2",
+    "manifestoConsistente": true,
+    "titulosConferidos": 11,
+    "titulosAusentes": [],
+    "fatosObrigatoriosAusentes": []
+  },
+  "capturasDeTelaExecutadas": 0,
+  "playwrightExecutado": false
+}

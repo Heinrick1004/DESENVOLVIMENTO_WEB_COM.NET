@@ -1,0 +1,28 @@
+{
+  "consultaUtc": "2026-11-05 22:38:02 UTC",
+  "runId": 42122467632,
+  "runUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632",
+  "total": 1,
+  "shaDaImagemEArtefato": "3f4c18a0c47ba70d3a8190f4cc0437257d5d987b",
+  "artifacts": [
+    {
+      "id": 13458418239,
+      "name": "portaltarefas-3f4c18a0c47ba70d3a8190f4cc0437257d5d987b",
+      "sizeInBytes": 159298190,
+      "digest": "sha256:c8d75257563beda8cc831f91e764cf9c107e156312897fd9aae8a118461a369f",
+      "expired": false,
+      "createdAt": "2026-11-05T22:36:25Z",
+      "expiresAt": "2026-11-12T22:36:11Z",
+      "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122467632/artifacts/13458418239",
+      "metadataApiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/artifacts/13458418239",
+      "downloadApiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/artifacts/13458418239/zip",
+      "workflowRun": {
+        "id": 42122467632,
+        "headBranch": "auditoria/final-20261105",
+        "headSha": "bfc46abbf99737724055af555bd785939bb795b8"
+      }
+    }
+  ],
+  "conteudoBaixado": false,
+  "limite": "Registro de metadados do artefato e upload bem-sucedido; seu ZIP nao foi baixado ou inspecionado."
+}

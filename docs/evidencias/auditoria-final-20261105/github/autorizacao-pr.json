@@ -1,0 +1,16 @@
+﻿{
+    "instanteRegistroUtc":  "2026-11-05T22:34:39.3344498+00:00",
+    "origem":  "Autorizacao explicita do usuario para abrir PR em rascunho e executar CI",
+    "pullRequest":  {
+                        "numero":  1,
+                        "base":  "main",
+                        "baseCommit":  "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+                        "headInicial":  "bfc46abbf99737724055af555bd785939bb795b8",
+                        "head":  "auditoria/final-20261105",
+                        "url":  "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/pull/1",
+                        "draft":  true
+                    },
+    "pipelineInicial":  42122467632,
+    "mergeRealizado":  false,
+    "publicacaoExternaRealizada":  false
+}

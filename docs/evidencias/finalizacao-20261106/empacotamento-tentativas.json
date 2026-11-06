@@ -1,0 +1,7 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:37:50.3821953+00:00",
+    "tentativaInventario":  "Falha no Measure-Object de OrderedDictionary em PowerShell 5; corrigido para soma explícita.",
+    "primeiraCopiaExtraida":  "Restore/build/ferramenta EF, 29 testes dominio/memoria, 33 React, typecheck/build aprovados. Etapa documental interrompida porque Get-Command retornou dois executaveis Python; corrigido selecionando primeiro aplicativo do PATH.",
+    "produto":  "Nenhuma falha de teste da aplicação",
+    "preservacao":  "Primeiro ZIP e resultados mantidos em artifacts/entrega/tentativa-20261106-233603 e pastas de verificação anteriores."
+}

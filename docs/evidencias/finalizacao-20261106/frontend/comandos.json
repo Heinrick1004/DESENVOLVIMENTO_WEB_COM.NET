@@ -1,0 +1,20 @@
+﻿[
+    {
+        "comando":  "npm run typecheck",
+        "inicioUtc":  "2026-11-06T23:25:26.4755311Z",
+        "terminoUtc":  "2026-11-06T23:25:34.5888198Z",
+        "exitCode":  0
+    },
+    {
+        "comando":  "npm test -- --reporter=default --reporter=json --outputFile=D:\\FACUL_PROJETOS\\DESENVOLVIMENTO_WEB_COM.NET\\Roteiro\\PortalTarefas\\docs\\evidencias\\finalizacao-20261106\\frontend/vitest-resultados.json",
+        "inicioUtc":  "2026-11-06T23:25:34.5948216Z",
+        "terminoUtc":  "2026-11-06T23:25:52.8999677Z",
+        "exitCode":  0
+    },
+    {
+        "comando":  "npm run build",
+        "inicioUtc":  "2026-11-06T23:25:52.8999677Z",
+        "terminoUtc":  "2026-11-06T23:25:56.5770987Z",
+        "exitCode":  0
+    }
+]

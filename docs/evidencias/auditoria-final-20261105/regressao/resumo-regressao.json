@@ -1,0 +1,100 @@
+{
+  "instanteUtc": "2026-11-05T22:21:16.161104+00:00",
+  "commitBaseValidado": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+  "natureza": "Regressao local real, sem alteracao de codigo de negocio; nao representa execucao de CD remoto",
+  "ambiente": {
+    "sdkDotnet": "10.0.403",
+    "node": "v24.22.1",
+    "sqlServer": "17.0.1145.4",
+    "autenticacaoSql": "Integrada Windows fora do sandbox; conexao privada omitida"
+  },
+  "dotnet": {
+    "total": 55,
+    "aprovados": 55,
+    "falhos": 0,
+    "ignorados": 0,
+    "bloqueados": 0,
+    "suitesAusentes": [],
+    "porSuite": {
+      "DomainTests": {
+        "Passed": 13
+      },
+      "InMemoryTests": {
+        "Passed": 16
+      },
+      "SqlIntegrationTests": {
+        "Passed": 6
+      },
+      "SqlTestDatabaseGuardTests": {
+        "Passed": 5
+      },
+      "ApiTests": {
+        "Passed": 6
+      },
+      "RoteirosIniciaisTests": {
+        "Passed": 4
+      },
+      "ObservabilidadeTests": {
+        "Passed": 5
+      }
+    },
+    "trx": "dotnet-testes/20261105T221626427Z-9a7a84b4/integration.trx",
+    "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Test-Integration.ps1 -Configuration Release -NoBuild -Initialize -ResultsDirectory docs/evidencias/auditoria-final-20261105/regressao/dotnet-testes"
+  },
+  "frontend": {
+    "arquivosDeTeste": 5,
+    "total": 33,
+    "aprovados": 33,
+    "falhos": 0,
+    "ignorados": 0,
+    "bloqueados": 0,
+    "typecheck": "Aprovado",
+    "build": "Aprovado, 54 modulos",
+    "resultados": "frontend-resultados.json"
+  },
+  "buildDotnet": {
+    "resultado": "Aprovado",
+    "configuracao": "Release",
+    "avisos": 0,
+    "erros": 0,
+    "evidencia": "dotnet-build-release.txt"
+  },
+  "restoreDotnet": {
+    "resultado": "Aprovado",
+    "command": "dotnet restore PortalTarefas.sln -p:NuGetAudit=false",
+    "limite": "Pacotes disponiveis no cache; auditoria NuGet remota nao foi executada nesta etapa."
+  },
+  "seed": {
+    "resultado": "Aprovado, idempotente em duas execucoes",
+    "evidencia": "seed-idempotente.json"
+  },
+  "contrato": {
+    "resultado": "OpenAPI real e schema gerado identicos aos arquivos versionados, sem reescreve-los",
+    "evidencia": "contrato-real.json"
+  },
+  "smoke": {
+    "resultado": "Development e Production simulada no mesmo artefato, ambas aprovadas",
+    "evidencia": "homologacao-local.json"
+  },
+  "clientesHttps": {
+    "publico": "Listagem e detalhe 200",
+    "autenticado": "CSRF 200, login 200, CSRF renovado 200, criacao 201 com rowVersion, detalhe 200, logout 204",
+    "tls": "NODE_EXTRA_CA_CERTS aponta somente para certificado publico local; validacao TLS preservada",
+    "evidencias": [
+      "cliente-sql-https.txt",
+      "cliente-autenticado-https.txt"
+    ]
+  },
+  "preservacao": {
+    "arquivosDeCodigoModificados": 0,
+    "capturasDeTela": 0,
+    "bancosOuVolumesRemovidos": 0,
+    "processosPropriosEncerrados": true,
+    "portas8340e8341SemListenerAposExecucao": true
+  },
+  "limites": [
+    "O teste negativo remoto exige autorizacao e nao integra a contagem de regressao local.",
+    "Docker e CD remotos exigem evidencias separadas; a publicacao em pasta nao e um deploy de imagem.",
+    "Uma tentativa do harness privado foi interrompida por aviso npm em stderr no PowerShell 5 e corrigida sem alteracao da aplicacao; ver harness-tentativa-inicial.json."
+  ]
+}

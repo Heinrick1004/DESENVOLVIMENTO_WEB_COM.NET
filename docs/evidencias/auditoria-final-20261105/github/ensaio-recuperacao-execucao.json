@@ -1,0 +1,111 @@
+{
+  "consultaUtc": "2026-11-05 22:37:32 UTC",
+  "origem": "GitHub REST API via conector GitHub; somente consultas GET.",
+  "resultado": "Recuperação aprovada: após reversão do teste intencional, o pipeline completo voltou a success.",
+  "execucao": {
+    "id": 42122508347,
+    "nome": "Validar e empacotar Portal de Tarefas",
+    "branch": "experimento/ci-bloqueio-20261105",
+    "commit": "943e944a13d39c08bc82b9bb314c13986f5674b3",
+    "status": "completed",
+    "conclusao": "success",
+    "evento": "push",
+    "tentativa": 1,
+    "inicioUtc": "2026-11-05T22:33:37Z",
+    "ultimaAtualizacaoUtc": "2026-11-05T22:36:36Z",
+    "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122508347",
+    "apiUrl": "https://api.github.com/repos/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122508347"
+  },
+  "relacaoComEnsaio": {
+    "runNegativo": 42122062762,
+    "commitNegativo": "1423c195e52ad2aaa75fdcfab562ba53456899dc",
+    "commitReversao": "943e944a13d39c08bc82b9bb314c13986f5674b3",
+    "testeIntencional": "CiPublicationGateTests.FalhaControladaDeveInterromperPublicacao",
+    "resultado": "Suíte .NET passou de 56 casos com uma falha esperada para 55 casos sem falhas; frontend normal também aprovado."
+  },
+  "testes": {
+    "dotnet": {
+      "total": 55,
+      "aprovados": 55,
+      "reprovados": 0,
+      "ignorados": 0
+    },
+    "frontend": {
+      "total": 33,
+      "aprovados": 33,
+      "reprovados": 0,
+      "ignorados": 0,
+      "arquivos": 5
+    },
+    "origem": "Resumos de dotnet test/Test-Integration.ps1 e Vitest nos logs do job 127578222485."
+  },
+  "imagem": {
+    "tag": "portaltarefas:943e944a13d39c08bc82b9bb314c13986f5674b3",
+    "idLocal": "sha256:65c137f89a0200fbd57c42bac1926f7ae7cb17af338a1ed3b08fba820d2315c3"
+  },
+  "publicacao": {
+    "etapas": [
+      {
+        "name": "Publicar aplicação em pasta",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 22
+      },
+      {
+        "name": "Criar imagem identificada pelo commit",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 23
+      },
+      {
+        "name": "Executar a imagem real com SQL Server e HTTPS",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 25
+      },
+      {
+        "name": "Validar Health Checks, MVC, SPA e versão da imagem",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 26
+      },
+      {
+        "name": "Salvar imagem somente após o smoke test aprovado",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 27
+      },
+      {
+        "name": "Preservar artefatos após testes e smoke aprovados",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28
+      }
+    ],
+    "artefatoPublicavelPresente": true,
+    "artefatos": [
+      {
+        "id": 13460037445,
+        "nome": "portaltarefas-943e944a13d39c08bc82b9bb314c13986f5674b3",
+        "bytes": 159295700,
+        "digest": "sha256:bd8d384b0d5b0f7caaf386c4ce3206714e23db586c093af8e32429adeeb286ff",
+        "expiraUtc": "2026-11-12T22:36:06Z",
+        "url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122508347/artifacts/13460037445"
+      }
+    ]
+  },
+  "verificacoesConfirmadas": [
+    "Restore/build .NET e SQL/migrations exclusivos aprovados.",
+    "Contrato OpenAPI/cliente, npm ci/auditoria, testes, typecheck e build frontend aprovados.",
+    "Build de imagem vinculada ao commit, execução com SQL/HTTPS e usuário não privilegiado aprovados.",
+    "Smoke de endpoints de saúde/versão/MVC/SPA/assets e save/upload aprovados."
+  ],
+  "limites": [
+    "O workflow experimental deriva da base 1da2eea e não inclui o novo gate explícito de estado Docker healthy da branch de auditoria; essa validação pertence à execução PR separada.",
+    "O ZIP completo do artefato não foi extraído; metadados e log de upload foram conferidos.",
+    "As duas etapas condicionais de diagnóstico de falha ficaram skipped por haver sucesso; nenhum teste obrigatório foi ignorado.",
+    "Não há alegação de publicação em registry, hospedagem persistente ou rollback remoto."
+  ],
+  "capturasProduzidas": 0,
+  "alteracoesRemotasPeloColetor": 0
+}

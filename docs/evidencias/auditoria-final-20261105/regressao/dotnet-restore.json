@@ -1,0 +1,6 @@
+﻿{
+    "instanteUtc":  "2026-11-05T22:15:30.5168030+00:00",
+    "command":  "dotnet restore PortalTarefas.sln -p:NuGetAudit=false",
+    "exitCode":  0,
+    "limite":  "Auditoria NuGet remota nao executada nesta restauracao; pacotes restaurados do cache local."
+}

@@ -1,0 +1,57 @@
+{
+  "aprovado": false,
+  "verified": false,
+  "observedAtUtc": "2026-11-06 23:47:24 UTC",
+  "runId": 42313806838,
+  "runUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838",
+  "status": "completed",
+  "conclusion": "failure",
+  "headSha": "90ad9a2f6241a520df38d3be9b77a60fc76df9db",
+  "checkoutSha": "731aadb3d531e22820f086f472f7ddad8b5151db",
+  "baseSha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+  "jobId": 128221398582,
+  "dotnet": {
+    "aprovados": 55,
+    "falhos": 0,
+    "ignorados": 0
+  },
+  "frontend": {
+    "aprovados": 33,
+    "falhos": 0,
+    "ignorados": 0
+  },
+  "secretStore": {
+    "stepConclusion": "failure",
+    "secretName": "PORTAL_CI_CERTIFICATE_PASSWORD",
+    "valorLido": false,
+    "mensagem": "Configure o Actions Secret PORTAL_CI_CERTIFICATE_PASSWORD com ao menos 16 caracteres.",
+    "interpretacao": "O log do ambiente da etapa mostra o nome esperado com valor mascarado (***), e a guarda de comprimento menor que 16 falhou. Isso permite inferir que um valor não vazio foi injetado, porém curto; nenhum caractere do valor foi lido.",
+    "logValueClassification": "masked"
+  },
+  "smoke": null,
+  "containerHealth": null,
+  "uid": null,
+  "treeHead": "be6afe7bee408f8053ab07441e9986fe34c9fbdc",
+  "treeCheckout": "be6afe7bee408f8053ab07441e9986fe34c9fbdc",
+  "artifactPublicavel": false,
+  "diagnostico": [
+    {
+      "id": 13550027261,
+      "name": "diagnostico-731aadb3d531e22820f086f472f7ddad8b5151db",
+      "bytes": 67358,
+      "sha256": "sha256:286639a22c59b4199c70ebc7f59a7b9348fb56cee2fe428056edec8c83a5cd5f"
+    }
+  ],
+  "evidencias": [
+    "run-42313806838.json",
+    "run-42313806838-jobs.json",
+    "run-42313806838-artefatos.json",
+    "run-42313806838-resultados.json"
+  ],
+  "limits": [
+    "Nenhum valor de segredo/token foi lido ou incluído nas evidências.",
+    "A falha de configuração bloqueou runtime, smoke, saúde nativa, save e upload; E4.2 não está comprovado.",
+    "Main e PR permanecem sem merge; nenhuma escrita remota realizada pelo coletor."
+  ],
+  "runAttempt": 1
+}

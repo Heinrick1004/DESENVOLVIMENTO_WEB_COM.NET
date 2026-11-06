@@ -1,0 +1,297 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 127578222485,
+      "name": "validar",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "943e944a13d39c08bc82b9bb314c13986f5674b3",
+      "html_url": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42122508347/job/127578222485",
+      "started_at": "2026-11-05T22:33:40Z",
+      "completed_at": "2026-11-05T22:36:35Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-05T22:33:41Z",
+          "completed_at": "2026-11-05T22:33:42Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-05T22:33:42Z",
+          "completed_at": "2026-11-05T22:33:43Z"
+        },
+        {
+          "name": "Run actions/setup-dotnet@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-05T22:33:43Z",
+          "completed_at": "2026-11-05T22:33:44Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-05T22:33:44Z",
+          "completed_at": "2026-11-05T22:33:51Z"
+        },
+        {
+          "name": "Restaurar .NET",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-05T22:33:51Z",
+          "completed_at": "2026-11-05T22:33:57Z"
+        },
+        {
+          "name": "Compilar .NET",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-05T22:33:57Z",
+          "completed_at": "2026-11-05T22:34:08Z"
+        },
+        {
+          "name": "Preparar credencial efêmera e banco exclusivo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-05T22:34:08Z",
+          "completed_at": "2026-11-05T22:34:08Z"
+        },
+        {
+          "name": "Iniciar SQL Server isolado para esta execução",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-05T22:34:08Z",
+          "completed_at": "2026-11-05T22:34:24Z"
+        },
+        {
+          "name": "Aguardar SQL Server antes das migrations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-05T22:34:24Z",
+          "completed_at": "2026-11-05T22:34:31Z"
+        },
+        {
+          "name": "Aplicar migrations e executar testes sem ignorados",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-05T22:34:31Z",
+          "completed_at": "2026-11-05T22:34:49Z"
+        },
+        {
+          "name": "Restaurar frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-05T22:34:49Z",
+          "completed_at": "2026-11-05T22:34:52Z"
+        },
+        {
+          "name": "Bloquear dependencias com vulnerabilidades altas ou criticas",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-05T22:34:52Z",
+          "completed_at": "2026-11-05T22:34:53Z"
+        },
+        {
+          "name": "Iniciar API real para conferir o contrato",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-05T22:34:53Z",
+          "completed_at": "2026-11-05T22:34:56Z"
+        },
+        {
+          "name": "Gerar cliente a partir do OpenAPI servido pela API",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-05T22:34:56Z",
+          "completed_at": "2026-11-05T22:34:57Z"
+        },
+        {
+          "name": "Impedir divergência do contrato versionado",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-05T22:34:57Z",
+          "completed_at": "2026-11-05T22:34:57Z"
+        },
+        {
+          "name": "Executar chamada real com o cliente TypeScript",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-05T22:34:57Z",
+          "completed_at": "2026-11-05T22:34:58Z"
+        },
+        {
+          "name": "Testar frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-05T22:34:58Z",
+          "completed_at": "2026-11-05T22:35:01Z"
+        },
+        {
+          "name": "Verificar tipos TypeScript",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-05T22:35:01Z",
+          "completed_at": "2026-11-05T22:35:04Z"
+        },
+        {
+          "name": "Compilar frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-05T22:35:04Z",
+          "completed_at": "2026-11-05T22:35:09Z"
+        },
+        {
+          "name": "Validar sintaxe e ordem dos bloqueios do pipeline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-05T22:35:09Z",
+          "completed_at": "2026-11-05T22:35:11Z"
+        },
+        {
+          "name": "Inventariar dependências e versão",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-05T22:35:11Z",
+          "completed_at": "2026-11-05T22:35:14Z"
+        },
+        {
+          "name": "Publicar aplicação em pasta",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-05T22:35:14Z",
+          "completed_at": "2026-11-05T22:35:19Z"
+        },
+        {
+          "name": "Criar imagem identificada pelo commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-05T22:35:19Z",
+          "completed_at": "2026-11-05T22:35:52Z"
+        },
+        {
+          "name": "Gerar certificado HTTPS efêmero para o smoke test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-05T22:35:52Z",
+          "completed_at": "2026-11-05T22:35:52Z"
+        },
+        {
+          "name": "Executar a imagem real com SQL Server e HTTPS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-05T22:35:52Z",
+          "completed_at": "2026-11-05T22:35:52Z"
+        },
+        {
+          "name": "Validar Health Checks, MVC, SPA e versão da imagem",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-11-05T22:35:52Z",
+          "completed_at": "2026-11-05T22:35:57Z"
+        },
+        {
+          "name": "Salvar imagem somente após o smoke test aprovado",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-11-05T22:35:57Z",
+          "completed_at": "2026-11-05T22:36:06Z"
+        },
+        {
+          "name": "Preservar artefatos após testes e smoke aprovados",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-11-05T22:36:06Z",
+          "completed_at": "2026-11-05T22:36:20Z"
+        },
+        {
+          "name": "Capturar logs do contêiner após falha",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 29,
+          "started_at": "2026-11-05T22:36:20Z",
+          "completed_at": "2026-11-05T22:36:20Z"
+        },
+        {
+          "name": "Preservar diagnóstico de testes que falharam",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 30,
+          "started_at": "2026-11-05T22:36:20Z",
+          "completed_at": "2026-11-05T22:36:20Z"
+        },
+        {
+          "name": "Encerrar somente os recursos efêmeros deste job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-05T22:36:20Z",
+          "completed_at": "2026-11-05T22:36:31Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60,
+          "started_at": "2026-11-05T22:36:31Z",
+          "completed_at": "2026-11-05T22:36:31Z"
+        },
+        {
+          "name": "Post Run actions/setup-dotnet@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61,
+          "started_at": "2026-11-05T22:36:31Z",
+          "completed_at": "2026-11-05T22:36:31Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 62,
+          "started_at": "2026-11-05T22:36:31Z",
+          "completed_at": "2026-11-05T22:36:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 63,
+          "started_at": "2026-11-05T22:36:31Z",
+          "completed_at": "2026-11-05T22:36:32Z"
+        }
+      ]
+    }
+  ]
+}
