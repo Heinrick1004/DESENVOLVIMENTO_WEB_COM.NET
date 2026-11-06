@@ -1,0 +1,25 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:57:48.160409+00:00",
+    "arquivo":  "docs/relatorios/08-Entrega.pdf",
+    "bytes":  209453,
+    "paginas":  9,
+    "sha256":  "5cafaddcda0b5c6179d2429889bd7347b6d1c8343b12cbf233ac63a5e7e9a206",
+    "ferramenta":  "PyMuPDF 2.1",
+    "aberturaReal":  "aprovada",
+    "paginasRenderizadas":  9,
+    "blocosTextoForaDaPagina":  [
+
+                                ],
+    "textoExtraidoCaracteres":  25973,
+    "conteudoConferido":  {
+                              "run42313806838":  true,
+                              "233Verificados":  true,
+                              "data06Nov2026":  true
+                          },
+    "manifestoConsistente":  true,
+    "inspecaoVisual":  "Aprovada: nove páginas renderizadas e inspecionadas em folhas de contato; páginas 1 e 2 conferidas individualmente. Títulos, texto, tabelas e referências legíveis, sem cortes. O novo fechamento distingue a aprovação remota de E4.2 dos estados históricos anteriores.",
+    "previewsPrivados":  ".local/pdf08-e42-review/",
+    "escopo":  "Somente leitura e revisão do novo PDF08; fontes, PDFs01–07 e capturas preservados.",
+    "resultado":  "aprovado",
+    "instanteInspecaoVisualUtc":  "2026-11-06T23:58:06.7107779Z"
+}

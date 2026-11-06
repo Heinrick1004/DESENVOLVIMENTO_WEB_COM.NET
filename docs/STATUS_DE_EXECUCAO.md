@@ -1,6 +1,40 @@
 # Estado de execução — Portal de Tarefas
 
-## Fechamento de 06/11/2026 — entrega preparada com pendências
+## Comprovação remota de E4.2 — 06/11/2026
+
+**Estado: ENTREGA PREPARADA COM PENDÊNCIAS HISTÓRICAS.** Nos 248 IDs há 233 concluídos e verificados, 13 não aplicáveis fundamentados e duas limitações históricas (G-02/G-03). Não há requisito atual dos oito roteiros classificado como pendente ou implementado sem execução; as duas limitações de sequência histórica permanecem sem fabricação de marcos.
+
+| Roteiro | Concluídos e verificados | Não aplicáveis fundamentados | Situação |
+|---|---:|---:|---|
+| 1 — Pipeline | 30 | 0 | Verificado |
+| 2 — MVC | 27 | 2 | Verificado, capturas reais |
+| 3 — Persistência | 30 | 1 | Verificado com SQL real |
+| 4 — API | 29 | 2 | Verificado, contrato e Swagger |
+| 5 — React | 29 | 2 | Verificado, estados capturados |
+| 6 — Identity | 29 | 2 | Verificado |
+| 7 — Observabilidade | 28 | 2 | Verificado |
+| 8 — Entrega | 29 | 2 | E4.2 comprovado remotamente |
+
+O [CI 42313806838, tentativa 2](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/2) terminou aprovado para o head `90ad9a2f6241a520df38d3be9b77a60fc76df9db`, testado no merge sintético `731aadb3d531e22820f086f472f7ddad8b5151db`. Foram aprovados 55 testes .NET e 33 React, zero falhos e zero ignorados, além de SQL/migrations, contrato/cliente, builds, Docker com HTTPS e usuário não privilegiado, smoke, saúde nativa e save/upload. A etapa sem fallback consumiu o Actions Secret para gerar o PFX; o contêiner abriu esse certificado e respondeu por HTTPS, com manifesto nativo `healthy`. O agente não consultou o valor do segredo; ele não foi incluído nas evidências, imagem ou pacote. A [comprovação sanitizada](evidencias/e4-2-20261106/github/comprovacao-e4-2.json) reúne run, etapas, artefato, hash, smoke e `container-health.json`. Head e checkout têm a mesma árvore de fontes; a imagem/versão do artefato usa o SHA do checkout, preservado separadamente do head do PR.
+
+A [tentativa 1](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/1) foi reprovada pela guarda que exige ao menos 16 caracteres no Actions Secret, antes de executar o contêiner, smoke, saúde nativa e entrega. Os testes anteriores da execução haviam passado; essa rejeição foi de configuração. O responsável informou a correção do segredo e a tentativa 2 reexecutou o mesmo head/checkout. Os [registros da primeira tentativa](evidencias/e4-2-20261106/github/comprovacao-e4-2-attempt1.json) permanecem preservados; não são substituídos pelo resultado aprovado posterior.
+
+| Suíte no CI de E4.2 | Aprovados | Reprovados | Ignorados |
+|---|---:|---:|---:|
+| .NET com SQL exclusivo | 55 | 0 | 0 |
+| React | 33 | 0 | 0 |
+
+O secret foi configurado pelo responsável e commit/push da branch foram autorizados. Não houve merge. A base identificada na comprovação é `1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2`. O ensaio negativo e a recuperação anteriores continuam válidos para a ordem de publicação preservada. A indisponibilidade do Engine Docker neste Windows é uma limitação de reprodução local; a execução Docker no runner está comprovada para a versão acima.
+
+As 12 capturas e os resultados locais de 06/11 continuam válidos e identificados em sua rodada. O novo pacote fica em `artifacts/entrega-e4-2-20261106/`, com seleção, inventário, extração e verificação conforme [entrega final](ENTREGA_FINAL.md). O pacote anterior em `artifacts/entrega/` permanece preservado com seu estado e seus hashes originais.
+
+A aprovação remota da revisão efetivamente empacotada deve ser conferida nos checks do PR e no comprovante final associado ao SHA registrado no manifesto do pacote. A execução citada comprova seus próprios head e checkout; não aprova automaticamente commits posteriores. O comprovante do CI final e os dados de integridade do ZIP ficam nos arquivos de acompanhamento ao lado do pacote, sem alterar novamente as fontes versionadas.
+
+As seções seguintes preservam o estado anterior ao run de E4.2 e os históricos de outubro/05 de novembro. Suas pendências e menções a ausência de autorização descrevem aquelas rodadas; o estado vigente está nesta seção e na matriz.
+
+---
+
+## Registro histórico — fechamento anterior à comprovação remota de E4.2
 
 Fonte acadêmica relida: `Roteiros.pdf`, 26 páginas. A revisão confirmou os 248 IDs e a correspondência dos 244 itens dos roteiros às páginas indicadas. A implementação existente foi preservada. A versão de origem é `5bf8fefcdd2b7b02dfb7012f8663e584a530b79e`, branch `auditoria/final-20261105`, com alterações locais posteriores em CI, scripts, documentação e evidências identificadas pelo inventário SHA256. Não se apresenta o SHA de origem como commit que já inclua essas alterações.
 

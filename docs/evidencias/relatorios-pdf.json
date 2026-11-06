@@ -64,11 +64,11 @@
   {
     "fonte": "08-Entrega.md",
     "pdf": "08-Entrega.pdf",
-    "bytes": 197673,
-    "paginas": 8,
-    "sha256": "0aeea928873a81aca6fc8b0db9be13d59143c365c49c1560f67139e081cb489e",
-    "fonteSha256": "5df3a7759082a046a6afc70cac64e53307e0c0cc7ead05a1f2bf3d8c11a318fe",
-    "instanteUtc": "2026-11-06T23:33:13.941297+00:00",
+    "bytes": 209453,
+    "paginas": 9,
+    "sha256": "5cafaddcda0b5c6179d2429889bd7347b6d1c8343b12cbf233ac63a5e7e9a206",
+    "fonteSha256": "7fe9d5490aa8c2bc015c6d4bfd9050205e5444695e19b09d02b8caaab3fd3bab",
+    "instanteUtc": "2026-11-06T23:57:20.639892+00:00",
     "renderer": "Chrome headless local, HTML sem dependências externas; referências locais impressas como caminhos relativos"
   }
 ]

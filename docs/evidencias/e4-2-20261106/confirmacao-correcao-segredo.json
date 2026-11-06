@@ -1,0 +1,9 @@
+﻿{
+    "instanteUtc":  "2026-11-06T23:52:10.0863052+00:00",
+    "origem":  "Resposta explícita do usuário à solicitação de corrigir o segredo",
+    "confirmacao":  "Atualizei e salvei o segredo",
+    "segredo":  "PORTAL_CI_CERTIFICATE_PASSWORD",
+    "valorSolicitadoOuLido":  false,
+    "acao":  "Reexecutar o job do CI 42313806838 no mesmo commit, sem alterar as guardas nem fazer merge",
+    "tentativaAnteriorPreservada":  1
+}

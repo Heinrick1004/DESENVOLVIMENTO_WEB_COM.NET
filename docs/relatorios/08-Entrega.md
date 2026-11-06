@@ -1,8 +1,22 @@
 # Roteiro 8 — Configuração, Docker e pipeline
 
-**Disciplina:** Desenvolvimento Web com .NET — UNIP. **Fonte:** Roteiros.pdf, páginas 24–26. **Consolidação:** 05/11/2026, com preservação das evidências de outubro.
+**Disciplina:** Desenvolvimento Web com .NET — UNIP. **Fonte:** Roteiros.pdf, páginas 24–26. **Consolidação:** 06/11/2026, com preservação das evidências de outubro e de 05/11.
 
-## Fechamento adicional de 06/11/2026
+## Comprovação remota e fechamento de E4.2 — 06/11/2026
+
+**Roteiro 8: 29 requisitos concluídos e verificados e duas extensões alternativas não aplicáveis fundamentadas.** O [CI 42313806838, tentativa 2](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/2) terminou aprovado para o head `90ad9a2f6241a520df38d3be9b77a60fc76df9db`, testado no merge sintético `731aadb3d531e22820f086f472f7ddad8b5151db`. Foram aprovados 55 testes .NET e 33 React, zero falhos e zero ignorados, além de SQL/migrations, contrato/cliente, builds, Docker com HTTPS e usuário não privilegiado, smoke, saúde nativa e save/upload. A etapa sem fallback consumiu o Actions Secret para gerar o PFX; o contêiner abriu esse certificado e respondeu por HTTPS, com manifesto nativo `healthy`. O agente não consultou o valor do segredo; ele não foi incluído nas evidências, imagem ou pacote. A [comprovação sanitizada](../evidencias/e4-2-20261106/github/comprovacao-e4-2.json) identifica etapas, testes, head/checkout, artefato e os manifestos de smoke/saúde. A imagem e sua versão usam o checkout sintético; a árvore de fontes é igual à do head enviado.
+
+A [tentativa 1](https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/1) foi reprovada pela guarda que exige ao menos 16 caracteres no Actions Secret, antes de executar o contêiner, smoke, saúde nativa e entrega. Os testes anteriores da execução haviam passado; essa rejeição foi de configuração. O responsável informou a correção do segredo e a tentativa 2 reexecutou o mesmo head/checkout. Os [registros da primeira tentativa](../evidencias/e4-2-20261106/github/comprovacao-e4-2-attempt1.json) permanecem preservados; não são substituídos pelo resultado aprovado posterior.
+
+O secret store escolhido é GitHub Actions Secrets, conforme a alternativa do PDF, página 25. A senha do certificado é obrigatória, sem fallback; o certificado é efêmero, montado externamente e usado no HTTPS real da imagem. A aprovação remota acrescenta a prova que faltava à verificação local com stubs. O segredo foi configurado pelo responsável, que autorizou commit/push; o agente não consultou seu valor, que não integra as evidências, imagem ou pacote. Não foi necessário criar provedor fictício, OIDC sem destino, GHCR ou implantação pública.
+
+Na matriz completa há 233 concluídos e verificados, 13 não aplicáveis fundamentados e duas limitações históricas (G-02/G-03). O estado global é **ENTREGA PREPARADA COM PENDÊNCIAS HISTÓRICAS**, pois os marcos anteriores exigidos na página 2 não podem ser comprovados retroativamente. As 12 capturas reais e os oito relatórios permanecem identificados, preservando todas as evidências anteriores. O pacote novo é preparado em `artifacts/entrega-e4-2-20261106/`, com fontes versionadas limpas, inventário, inspeção, extração e validação, conforme [entrega final](../ENTREGA_FINAL.md).
+
+A aprovação remota da revisão efetivamente empacotada deve ser conferida nos checks do PR e no comprovante final associado ao SHA registrado no manifesto do pacote. A execução citada comprova seus próprios head e checkout; não aprova automaticamente commits posteriores. O comprovante do CI final e os dados de integridade do ZIP ficam nos arquivos de acompanhamento ao lado do pacote, sem alterar novamente as fontes versionadas. O PR permanece sem merge. Integração e CI da `main` só são apresentados quando houver autorização específica e execução real. O ensaio negativo anterior mantém sua validade para a ordem de publicação preservada.
+
+As seções seguintes preservam os resultados das rodadas anteriores, incluindo o estado antes do run que comprovou E4.2. Suas contagens e pendências são históricas e não substituem este fechamento.
+
+## Histórico de 06/11 — fechamento antes do CI de E4.2
 
 **Estado: entrega preparada com pendências.** A aplicação existente foi preservada. A regressão nova aprovou 55 testes .NET com SQL exclusivo e 33 React, zero falhos/ignorados; o restore/build final ficou com zero avisos e erros. Seed repetido, contrato HTTPS/cliente gerado, CSRF/login/criação/logout e smoke do mesmo artefato em Development/Production passaram. [Evidências novas](../STATUS_DE_EXECUCAO.md) e [12 capturas reais](../PLANO_CAPTURAS_FINAIS.md) identificam versões, comandos e limites. Os PDFs 02/04/05 incorporam as novas imagens; os demais relatórios técnicos foram preservados.
 

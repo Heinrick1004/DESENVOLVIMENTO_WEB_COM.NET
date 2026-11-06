@@ -1,0 +1,84 @@
+{
+  "aprovado": true,
+  "verified": true,
+  "runAttempt": 2,
+  "observedAtUtc": "2026-11-06T23:56:31.388Z",
+  "runId": 42313806838,
+  "runUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838",
+  "attemptUrl": "https://github.com/Heinrick1004/DESENVOLVIMENTO_WEB_COM.NET/actions/runs/42313806838/attempts/2",
+  "status": "completed",
+  "conclusion": "success",
+  "headSha": "90ad9a2f6241a520df38d3be9b77a60fc76df9db",
+  "checkoutSha": "731aadb3d531e22820f086f472f7ddad8b5151db",
+  "baseSha": "1da2eead374d03fcfb62e5b0d7af17e2dbaf1cb2",
+  "jobId": 128223934813,
+  "artifactId": 13550705101,
+  "artifactName": "portaltarefas-731aadb3d531e22820f086f472f7ddad8b5151db",
+  "artifactBytes": 158655104,
+  "artifactSha256": "8d1ac50384c897997ea1acc910aec16f0844f44fd68f77e8ef90b788b85e31d7",
+  "artifactDownloaded": true,
+  "artifactHashMatches": true,
+  "dotnet": {
+    "aprovados": 55,
+    "falhos": 0,
+    "ignorados": 0
+  },
+  "frontend": {
+    "aprovados": 33,
+    "falhos": 0,
+    "ignorados": 0
+  },
+  "secretStore": {
+    "stepConclusion": "success",
+    "secretName": "PORTAL_CI_CERTIFICATE_PASSWORD",
+    "valorLido": false,
+    "logValueClassification": "masked",
+    "method": "Actions Secret obrigatório usado para proteger o PFX do teste HTTPS; sem fallback para senha gerada no runner."
+  },
+  "steps": {
+    "certificate": "success",
+    "runtime": "success",
+    "smoke": "success",
+    "nativeHealth": "success",
+    "save": "success",
+    "upload": "success"
+  },
+  "smoke": {
+    "Resultado": "Aprovado",
+    "Endereco": "https://localhost:8443",
+    "Versao": "731aadb3d531e22820f086f472f7ddad8b5151db",
+    "Liveness": 200,
+    "Readiness": 200,
+    "MVC": 200,
+    "SPA": 200,
+    "Assets": 2,
+    "InstanteUtc": "2026-11-06T23:53:11.2454770+00:00"
+  },
+  "containerHealth": {
+    "commit": "731aadb3d531e22820f086f472f7ddad8b5151db",
+    "container": "portal-ci-web",
+    "imageId": "sha256:b24e4cc0af3f27f81d1b92691a49e8a881d08212542cfcb7b1c68f613b4e56fa",
+    "health": "healthy"
+  },
+  "uid": "1654",
+  "treeHead": "be6afe7bee408f8053ab07441e9986fe34c9fbdc",
+  "treeCheckout": "be6afe7bee408f8053ab07441e9986fe34c9fbdc",
+  "sourceTreesIdentical": true,
+  "evidencias": [
+    "docs/evidencias/e4-2-20261106/github/run-42313806838-attempt2.json",
+    "docs/evidencias/e4-2-20261106/github/run-42313806838-jobs-attempt2.json",
+    "docs/evidencias/e4-2-20261106/github/run-42313806838-artefatos-attempt2.json",
+    "docs/evidencias/e4-2-20261106/github/run-42313806838-resultados-attempt2.json",
+    "docs/evidencias/e4-2-20261106/github/attempt2/artefato-manifestos.json",
+    "docs/evidencias/e4-2-20261106/github/fontes-git-attempt2.json",
+    "docs/evidencias/e4-2-20261106/github/comprovacao-e4-2-attempt1.json"
+  ],
+  "limits": [
+    "Tentativa 1 falhou por valor curto inferido do log mascarado e da guarda; sua prova foi preservada separadamente.",
+    "O valor do segredo e a credencial Git não foram lidos nos resultados ou incluídos nas evidências; nenhum token/URL assinada foi gravado em fonte versionável.",
+    "Manifestos foram extraídos do ZIP remoto e o SHA256 completo do ZIP foi comparado ao digest da API.",
+    "A imagem TAR não foi carregada novamente localmente; a execução real é comprovada pelo job e pelos manifestos de smoke/saúde/UID.",
+    "O head do PR e o checkout sintético possuem árvores Git idênticas; suas identidades de commit são mantidas separadas.",
+    "Não houve merge: a main permanece na base identificada."
+  ]
+}
